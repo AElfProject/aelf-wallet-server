@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript">
+function check (form)
+{
+	var title = document.getElementsByName('data[title]')[0];
+	if (title.value == '')
+	{
+		alert('<{$lang->title}><{$lang->can_not_empty}>');
+		title.focus();
+		return false;
+	}
+
+	return true;
+}
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="?con=admin&ctl=system/link" class="lnkReturn"><{$lang->return_to_list}></a> 
+		</div>
+		<form action="?con=admin&ctl=system/link&act=add" method="post" onsubmit="return check(this);">
+			<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2"><{$lang->add_link}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->ordinal}></td>
+					<td class="editRtTd"><input name="data[ordinal]" value="<{$ordinal}>" type="text" size="20" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->title}></td>
+					<td class="editRtTd"><input name="data[title]" value="" type="text" size="30" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->link_address}></td>
+					<td class="editRtTd"><input name="data[url]" value="" type="text" size="60" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->whether_audit}></td>
+					<td class="editRtTd">
+						<input id="isApproved1" name="data[isApproved]" value="1" type="radio" checked /><label for="isApproved1"><{$lang->yes}></label> 
+						<input id="isApproved0" name="data[isApproved]" value="0" type="radio" /><label for="isApproved0"><{$lang->no}></label>
+					</td>
+				</tr>
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="?con=admin&ctl=system/link" class="lnkReturn"><{$lang->return_to_list}></a> 
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

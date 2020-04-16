@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language lang="English">
+	<verify_code>Verification code</verify_code>
+	<verification_code_error>Verification code error!</verification_code_error>
+	<ip>IP</ip>
+	<home>Home</home>
+	<statistics>Statistics</statistics>
+	<maohao>:</maohao>
+	<unallocated>Ungrouped</unallocated>
+	<explain>Explain</explain>
+	<intro>Brief introduction</intro>
+	<refresh>Refresh</refresh>
+	<name>Name</name>
+	<email>Email</email>
+	<phone>Phone</phone>
+	<mobile>Phone</mobile>
+	<telephone>Telephone</telephone>
+	<message>Message</message>
+	<view>View</view>
+	<reply>Reply</reply>
+	<delete>Delete</delete>
+	<bulk_delete>Bulk Delete</bulk_delete>
+	<bulk_transfer>Bulk Transfer</bulk_transfer>
+	<bulk_copy>Bulk copy</bulk_copy>
+	<add>Addition</add>
+	<edit>Edit</edit>
+	<update>Update</update>
+	<modify>Modify</modify>
+	<send>Send</send>
+	<send_mail>Send mail</send_mail>
+	<category>Classification</category>
+	<category_name>Category name</category_name>
+	<category_name_en>Category name (English)</category_name_en>
+	<full_name>Full name</full_name>
+	<company_name>Company Name</company_name>
+	<search>Search</search>
+	<first_name>First Name</first_name>
+	<last_name>Last Name</last_name>
+	<address>Address</address>
+	<website>Website</website>
+	<msn>Msn</msn>
+	<msn>QQ</msn>
+	<skype>Skype</skype>
+	<more_info_for_company>Update information</more_info_for_company>
+	<mail_address>Email Address</mail_address>
+	<mail_content>Mail Content</mail_content>
+	<mail_from>Mail From</mail_from>
+	<mail_subject>Subject</mail_subject>
+	<detail>Detail</detail>
+	<details>Details</details>
+	<all>All</all>
+	<ordinal>Sort No.</ordinal>
+	<menu_name>Menu name</menu_name>
+	<parent_menu_name>Parent menu name</parent_menu_name>
+	<link_address>Link address</link_address>
+	<open_method>Open Method</open_method>
+	<thumbnail>Thumbnail</thumbnail>
+	<enlarge>Enlarge</enlarge>
+	<attachment>Attachment</attachment>
+	<display_mode>Display Mode</display_mode>
+	<column_setting>Column Setting</column_setting>
+	<articles_count>Number of Posts</articles_count>
+	<have>Have</have>
+	<nothing>Nothing</nothing>
+	<unknow>Unknown</unknow>
+	<alias>Alias</alias>
+	<template>Template</template>
+	<directory>Directory</directory>
+	<yes>Yes</yes>
+	<no>No</no>
+	<style>Style</style>
+	<bold>Bold</bold>
+	<italic>Italic</italic>
+	<page_title>Page title</page_title>
+	<page_keywords>Page Keywords</page_keywords>
+	<page_description>Page description</page_description>
+	<width>Width</width>
+	<height>Height</height>
+	<hits>Clicks</hits>
+	<publish_date>Release date</publish_date>
+	<source>Source</source>
+	<author>Author</author>
+	<album>Album</album>
+	<tags>Tags</tags>
+	<source_url>Source URL</source_url>
+	<today>Today</today>
+	<this_week>This week</this_week>
+	<this_month>This month</this_month>
+	<this_year>This year</this_year>
+	<title>Title</title>
+	<sub_title>Subtitle</sub_title>
+	<publish_user>Posted by</publish_user>
+	<create_user>Created by</create_user>
+	<operate>Operating</operate>
+	<preview>Preview</preview>
+	<start_date>Start date</start_date>
+	<end_date>Deadline</end_date>
+	<role>Role</role>
+	<role_name>Role name</role_name>
+	<role_description>Role description</role_description>
+	<system_role>System role</system_role>
+	<super_role>Super role</super_role>
+	<user>User</user>
+	<users>Users</users>
+	<authorize>Authorize</authorize>
+	<discription>Description</discription>
+	<select_all>Select all</select_all>
+	<site_name>Site Name</site_name>
+	<copyright_info>Copyright Information</copyright_info>
+	<contact_info>Contact Information</contact_info>
+	<head_javascript>Head JavaScript</head_javascript>
+	<foot_javascript>Foot JavaScript</foot_javascript>
+	<show>Show</show>
+	<hide>Hide</hide>
+	<person_name>Name</person_name>
+	<administrator>Administrator</administrator>
+	<whether_administrator>Whether administrators</whether_administrator>
+	<group>Group</group>
+	<custom>Custom</custom>
+	<role_inheritance>Role by way of succession</role_inheritance>
+	<not_inherit>Does not inherit</not_inherit>
+	<full_inherit>Fully inherited</full_inherit>
+	<merge_inherit>Merger inheritance</merge_inherit>
+	<bulk_pick>Volume collection</bulk_pick>
+	<charset>Coding</charset>
+	<test>Test</test>
+	<pick>Collection</pick>
+	<open>Open</open>
+	<close>Close</close>
+	<from>From</from>
+	<to>To</to>
+	<increment>Increment</increment>
+	<not_process>Does not deal with</not_process>
+	<common_rules>Common rules</common_rules>
+	<js_content>JS content</js_content>
+
+	<status>Status</status>
+	<whether_audit>Whether the audit</whether_audit>
+	<set_status_as>Set the status to</set_status_as>
+	<audit>Audit</audit>
+	<audited>Have audited</audited>
+	<unaudited>Unaudited</unaudited>
+	<status_top>Top</status_top>
+	<status_top_no>Unstuck</status_top_no>
+	<status_recommend>Recommend</status_recommend>
+	<status_recommend_no>Not recommended</status_recommend_no>
+	<status_hot>Hot spot</status_hot>
+	<status_hot_no>Non-hotspot</status_hot_no>
+
+	<user_name>User name</user_name>
+	<password>Password</password>
+	<change_password>Change the password</change_password>
+	<exit_system>Exit the system</exit_system>
+	<login_count>Login Count</login_count>
+	<welcome_management>Welcome to Management Center</welcome_management>
+	<website_management_center>Website Management Center</website_management_center>
+	<your_nformation>Your information</your_nformation>
+	<top_category>Top Category</top_category>
+	<info_list>List of information</info_list>
+	<add_info>Release information</add_info>
+	<info_search>Information search</info_search>
+	<template_name>Template file name</template_name>
+	<graphic_content>Graphic content</graphic_content>
+	<news_list>News list</news_list>
+	<pic_list>Picture list</pic_list>
+	<graphic_list>Photo List</graphic_list>
+	<file_upload>File upload</file_upload>
+	<select_upload_file>Choose upload files</select_upload_file>
+	<file_name>File name</file_name>
+	<file_type>File Type</file_type>
+	<close_window>Close window</close_window>
+	<admin_email>The administrator's mailbox</admin_email>
+	<create_time>Creation time</create_time>
+	<update_time>Updated</update_time>
+	<message_time>Message time</message_time>
+	<reply_time>Response time</reply_time>
+	<reply_user>Respondents</reply_user>
+	<return_to_list>Return to List</return_to_list>
+	<view_reply>View / Reply</view_reply>
+	<select_category>Select a Category</select_category>
+	<please_select_category>Please make a selection</please_select_category>
+	<add_email>New E-mail</add_email>
+	<edit_email>Editor's mailbox</edit_email>
+	<send_all>Send All</send_all>
+	<exclude_mail>Exclude mailboxes</exclude_mail>
+	<add_category>Add Category</add_category>
+	<edit_category>Edit Category</edit_category>
+	<select_lang>Select a language</select_lang>
+	<action_cache>Action cache</action_cache>
+	<create_menu>Creating Menus</create_menu>
+	<edit_menu>Edit menu</edit_menu>
+	<add_top_category>Add top classification</add_top_category>
+	<add_sub_category>New child classification</add_sub_category>
+	<smaller_front>The smaller the more front</smaller_front>
+	<bigger_front>Bigger front</bigger_front>
+	<category_map_path>Classification path</category_map_path>
+	<category_directory>Classified Catalogue</category_directory>
+	<category_setting>Classification set</category_setting>
+	<article_setting>Post information set</article_setting>
+	<search_info>Search Article Information</search_info>
+	<select_publish_user>Select the sender</select_publish_user>
+	<search_in_title>Search in the title</search_in_title>
+	<hidden_setting>Hide Settings</hidden_setting>
+	<register_date>Registration Date</register_date>
+	<bulk_auto_generate>Batch automatically generated</bulk_auto_generate>
+	<manually_specify>Manually specify</manually_specify>
+
+	<super_management>Super Management</super_management>
+	<update_cache>Update the cache</update_cache>
+	<global_info_list_column>Global information list part</global_info_list_column>
+	<menu_manager>Menu Manager</menu_manager>
+	<generate_multiple_lang>Generate multiple languages</generate_multiple_lang>
+	<source_lang>Source language</source_lang>
+	<target_lang>Target language</target_lang>
+
+	<last_login_time>Latest Login time</last_login_time>
+	<username_password_not_correct>User name or password is incorrect, please re-enter</username_password_not_correct>
+	<user_not_audit>The user does not audit, can not enter the Admin</user_not_audit>
+	<user_not_admin>The user is not an administrator, you can not enter the Admin</user_not_admin>
+	<system_prompts>Prompted</system_prompts>
+	<click_here_continue>Click here to continue</click_here_continue>
+	<original_password>Old Password</original_password>
+	<new_password>New password</new_password>
+	<can_not_empty>can not be empty</can_not_empty>
+	<new_password_length_tips>The new password length can not be less than 6 characters</new_password_length_tips>
+	<passwords_not_match>Enter two passwords do not match</passwords_not_match>
+	<password_length_error_or_not_match>Incorrect password length, or inconsistent enter the password twice</password_length_error_or_not_match>
+	<confirm_password>Confirm password again</confirm_password>
+	<password_tips>Password length 6-16 bits</password_tips>
+	<edit_password_tips>Password length of 6-16 bit, do not fill in the password will not be modified</edit_password_tips>
+	<total_records_number>Total number of records</total_records_number>
+	<first_page>First</first_page>
+	<previous_page>Previous</previous_page>
+	<next_page>Next</next_page>
+	<last_page>Last Page</last_page>
+	<per_page_count>/</per_page_count>
+	<login_management>Log Management Center</login_management>
+	<current_record_not_exists>The current record does not exist</current_record_not_exists>
+	<current_info_not_exists>This information does not exist</current_info_not_exists>
+	<current_info_category_not_exists>Current information classification does not exist</current_info_category_not_exists>
+	<upload_pic_failed>Upload pictures failure may be due to the image format is not supported, please check the picture file extensions are allowed</upload_pic_failed>
+	<upload_pic_success_but_written_database_failed>Upload pictures success, but failed to write to the database, upload pictures automatically deleted, please re-upload</upload_pic_success_but_written_database_failed>
+	<delete_pic_failed>Failed to delete a picture, please re-delete</delete_pic_failed>
+	<upload_file_failed>Upload file fails, it may be because the file format is not supported, check the file extension is to allow</upload_file_failed>
+	<upload_file_success_but_written_database_failed>Upload files successfully, but failed to write to the database, uploaded files are automatically deleted, please re-upload</upload_file_success_but_written_database_failed>
+	<delete_file_failed>Delete file failed, please re-delete</delete_file_failed>
+	<allow_file_format>Allowed file extensions</allow_file_format>
+	<no_current_operation_permissions>No current operation permission</no_current_operation_permissions>
+	<top_category_list>Top-level category list</top_category_list>
+	<add_top_category>Add top classification</add_top_category>
+	<email_can_not_empty>E-mail address of the e-mail address can not be empty or not valid</email_can_not_empty>
+	<mailbox_setting_failed>The e-mail address is set to fail</mailbox_setting_failed>
+	<enter_reply_message>Please enter your reply message</enter_reply_message>
+	<reply_failed>Reply message failed, please try again later</reply_failed>
+	<delete_failed>Delete failed</delete_failed>
+	<password_can_not_empty>Passwords can not be empty</password_can_not_empty>
+	<google_analytics_setting_failed>Google Analytics setup failed</google_analytics_setting_failed>
+	<first_name_can_not_empty>FirstName can not be empty</first_name_can_not_empty>
+	<last_name_can_not_empty>LastName can not be empty</last_name_can_not_empty>
+	<has_been_deleted>Has been deleted</has_been_deleted>
+	<create_email_failed>New mailbox failed</create_email_failed>
+	<edit_email_failed>Edit mailbox failed</edit_email_failed>
+	<bulk_send_mail_success>Send bulk mail success</bulk_send_mail_success>
+	<send_mail_success>Send mail to success</send_mail_success>
+	<add_category_failed>The new category failed</add_category_failed>
+	<edit_category_failed>Edit Category failure</edit_category_failed>
+	<your_submit_incomplete>Information you submit incomplete or there is an error, please return to re-fill and then submit</your_submit_incomplete>
+	<system_parse_failed_template_not_exists>The system parsing error, the template file does not exist!</system_parse_failed_template_not_exists>
+	<data_model_not_found>Data manipulation layer is lost!</data_model_not_found>
+	<all_cache_update_complete>All cache update is complete</all_cache_update_complete>
+	<action_cache_update_complete>Action cache update is complete</action_cache_update_complete>
+	<info_list_column_modify_success>Information list part successfully modified</info_list_column_modify_success>
+	<info_list_column_modify_failed>Information list of part modification fails</info_list_column_modify_failed>
+	<source_and_target_lang_can_not_empty>Please source and target languages ​​complete</source_and_target_lang_can_not_empty>
+	<category_name_can_not_empty>The category name can not be empty</category_name_can_not_empty>
+	<under_sub_category_delete_all_first>Included in the category subcategory, please delete all sub-categories under the classification</under_sub_category_delete_all_first>
+	<category_under_info_delete_all_first>Classification contains articles, please delete all articles under the classification information</category_under_info_delete_all_first>
+	<delete_category_failed_maybe_under_sub>Delete classification fails, may be due to the classification contains sub-categories, please delete all sub-categories under the classification</delete_category_failed_maybe_under_sub>
+	<batch_add_category_success>Bulk new classification success</batch_add_category_success>
+	<alias_has_been_occupied>Alias ​​has been repeated</alias_has_been_occupied>
+	<edit_category_success_but_pic_upload_failed>Edit Category successful, but the picture failed to upload</edit_category_success_but_pic_upload_failed>
+	<add_info_success_but_upload_pic_has_error>Information on the success of new articles, upload pictures error occurs, check the uploaded picture format is supported</add_info_success_but_upload_pic_has_error>
+	<add_info_failed>Add article information failed</add_info_failed>
+	<edit_info_success_but_upload_pic_has_error>Edit posts successfully upload images error occurred, please check whether the uploaded picture format support</edit_info_success_but_upload_pic_has_error>
+	<edit_info_failed>Failed to edit the article information</edit_info_failed>
+	<not_specify_target_category>Not specify a target classification</not_specify_target_category>
+	<transfer_info_failed>The mobile post information failed</transfer_info_failed>
+	<no_permission_to_transfer_info>No mobile the article information permissions</no_permission_to_transfer_info>
+	<copy_info_failed>Failed to copy articles</copy_info_failed>
+	<no_permission_to_copy_info>No permission to copy the article information</no_permission_to_copy_info>
+	<delete_info_failed>Failed to delete posts</delete_info_failed>
+	<no_permission_to_delete_info>No permission to delete the article information</no_permission_to_delete_info>
+	<adjust_info_state_failed>Failed to set post information state</adjust_info_state_failed>
+	<no_permission_to_adjust_info_state>No permission to to set post information state</no_permission_to_adjust_info_state>
+	<add_link_failed>Add a link failure</add_link_failed>
+	<edit_link_failed>Edit link failure</edit_link_failed>
+	<delete_link_failed>Delete link failure</delete_link_failed>
+	<add_pick_failed>New acquisition rules fail</add_pick_failed>
+	<edit_pick_failed>Editing acquisition rules fail</edit_pick_failed>
+	<delete_pick_failed>Failed to delete collecting rules</delete_pick_failed>
+	<bulk_pick_complete>Volume collection is complete</bulk_pick_complete>
+	<current_pick_has_closed>The rules acquisition has closed</current_pick_has_closed>
+	<current_pick_has_last_one_not_specify_out_category>The current acquisition rules, at least one is not specified, the export information classification! Please return to the designated export information classification</current_pick_has_last_one_not_specify_out_category>
+	<current_pick_not_specify_out_category>The current acquisition rules do not specify export information classified!</current_pick_not_specify_out_category>
+	<pick_rate>Acquisition progress</pick_rate>
+	<pick_result>Acquisition results</pick_result>
+	<pick_result_detail>Datas $1, Successful acquisition $2, Download images $3</pick_result_detail>
+	<pick_result_detail_for_database>Administrator [ $1 ] at $2 Use this rule to the data acquisition to obtain:$3，The export category ID:$4</pick_result_detail_for_database>
+	<role_name_can_not_empty>The role name can not be empty</role_name_can_not_empty>
+	<add_role_failed>Add Role fails</add_role_failed>
+	<current_role_no_right_modify>This role can not be modified</current_role_no_right_modify>
+	<edit_role_failed>Edit Role fails</edit_role_failed>
+	<system_role_can_not_delete>System roles can not be deleted</system_role_can_not_delete>
+	<delete_role_failed>Failed to delete role</delete_role_failed>
+	<system_role_can_not_authorize>The system role not authorized</system_role_can_not_authorize>
+	<authorization_role_failed>Role authorization failed</authorization_role_failed>
+	<user_name_exists>User name already exists, replace username</user_name_exists>
+	<add_user_failed>New user fails</add_user_failed>
+	<no_permission_to_edit_this_user>No permission to modify the user</no_permission_to_edit_this_user>
+	<edit_user_failed>Edit the user fails</edit_user_failed>
+	<current_user_no_right_delete>The user can not delete</current_user_no_right_delete>
+	<delete_user_failed>Failed to delete a user</delete_user_failed>
+	<no_permission_to_authorize_this_user>Not authorized to the user's permission</no_permission_to_authorize_this_user>
+	<complete_inherited_role_so_can_not_separately_authorize>Completely inherited from the role of the user can not separate authorization</complete_inherited_role_so_can_not_separately_authorize>
+	<authorization_user_failed>User authorization failed</authorization_user_failed>
+	<current_login_user_can_not_changepass>Currently logged in user can not change the password.</current_login_user_can_not_changepass>
+	<change_password_failed>Failed to change password</change_password_failed>
+	<original_password_not_correct>The original password is incorrect</original_password_not_correct>
+	<password_change_success>Successful password change, labor you remember your new password</password_change_success>
+	<generate_sitemap_success>Generate a Sitemap success</generate_sitemap_success>
+	<edit_site_setting_failed>Failed to modify the site configuration</edit_site_setting_failed>
+	<edit_site_advanced_setting_failed>The modify site Advanced Configuration fails</edit_site_advanced_setting_failed>
+	<please_choose_upload_file>Please select a file to upload</please_choose_upload_file>
+	<file_type_not_correct>This file format does not allow uploading</file_type_not_correct>
+	<file_must_be_follow_format>Upload the file must be in the following format</file_must_be_follow_format>
+	<admin_email_setting>Administrator mailbox settings</admin_email_setting>
+	<please_select_batch_records>Please select batch processing records</please_select_batch_records>
+	<are_you_sure_delete_selected_records>Are you sure you want to delete the currently selected record it?</are_you_sure_delete_selected_records>
+	<google_analytics_setting>Google Analytics settings</google_analytics_setting>
+	<send_mail_to_him_her>Send e-mail to his / her</send_mail_to_him_her>
+	<click_chat_for_qq>Click to use QQ online chat</click_chat_for_qq>
+	<mail_address_separated_tips>By-mail address; (semicolon + space) separated</mail_address_separated_tips>
+	<mail_address_first_email_tips>The first e-mail address is the administrator's mailbox mass system will automatically send an e-mail to the administrator's mailbox, convenient to view the e-mail content</mail_address_first_email_tips>
+	<mail_address_filter_duplicate_tips>The system will automatically filter duplicate mailbox</mail_address_filter_duplicate_tips>
+	<exclude_mail_tips>Will not send e-mail to check the mailbox</exclude_mail_tips>
+	<whether_display_and_column_name>Whether to show / part name</whether_display_and_column_name>
+	<create_top_level_menu>To create a top-level menu</create_top_level_menu>
+	<create_sub_menu>Create a child menu</create_sub_menu>
+	<article_management>Article Information Management</article_management>
+	<category_max_level_tips>The system allows maximum classification level of 20</category_max_level_tips>
+	<delete_category_tips>Emptied the classification under the article before you delete categories</delete_category_tips>
+	<column_setting_tips>Set of columns to display in the article list and column name</column_setting_tips>
+	<expand_and_collapse_child>Expand / Collapse child</expand_and_collapse_child>
+	<view_articles_list>View article information list</view_articles_list>
+	<basic_parameters>Basic parameters</basic_parameters>
+	<advanced_parameters>Advanced Parameters</advanced_parameters>
+	<advanced_parameters_tips>Senior parameters control the basic parameters of the form item, when the new classification will automatically inherit the advanced parameter settings from the parent class</advanced_parameters_tips>
+	<bulk_add_category_tips>To support bulk new category, separated by a carriage return</bulk_add_category_tips>
+	<category_directory_tips>If you select the automatic generation of the classified directory Note: only generate static website</category_directory_tips>
+	<per_page_count_of_list>Display the amount of information per page</per_page_count_of_list>
+	<category_thumbnail_size>Category thumbnail size</category_thumbnail_size>
+	<category_enlarge_size>Category large size of the picture</category_enlarge_size>
+	<article_thumbnail_size>Article information thumbnail size</article_thumbnail_size>
+	<article_enlarge_size>Articles Information enlarge size</article_enlarge_size>
+	<article_pics_thumbnail_size>The article information albums thumbnail size</article_pics_thumbnail_size>
+	<article_pics_enlarge_size>The article information Albums large size of the picture</article_pics_enlarge_size>
+	<attachment_allow_types>Type of attachments allowed</attachment_allow_types>
+	<attachment_allow_types_tips>Separated by | default: jpg | png | gif | jpeg | rar | pdf</attachment_allow_types_tips>
+	<please_select_target_category>Please select the target classification</please_select_target_category>
+	<return_to_category_list>Return to the category list</return_to_category_list>
+	<include_sub_category_articles>Contain sub-classified information</include_sub_category_articles>
+	<not_include_sub_category_articles>Does not contain a sub-classified information</not_include_sub_category_articles>
+	<this_form_will_change_by_select_category_so_please_select_category_first>Form with the classification change, so please choose the good classification</this_form_will_change_by_select_category_so_please_select_category_first>
+	<are_you_sure_you_want_delete_this_attachment>Are you sure you want to delete this attachment?</are_you_sure_you_want_delete_this_attachment>
+	<tags_tips>Multiple Tag comma-separated</tags_tips>
+	<image_allow_follow_types>Images allow the following types: jpg, jpeg, gif, png.</image_allow_follow_types>
+	<specify_publish_date_range>Specify a release date range</specify_publish_date_range>
+	<add_link>New links</add_link>
+	<edit_link>Edit Link</edit_link>
+	<add_role>New role</add_role>
+	<edit_role>Edit Role</edit_role>
+	<add_user>New user</add_user>
+	<edit_user>Edit User</edit_user>
+	<filter_by_role>Filtered through role</filter_by_role>
+	<system_role_can_not_modify>System roles can not be modified</system_role_can_not_modify>
+	<see_role_users>View all users belonging to the role</see_role_users>
+	<role_copy_permission_from>Copy permissions from the selected role</role_copy_permission_from>
+	<user_copy_permission_from>Copy permissions from the selected user</user_copy_permission_from>
+	<role_copy_permission_from_tips>Copy permissions directly from the selected role</role_copy_permission_from_tips>
+	<user_copy_permission_from_tips>Directly copied from the selected user permissions</user_copy_permission_from_tips>
+	<role_copy_permission_from_note>Permission to copy other roles, the current role permissions will be overwritten</role_copy_permission_from_note>
+	<user_copy_permission_from_note>Copy the permissions of other users, the permissions of the current user will be overwritten</user_copy_permission_from_note>
+	<admin_menu_permission>Background menu permissions</admin_menu_permission>
+	<category_permission_exclude>Classification permissions (exclude)</category_permission_exclude>
+	<action_permission>Action permissions</action_permission>
+	<basic_setting>Basic Settings</basic_setting>
+	<advanced_setting>Advanced Settings</advanced_setting>
+	<generate_sitemap>Generate a Sitemap</generate_sitemap>
+	<generate_sitemap_detail>Site large amount of data generated Sitemap need to wait for a period of time, and may generate an index file and multiple Sitemap files to reduce the size of a single file.</generate_sitemap_detail>
+	<only_display_unaudited_users>Only show to unreviewed user</only_display_unaudited_users>
+	<user_administrator_tips>Non-administrators can not enter the management center</user_administrator_tips>
+	<user_audit_tips>Unaudited user can not log</user_audit_tips>
+	<user_authorize_tips>If the user permissions inherited from a role completely, the user can not separate authorization</user_authorize_tips>
+	<role_inheritance_tips>Divided three ways: not inherit the role permissions; fully inherited the role permissions, user itself can not be a separate authorization; merging the user's own permissions and role permissions.</role_inheritance_tips>
+	<are_you_sure_pick_selected_records>You sure you want to batch capture the currently selected record?</are_you_sure_pick_selected_records>
+	<add_pick>New acquisition rules</add_pick>
+	<edit_pick>Editing acquisition rules</edit_pick>
+	<pick_charset_tips>Acquisition target page coding, test the Chinese content is garbled, is certainly incorrect coding.</pick_charset_tips>
+	<last_can_not_delete>Finally one can not delete</last_can_not_delete>
+	<pick_target_url_setting>Destination URL Settings</pick_target_url_setting>
+	<pick_target_detail_setting>Details page settings</pick_target_detail_setting>
+	<pick_copy_source>Copy from the selected acquisition rules</pick_copy_source>
+	<pick_copy_source_tips>If you choose to copy the source, the current rules will source rule coverage!</pick_copy_source_tips>
+	<select_copy_pick>Select the copy source</select_copy_pick>
+	<whether_open_pick>Whether to open the collection</whether_open_pick>
+	<pick_and_output>Acquisition and export</pick_and_output>
+	<pick_and_output_tips>Support batch capture settings, multiple categories that the same rules, set by the bulk acquisition</pick_and_output_tips>
+	<auto_generate_url>Automatically generated URL</auto_generate_url>
+	<match_url>Matching URL</match_url>
+	<pick_output_category>Classification of export data collection</pick_output_category>
+	<pick_list_area_start>List area began to HTML</pick_list_area_start>
+	<pick_list_area_end>The end of the list area HTML</pick_list_area_end>
+	<pick_url_list_filter>URL filtering</pick_url_list_filter>
+	<if_link_has_image>If the link exists Pictures</if_link_has_image>
+	<pick_for_thumbnail>Acquisition as thumbnails</pick_for_thumbnail>
+	<js_parent_url>JS parent URL</js_parent_url>
+	<js_parent_url_tips>In addition, when the system to obtain detailed information page URL is incorrect, this can also fill in if the target page using JS to deal with the link address, you can fill in the real URL prefix.</js_parent_url_tips>
+	<detail_for_test_url>Test URL of the details page</detail_for_test_url>
+	<detail_for_test_url_tips>Tests conducted when the acquisition of detailed information is tested with this page. If empty, the default is to get to the first detailed information page</detail_for_test_url_tips>
+	<detail_area_start>Details page content area began to HTML</detail_area_start>
+	<detail_area_start_tips>The beginning of the content area HTML, can improve the efficiency of the collection</detail_area_start_tips>
+	<keywords_filter>Keyword filtering</keywords_filter>
+	<keywords_filter_tips>Keyword rules built-in system, where you can fill in for keyword filtering rules</keywords_filter_tips>
+	<description_filter>Article describes the filter</description_filter>
+	<description_filter_tips>The article describes the rules is a built-in system, where you can fill in for the article describes the filter rules</description_filter_tips>
+	<title_rule>The title of the article rules</title_rule>
+	<title_rule_tips>The first box enter a title rules, the second box, enter a title filtering rules</title_rule_tips>
+	<author_rule>Of rules</author_rule>
+	<author_rule_tips>First box input of the rules, the second frame input of filter rules</author_rule_tips>
+	<source_rule_tips>Source Rules</source_rule_tips>
+	<source_rule_tips>The first box enter the rules of origin, the second box input source filtering rules</source_rule_tips>
+	<publish_date_rule>Published Rules</publish_date_rule>
+	<publish_date_rule_tips>Published rules first box to enter the second box enter Published filtering rules</publish_date_rule_tips>
+	<content_rule>Article content rules</content_rule>
+	<content_rule_tips>A box to enter the article content rules, the second box to enter the article content filtering rules</content_rule_tips>
+	<download_content_pics>The downloaded content of the picture</download_content_pics>
+	<download_content_pics_tips>If not checked, then the content appears in the picture will keep a reference state.</download_content_pics_tips>
+	<js_content_tips>If the content is loaded via JS, you can check this and set the SRC attribute rule JS content</js_content_tips>
+	<content_page_rule>Article pagination rules</content_page_rule>
+	<content_page_rule_tips>The first box to enter paging rules, the second box enter paging filtering rules</content_page_rule_tips>
+	<pick_history>Acquisition record</pick_history>
+	<pick_setting>Capture settings</pick_setting>
+	<pick_success_audit>Automatic audit after acquisition</pick_success_audit>
+	<pick_success_max_count>Collect the maximum number of</pick_success_max_count>
+	<pick_success_max_count_tips>After the successful acquisition of a specified number of stop the acquisition does not limit, 0 or empty</pick_success_max_count_tips>
+	<special_url_list>To specify the list of URLs</special_url_list>
+	<all_url_list>All URLs</all_url_list>
+	<all_url_list_tips>Click URL to view the URL acquisition results</all_url_list_tips>
+	<test_url_pick_result>Results of test information collection</test_url_pick_result>
+	<add_adver>Add adver</add_adver>
+	<edit_adver>Edit adver</edit_adver>
+	<add_adver_failed>Add adver failure</add_adver_failed>
+	<edit_adver_failed>Edit adver failure</edit_adver_failed>
+	<delete_adver_failed>Delete adver failure</delete_adver_failed>
+	<mode>Mode</mode>
+	<file>File</file>
+	<size>Size</size>
+	<position>Position</position>
+	<auto_close>Auto Close</auto_close>
+	<only_default>Only in default page</only_default>
+	<show_once>Show once</show_once>
+	<select_mode>Choose mode</select_mode>
+	<pop_up_ads>Pop-up ads</pop_up_ads>
+	<ad_on_left>Ad on left</ad_on_left>
+	<ad_on_right>Ad on right</ad_on_right>
+	<floating_ads>Floating ads</floating_ads>
+</language>

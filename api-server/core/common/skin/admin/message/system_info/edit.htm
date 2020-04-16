@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+    <link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+    <link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>font-awesome-4.3.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="<{$STATIC_PATH}>jquery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+    <script type="text/javascript" src="<{$STATIC_PATH}>/DatePicker/My97DatePicker/WdatePicker.js"></script>
+    <script src="<{$STATIC_PATH}>/editor/ckeditor/ckeditor.js"></script>
+
+    <script>
+        $(function(){
+            CKEDITOR.replace('message', {
+                height : 350,
+                filebrowserImageUploadUrl : '?con=admin&ctl=editor&act=pic'
+            });
+        });
+
+        $(function(){
+            CKEDITOR.replace('message_en', {
+                height : 350,
+                filebrowserImageUploadUrl : '?con=admin&ctl=editor&act=pic'
+            });
+        });
+
+        $(function(){
+            CKEDITOR.replace('message_ko', {
+                height : 350,
+                filebrowserImageUploadUrl : '?con=admin&ctl=editor&act=pic'
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+    <div class="container">
+        <div class="tips">
+            <a href="<{$returnUrl}>" class="lnkReturn">返回列表</a>
+        </div>
+
+        <{include file='form-result.htm'}>
+
+        <form method="post" id="form1">
+            <table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+                <tr class="editHdTr">
+                    <td colspan="2">内容管理</td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">状态</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <label><input type="checkbox" name="status" value="1"<{if $formData.status}> checked<{/if}> />启用</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">类型</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <select name="type">
+                                <option value="">请选择类型</option>
+                                <{foreach from=$types item=item key=key}>
+                                <option value="<{$key}>"<{if $key==$formData.type}> selected<{/if}>><{$item}></option>
+                                <{/foreach}>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr class="editTr">
+                    <td class="editLtTd">排序</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <input type="text" name="sort" value="<{$formData.sort}>" placeholder="" class="text" size="10" />
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">标题</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <textarea name="title" class="text json-textarea" style="width:80%; height:80px;"><{$formData.title}></textarea>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">描述</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <textarea name="desc" class="text json-textarea" style="width:80%; height:80px;"><{$formData.desc}></textarea>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">中文内容</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <textarea name="message" class="text" style="width:80%; height:80px;"><{$formData.message}></textarea>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">英文内容</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <textarea name="message_en" class="text" style="width:80%; height:80px;"><{$formData.message_en}></textarea>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">韩文内容</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <textarea name="message_ko" class="text" style="width:80%; height:80px;"><{$formData.message_ko}></textarea>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="editTr">
+                    <td class="editLtTd">发布时间</td>
+                    <td class="editRtTd">
+                        <div class="input-box">
+                            <input type="text" name="define_time" value="<{if $formData.define_time}><{date( 'Y-m-d H:i:s',$formData.define_time)}><{else}><{date( 'Y-m-d H:i:s')}><{/if}>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="" class="text" size="30" autocomplete="off"/>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+            <div class="editBtn clearfix">
+                <input type="submit" value="Save" class="lnkSave" />
+                <a href="<{$returnUrl}>" class="lnkReturn">返回列表</a>
+            </div>
+        </form>
+
+        <{include file='json-modal.htm'}>
+    </div>
+</div>
+</body>
+</html>

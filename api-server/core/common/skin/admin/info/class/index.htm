@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+<script type="text/javascript">
+$(function(){
+	var list = $('.listTable tr[id]');
+	list.each(function(i){
+		$(this).find('.toggle-ico').click(function(){
+			var tr		= list.eq(i);
+			var trid	= tr.attr('id');
+			if ($(this).attr('class') == 'toggle-ico btn-toggle-open')
+			{
+				$(this).attr('class', 'toggle-ico btn-toggle-close');
+				$("tr[id^='" + trid + "']").not(tr).hide();
+			}
+			else if ($(this).attr('class') == 'toggle-ico btn-toggle-close')
+			{
+				$(this).attr('class', 'toggle-ico btn-toggle-open');
+				$("tr[id^='" + trid + "']").not(tr).show().find('.toggle-ico').not("[class='toggle-ico btn-toggle-noson']").attr('class', 'toggle-ico btn-toggle-open');
+			}
+		});
+	});
+
+	$('#checkAll').click(function(){
+		$('input.listChk').attr('checked', $(this).attr('checked'));
+	});
+});
+
+function countSelect ()
+{
+	var cnt		= 0;
+	var list	= document.getElementsByName('ids[]');
+	for (var i = 0; i < list.length; i++)
+	{
+		if (list[i].checked) cnt++;
+	}
+	return cnt;
+}
+
+function DeleteSome ()  //批量删除
+{
+	if (countSelect() <= 0)
+	{
+		alert('<{$lang->please_select_batch_records}>');
+		return false;
+	}
+	if (window.confirm('<{$lang->are_you_sure_delete_selected_records}>')) $('#listForm').attr('action', '?con=admin&ctl=info/class&act=delete').submit();
+}
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a onclick="DeleteSome();" class="lnkDeleteSome"><{$lang->bulk_delete}></a>
+			<a href="?con=admin&ctl=info/class" class="lnkRefresh"><{$lang->refresh}></a>
+			<a href="?con=admin&ctl=info/class&act=add&parent_id=" class="lnkAdd"><{$lang->add_top_category}></a>
+		</div>
+		<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="listTable">
+			<tr class="listHdTr">
+				<td width="40"><input type="checkbox" id="checkAll" /></td>
+				<td><{$lang->category_name}></td>
+				<td width="8%"><em class="tip" tips="<{$lang->category_max_level_tips}>"><{$lang->add_sub_category}></em></td>
+				<td width="6%"><{$lang->thumbnail}></td>
+				<td width="6%"><{$lang->attachment}></td>
+				<td width="6%"><em class="tip" tips="<{$lang->delete_category_tips}>"><{$lang->delete}></em></td>
+				<td width="8%"><{$lang->display_mode}></td>
+				<td width="8%"><em class="tip" tips="<{$lang->column_setting_tips}>"><{$lang->column_setting}></em></td>
+			</tr>
+			<form id="listForm" name="listForm" action="" method="post">
+			<{foreach from=$data item=item key=key}>
+				<tr<{if $key % 2 == 0}> class="Alternating"<{/if}> id="class-<{$item.id}>">
+					<td><input type="checkbox" name="ids[]" value="<{$item.id}>" class="listChk" /></td>
+					<td align="left"><div class="lnkCategoryToggle" style="margin-left:<{$item.level*30}>px;"><span class="toggle-ico btn-toggle-<{if $item.hasSon}>open<{else}>noson<{/if}>" title="<{$lang->expand_and_collapse_child}>"></span><{if $item.column.class_edit}><a href="?con=admin&ctl=info/class&act=edit&id=<{$item.id}>" title="<{$lang->edit}>"><{/if}><{$item.name}><{if $item.column.class_edit==1}></a><{/if}> <{if $item.column.info_index}><a href="?con=admin&ctl=info/&class_id=<{$item.id}>&withSubItems=1" class="lnkView" title="<{$lang->view_articles_list}>"><{if $item.infocnt>0}><span class="infocnt">(<{$lang->articles_count}>:<em><{$item.infocnt}></em>)</span><{/if}> <{if $item.hidecnt>0}><span class="infocnt">(<{$lang->unaudited}>:<em><{$item.hidecnt}></em>)</span><{/if}></a><{/if}></div></td>
+					<td><{if $item.level < 19 && $item.column.class_add}><a href="?con=admin&ctl=info/class&act=add&parent_id=<{$item.id}>" class="lnkAdd" title="<{$lang->add_sub_category}>"></a><{/if}></td>
+					<td>
+						<{if $item.extend.hasImageUrl}>
+						<a href="<{if $item.column.pic}>javascript:infoPic('<{$item.id}>', 'infoClass', 'id', 'imageUrl');<{else}><{if $item.imageUrl==''}>javascript:void(0);<{else}><{$UPLOAD_PATH}><{$item.imageUrl}><{/if}><{/if}>" title="<{$lang->thumbnail}>">
+							<{if $item.imageUrl!=''}><font color="#FF6600"><{$lang->have}></font><{else}><{$lang->nothing}><{/if}>
+						</a>
+						<{/if}>
+					</td>
+					<td>
+						<{if $item.extend.hasFiles}>
+						<a href="<{if $item.column.file}>javascript:infoFile('<{$item.id}>', 'infoClass', 'id', 'files');<{else}><{if $item.files==''}>javascript:void(0);<{else}><{$UPLOAD_PATH}><{$item.files}><{/if}><{/if}>" title="<{$lang->attachment}>">
+							<{if $item.files!=''}><font color="#FF6600"><{$lang->have}></font><{else}><{$lang->nothing}><{/if}>
+						</a>
+						<{/if}>
+					</td>
+					<td><{if $item.column.class_delete}><a href="?con=admin&ctl=info/class&act=delete&id=<{$item.id}>" class="lnkDelete" onclick="return chkDelete();" title="<{$lang->delete}>"></a><{/if}></td>
+					<td>
+						<{if $item.defaultDisplayMode==1}>
+						<{$lang->graphic_content}>
+						<{elseif $item.defaultDisplayMode==2}>
+						<{$lang->news_list}>
+						<{elseif $item.defaultDisplayMode==4}>
+						<{$lang->pic_list}>
+						<{elseif $item.defaultDisplayMode==8}>
+						<{$lang->graphic_list}>
+						<{else}>
+						<{$lang->unknow}>
+						<{/if}>
+					</td>
+					<td><{if $item.column.class_columnSetting}><a href="?con=admin&ctl=info/class&act=columnSetting&id=<{$item.id}>" class="lnkView" title="<{$lang->column_setting_tips}>"></a><{/if}></td>
+				</tr>
+			<{/foreach}>
+			</form>
+		</table>
+	</div>
+</div>
+</body>
+</html>

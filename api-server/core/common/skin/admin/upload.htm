@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><{$lang->file_upload}></title>
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<style>
+.inner, .wrap { background:none; }
+.inner .container { background:none; }
+</style>
+<script type="text/javascript">
+function check (obj)
+{
+	if (obj.file.value == "")
+	{
+		alert("<{$lang->please_choose_upload_file}>");
+		return false;
+	}
+
+	if (obj.file.value.lastIndexOf(".") == -1)
+	{
+		alert("<{$lang->file_type_not_correct}>");
+		return false;
+	}
+
+	var ext = obj.file.value.substr(obj.file.value.lastIndexOf(".") + 1).toLowerCase();
+
+	if (<{foreach from=$data.exts item=item key=key}><{if $key > 0}> && <{/if}>ext != '<{$item}>'<{/foreach}>)
+	{
+		alert('<{$lang->file_must_be_follow_format}><{$lang->maohao}> <{foreach from=$data.exts item=item key=key}><{if $key > 0}> , <{/if}><{$item}><{/foreach}>');
+		return false;
+	}
+
+	return true;
+}
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<form action="<{$actionUrl}>" method="post" enctype="multipart/form-data" onsubmit="return check(this);">
+			<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2"><{$lang->file_upload}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->select_upload_file}></td>
+					<td class="editRtTd"><input name="file" type="file" size="40" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->file_name}></td>
+					<td class="editRtTd"><{$data.fileName}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->file_type}></td>
+					<td class="editRtTd"><{$data.fileExt}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->explain}></td>
+					<td class="editRtTd"><{$data.intro}></td>
+				</tr>
+			</table>
+			<div class="editBtn clearfix" style="padding:5px 0 15px;">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="javascript:window.close();" class="lnkReturn"><{$lang->close_window}></a> 
+				<a href="<{$deleteUrl}>" class="lnkDelete" onclick="return chkDelete();"><{$lang->delete}></a>
+			</div>
+		</form>
+		<{if $data.fileExt == 'jpg' || $data.fileExt == 'jpeg' || $data.fileExt == 'gif' || $data.fileExt == 'png'}>
+			<p><img src="<{$data.filefullname}>" /></p>
+		<{/if}>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+
+<script>
+	function countSelect() {
+		var cnt = 0;
+		var list = document.getElementsByName('ids[]');
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked) cnt++;
+		}
+		return cnt;
+	}
+
+	function DeleteSome() {
+		if (countSelect() <= 0) {
+			alert('<{$lang->please_select_batch_records}>');
+			return false;
+		}
+		if (window.confirm('<{$lang->are_you_sure_delete_selected_records}>')) $('#listForm').attr('action', '<{$doUrl}>act=delete').submit();
+	}
+
+	$(function(){
+		$('#checkAll').click(function(){
+			$('input.listChk').attr('checked', $(this).attr('checked'));
+		});
+	});
+	function dealwith(_id)
+	{
+		
+		if(_id>0)
+		{
+			$.ajax({
+				type: "get",
+				url: '<{$doUrl}>act=dealwith&id='+_id,
+				data: {},
+				dataType: 'json',
+				success: function(data){
+					$('#fresh span').click();  
+				},
+				error: function(){
+					alert('Error!');
+				}
+			});
+		}
+		else
+		{
+			alert('<{$lang->please_select_batch_records}>');
+		}
+	}
+</script>
+
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$refreshUrl}>" class="lnkRefresh" id="fresh"><span><{$lang->refresh}></span></a>
+			<a onclick="DeleteSome();" class="lnkDeleteSome">Delete</a>
+		</div>
+
+		<{include file='form-result.htm'}>
+
+		<form id="listForm" name="listForm" action="" method="post">
+			<table class="listTable">
+				<tr class="listHdTr">
+					<td width="40"><input type="checkbox" id="checkAll" /></td>
+					<td>用户邮箱</td>
+					<td>手机号码</td>
+					<td style="width:500px;">反馈内容</td>
+					<td>反馈时间</td>
+					<td>处理状态</td>
+					<td width="6%">删除</td>
+				</tr>
+				<{foreach from=$list item=item key=key}>
+					<tr<{if $key % 2 == 0}> class="Alternating"<{/if}>>
+						<td><input type="checkbox" name="ids[]" value="<{$item.id}>" class="listChk" /></td>
+						<td><{if $item.email}><{$item.email}><{else}><{$item.username}><{/if}></td>
+						<td><{if $item.phoneArea}>+<{$item.phoneArea}><{/if}> <{$item.phone}></td>
+						<td>
+							<div style="word-wrap:break-word; width:700px;"><{$item.content}></div>
+						</td>
+						<td><{if $item.time}><{date('Y-m-d H:i:s', $item.time)}><{else}>-<{/if}></td>
+						<td><{if $item.readTime}><{date('Y-m-d H:i:s', $item.readTime)}><{else}><input type="checkbox" value="0" onclick="dealwith(<{$item.id}>);"><{/if}></td>
+						<td><a href="<{$refreshUrl}>act=delete&id=<{$item.id}>" class="lnkDelete" onclick="return chkDelete();" title="删除"></a></td>
+					</tr>
+				<{/foreach}>
+				<tr class="listFtTr">
+					<td colspan="15" align="right"><{$pager}></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+</body>
+</html>

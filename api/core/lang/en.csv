@@ -1,0 +1,49 @@
+失败,Faild
+成功,Success
+处理中,Pending
+打包中,Packing
+参数错误,Parameter error
+地址格式不正确,The address format is incorrect
+"系统升级中，请稍后使用","System upgrade, use later"
+"您已被锁定，请联系管理员，谢谢","You have been locked, please contact the administrator, thank you"
+币种不存在,Currency does not exist
+请输入合法的币种名称进行搜索,Please enter a legal currency name to search
+
+"您有一笔交易已发送成功，金额：%s","A transaction with amount: %s has been successfully broadcasted."
+"您有一笔收款到账，金额：%s","You have received a transaction with %s"
+"%s - %s共管模式","%s - %s Mode"
+
+转账失败,Transfer failed
+转账成功,Transferred
+
+收款成功,Received
+收款失败,Receive failed
+确认中,Confirming
+
+"您的请求正在处理中，请稍后。","Your request is being processed, please wait."
+"矿工们正在处理中，请稍后再试.","Miners are processing, please wait."
+"该用户名不存在","Account name doesn't exist."
+"该用户名已存在","Account name already exists."
+"EOS账户创建成功","EOS account was successfully created."
+"未找到使用该公钥的账户","No account found with that public key."
+
+游戏,Game
+交易,Exchange
+其他,Other
+工具,Tools
+
+不可重复绑定,Non-repeatable Binding
+请输入联系人名称,Please enter the contact name
+该联系人已存在,The contact has existed
+该联系人不存在,The contact doesn't exist.
+请填写标题,Please enter the title
+请填写内容,Please enter the contents.
+标题不能超过150个字符,The title shall be no more than 150 characters.
+内容不能超过1500个字符,The contents shall be no more than 1,500 characters.
+邮箱格式不正确,Wrong E-mail format
+用户不存在,The user doesn't exist.
+APP不存在,APP doesn't exist.
+地址不能为空,The address shall not be empty.
+
+转账已提交,Transfer submitted
+"您有一笔转账已提交，金额：%s","A transaction with amount: %s has been submitted."

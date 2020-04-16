@@ -1,0 +1,12 @@
+<{if $formError}>
+	<div class="form-error">
+		<{foreach from=$formError item=item}>
+			<li><{$item}></li>
+		<{/foreach}>
+	</div>
+<{/if}>
+<{if $formReturn}>
+	<div class="form-return<{if $formReturn.success}> form-return-success<{else}> form-return-faild<{/if}>">
+		<p><{$formReturn.msg}></p>
+	</div>
+<{/if}>

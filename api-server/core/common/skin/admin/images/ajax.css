@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+/* 清除内外边距 */
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td { margin:0; padding:0; }
+
+/* 设置默认字体 */
+body,button,input,select,textarea { font:12px/1.5 tahoma,\5b8b\4f53,arial,sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; }
+address,cite,dfn,em,var { font-style:normal; }
+code,kbd,pre,samp { font-family:courier new,courier,monospace; }
+small { font-size:12px; }
+ul,ol { list-style:none; }
+a { text-decoration:none; }
+sup { vertical-align:text-top; }
+sub { vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset,img { border:0; }
+button,input,select,textarea{ font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+
+/* 常见功能 */
+.hidden { display:none; }
+.invisible { visibility:hidden; }
+.noBg { background:none !important; }
+
+/* 清除浮动 */
+.clear { display:block; height:0; overflow:hidden; clear:both; }
+.clearfix:after { content:'\20'; display:block; height:0; clear:both; }
+.clearfix { *zoom:1; }
+
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁*/
+html { overflow-y:scroll; }
+
+/* 默认链接样式 */
+a:link,a:visited { text-decoration:none; }
+a:hover,a:active { text-decoration:underline; }
+
+
+.ajax-list {  }
+.ajax-list li { height:28px; line-height:28px; padding:0 12px; border-bottom:1px dotted #D9D9D9; font-size:11px; color:#999; overflow:hidden; }
+.ajax-list li a { font-size:12px; color:#245B99; }
+.ajax-list li a.edit { margin:0 0 0 10px; padding:0 0 0 15px; background:url(ico-edit.gif) center left no-repeat; font-weight:normal; text-decoration:underline; }
+.ajax-list li span.status { float:right; width:100px; }
+.ajax-list li span.classlist { float:right; text-align:left; margin:0 15px; }
+.ajax-list li.th {  }
+.ajax-list li.current { background:#F9F9F9; }
+.ajax-list li.hover { background:#F2F2F2; }
+
+.red { color:#F30; }
+.green { color:green; }

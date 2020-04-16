@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'RalewayExtraBold';
+    src: url('fonts/RalewayExtraBold.eot');
+    src: url('fonts/RalewayExtraBold.eot') format('embedded-opentype'),
+         url('fonts/RalewayExtraBold.woff2') format('woff2'),
+         url('fonts/RalewayExtraBold.woff') format('woff'),
+         url('fonts/RalewayExtraBold.ttf') format('truetype'),
+         url('fonts/RalewayExtraBold.svg#RalewayExtraBold') format('svg');
+}

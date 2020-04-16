@@ -1,0 +1,6 @@
+$.fn.cropOpenWindowToCrop 函数内添加：
+$('#crop-window .content').height($('#crop-window .crop-window-wrapper').height() - 28 - 42);
+
+然后设置bounds的地方要改成：
+$('#crop-window').attr('bounds', $('#crop-window .jcrop-holder').width() + ',' + $('#crop-window .jcrop-holder').height() + ',' + x1 + ',' + y1 + ',' + x2 + ',' + y2 + ',' + r1 + ',' + s1);
+否则取出的图片宽度不对

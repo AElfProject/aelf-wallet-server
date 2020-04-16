@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript">
+function check (form)
+{
+	var name = document.getElementsByName('data[name]')[0];
+	if (name.value == '')
+	{
+		alert('<{$lang->user_name}><{$lang->can_not_empty}>');
+		name.focus();
+		return false;
+	}
+
+	name = document.getElementsByName('data[displayName]')[0];
+	if (name.value == '')
+	{
+		alert('<{$lang->person_name}><{$lang->can_not_empty}>');
+		name.focus();
+		return false;
+	}
+
+	name = document.getElementsByName('data[password]')[0];
+	if (name.value == '')
+	{
+		alert('<{$lang->password}><{$lang->can_not_empty}>');
+		name.focus();
+		return false;
+	}
+
+	if (name.value.length < 6)
+	{
+		alert('<{$lang->password_length_error_or_not_match}>');
+		name.focus();
+		name.select();
+		return false;
+	}
+
+	var name1 = document.getElementsByName('data[password2]')[0];
+	if (name.value == '')
+	{
+		alert('<{$lang->password_length_error_or_not_match}>');
+		name.focus();
+		return false;
+	}
+
+	if (name.value != name1.value)
+	{
+		alert('<{$lang->password_length_error_or_not_match}>');
+		name.focus();
+		name.select();
+		return false;
+	}
+
+	return true;
+}
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="?con=admin&ctl=system/user" class="lnkReturn"><{$lang->return_to_list}></a> 
+		</div>
+		<{include file='form-result.htm'}>
+		<form action="?con=admin&ctl=system/user&act=add" method="post" onsubmit="return check(this);">
+			<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2"><{$lang->add_user}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->user_name}></td>
+					<td class="editRtTd"><input name="data[name]" value="<{$formData.name}>" type="text" size="30" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->person_name}></td>
+					<td class="editRtTd"><input name="data[displayName]" value="<{$formData.displayName}>" type="text" size="30" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->email}></td>
+					<td class="editRtTd"><input name="data[email]" value="<{$formData.email}>" type="text" size="60" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->password}></td>
+					<td class="editRtTd"><input name="data[password]" value="<{$formData.password}>" type="password" size="30" class="text" /> <{$lang->password_tips}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->confirm_password}></td>
+					<td class="editRtTd"><input name="data[password2]" value="<{$formData.password2}>" type="password" size="30" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="<{$lang->user_administrator_tips}>"><{$lang->whether_administrator}></em></td>
+					<td class="editRtTd"><input id="isAdmin" name="data[isAdmin]" value="1" type="checkbox" /><label for="isAdmin"><{$lang->yes}></label></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="<{$lang->user_audit_tips}>"><{$lang->whether_audit}></em></td>
+					<td class="editRtTd"><input id="isApproved" name="data[isApproved]" value="1" type="checkbox" checked /><label for="isApproved"><{$lang->yes}></label></td>
+				</tr>
+				<{if $user_id == '-1'}>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->group}></td>
+					<td class="editRtTd"><input name="data[groupid]" value="<{$formData.groupid}>" type="text" size="10" class="text" /></td>
+				</tr>
+				<{/if}>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->role}></td>
+					<td class="editRtTd">
+						<{foreach from=$roles item=item key=key}>
+							<input id="role<{$key}>" name="data[role]" value="<{$item.id}>" type="radio" /><label for="role<{$key}>"><{$item.name}></label>
+						<{/foreach}>
+						<input id="roleCustom" name="data[role]" value="0" type="radio" /><label for="roleCustom"><{$lang->custom}></label>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="<{$lang->role_inheritance_tips}>"><{$lang->role_inheritance}></em></td>
+					<td class="editRtTd">
+						<input id="roleExtendType0" name="data[roleExtendType]" value="0" type="radio" checked /><label for="roleExtendType0"><{$lang->not_inherit}></label>
+						<input id="roleExtendType1" name="data[roleExtendType]" value="1" type="radio" /><label for="roleExtendType1"><{$lang->full_inherit}></label>
+						<input id="roleExtendType2" name="data[roleExtendType]" value="2" type="radio" /><label for="roleExtendType2"><{$lang->merge_inherit}></label>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="Google Authenticator">Google Authenticator</em></td>
+					<td class="editRtTd">
+						<div class="ga-secret-box clearfix">
+							<div class="qrcode">
+								<p><img src="<{$gaQRCodeUrl}>" style="max-width:100%; height:auto;" /></p>
+								<p style="padding: 0px 35px 10px;font-weight: bold;"><{$gaSecret}></p>
+							</div>
+							<div class="txt">
+								<p>1. 在手机上下载安装“Google Authenticator (身份验证器)”；</p>
+								<p>2. 在“验证器”应用程序中，点击“添加新账户 (iOS 下是 + 号)”，然后选择“扫描条形码”；</p>
+								<p>3. 扫描上面的二维码，输入Google验证码，完成认证。</p>
+								<p>如果您无法扫描成功上图的二维码，您还可以手动添加账户，并输入如下密匙: <{$gaSecret}>。</p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="Google Authenticator">Google Authenticator</em></td>
+					<td class="editRtTd">
+						<p><input id="code" name="data[code]" value="" type="text"  class="text"/></p>
+					</td>
+				</tr>
+				<!--tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="<{$lang->user_copy_permission_from_tips}>"><{$lang->user_copy_permission_from}></em></td>
+					<td class="editRtTd">
+						<select name="extendBy">
+							<option>--<{$lang->user_copy_permission_from}>--</option>
+							<{foreach from=$extendBy item=item key=key}>
+								<option value="<{$item.id}>"><{$item.displayName}> [<{$item.name}>]</option>
+							<{/foreach}>
+						</select> 
+						<{$lang->user_copy_permission_from_note}>
+					</td>
+				</tr-->
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="?con=admin&ctl=system/user" class="lnkReturn"><{$lang->return_to_list}></a> 
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

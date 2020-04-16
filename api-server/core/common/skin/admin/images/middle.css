@@ -1,0 +1,6 @@
+html { overflow:hidden; }
+body { position:relative; width:11px; height:100%; background:url(middle_ico.gif) repeat-y center right; }
+body.left { padding-left:1px; background:#eee url(middle_ico.gif) repeat-y center left; }
+body.right { padding-right:1px; background:#fff url(middle_ico.gif) repeat-y center right; }
+.middle { position:absolute; width:11px; min-height:40px; _height:40px; padding-top:150px; }
+#switchPoint { left:0; cursor:pointer; }

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="?con=admin&ctl=system/role" class="lnkRefresh"><{$lang->refresh}></a>
+			<{if $hideColumn.role_add}><a href="?con=admin&ctl=system/role&act=add" class="lnkAdd"><{$lang->add_role}></a><{/if}>
+		</div>
+		<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="listTable">
+			<tr class="listHdTr">
+				<td width="20%"><em class="tip" tips="<{$lang->system_role_can_not_modify}>"><{$lang->role_name}></em></td>
+				<td><{$lang->role_description}></td>
+				<td><{$lang->system_role}></td>
+				<td width="8%"><em class="tip" tips="<{$lang->see_role_users}>"><{$lang->users}></em></td>
+				<{if $hideColumn.role_authorize}><td width="8%"><em class="tip" tips="<{$lang->system_role_can_not_authorize}>"><{$lang->authorize}></em></td><{/if}>
+				<{if $hideColumn.role_delete}><td width="8%"><em class="tip" tips="<{$lang->system_role_can_not_delete}>"><{$lang->delete}></em></td><{/if}>
+			</tr>
+			<{foreach from=$data item=item key=key}>
+				<tr<{if $key % 2 == 0}> class="Alternating"<{/if}>>
+					<td><{if $hideColumn.role_edit && (!$item.isSystem || $user_id == '-1')}><a href="?con=admin&ctl=system/role&act=edit&id=<{$item.id}>"><{$item.name}></a><{else}><{$item.name}><{/if}></td>
+					<td><{$item.description}></td>
+					<td><{if $item.isSystem}><font color="#FF0000"><{$lang->yes}></font><{else}><{$lang->no}><{/if}></td>
+					<td><a href="?con=admin&ctl=system/user&role=<{$item.id}>" class="lnkView"></a></td>
+					<{if $hideColumn.role_authorize}><td><{if $item.isSystem && $user_id != '-1'}><{else}><a href="?con=admin&ctl=system/role&act=authorize&id=<{$item.id}>" class="lnkAuthorize"></a><{/if}></td><{/if}>
+					<{if $hideColumn.role_delete}><td><{if $item.isSystem || $item.isSuper}><{else}><a href="?con=admin&ctl=system/role&act=delete&id=<{$item.id}>" class="lnkDelete" onclick="return chkDelete();"></a><{/if}></td><{/if}>
+				</tr>
+			<{/foreach}>
+			<tr class="listFtTr">
+				<td colspan="6">&nbsp;</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/json.modal.css">
+<script type="text/javascript" src="<{$STATIC_PATH}>jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/common.js"></script>
+
+<div id="l-modal_dialog" style="display: none;">
+    <section class="l-modal_box">
+        <input type="hidden" id="index" name="index" value="">
+        <div>
+            <br/>
+        </div>
+        <div class="font-style">
+            <{foreach from=$langs item=lang}>
+            <p><label><{$lang.name}>：</label><textarea value="" id="<{$lang.id}>" class="modal-textarea"></textarea></p>
+            <{/foreach}>
+        </div>
+        <div class="btn-style">
+            <div id="update">
+                <a id="btn" href="javascript:void(0);" >修改</a>
+            </div>
+            <div id="back">
+                <a id="btn2" href="javascript:void(0);" >返回</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    jsonModal.modal('.json-textarea','#l-modal_dialog');
+</script>
+
+

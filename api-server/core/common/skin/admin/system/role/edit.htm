@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript">
+function check (form)
+{
+	var name = document.getElementsByName('data[name]')[0];
+	if (name.value == '')
+	{
+		alert('<{$lang->role_name}><{$lang->can_not_empty}>');
+		name.focus();
+		return false;
+	}
+
+	return true;
+}
+
+function chgDescription (obj)
+{
+	$('#roleDescription > p').hide();
+	$('#roleDescription > p').eq(obj.selectedIndex - 1).show();
+}
+</script>
+<style>
+#roleDescription p { display:none; padding:5px; }
+</style>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="?con=admin&ctl=system/role" class="lnkReturn"><{$lang->return_to_list}></a> 
+			<a href="?con=admin&ctl=system/role&act=delete&id=<{$data.id}>" class="lnkDelete" onclick="return chkDelete();"><{$lang->delete}></a>
+		</div>
+		<form action="?con=admin&ctl=system/role&act=edit&id=<{$data.id}>" method="post" onsubmit="return check(this);">
+			<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2"><{$lang->edit_role}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->role_name}><{$lang->maohao}></td>
+					<td class="editRtTd"><input name="data[name]" value="<{$data.name}>" type="text" size="30" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->role_description}><{$lang->maohao}></td>
+					<td class="editRtTd"><input name="data[description]" value="<{$data.description}>" type="text" size="60" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="<{$lang->role_copy_permission_from_tips}>"><{$lang->role_copy_permission_from}><{$lang->maohao}></em></td>
+					<td class="editRtTd">
+						<select name="extendBy" onchange="chgDescription(this)">
+							<option>--<{$lang->role_copy_permission_from}>--</option>
+							<{foreach from=$extendBy item=item key=key}>
+								<option value="<{$item.id}>"><{$item.name}></option>
+							<{/foreach}>
+						</select> 
+						<{$lang->role_copy_permission_from_note}>
+						<div id="roleDescription">
+							<{foreach from=$extendBy item=item key=key}><p><{$lang->discription}>: <{$item.description}></p><{/foreach}>
+						</div>
+					</td>
+				</tr>
+				<{if $user_id == -1}>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->hidden_setting}></td>
+					<td class="editRtTd">
+						<input type="checkbox" id="chkSystem" name="data[isSystem]" value="1"<{if $data.isSystem}> checked<{/if}> /><label for="chkSystem"><{$lang->system_role}></label> 
+						<input type="checkbox" id="chkSuper" name="data[isSuper]" value="1"<{if $data.isSuper}> checked<{/if}> /><label for="chkSuper"><{$lang->super_role}></label>
+					</td>
+				</tr>
+				<{/if}>
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="?con=admin&ctl=system/role" class="lnkReturn"><{$lang->return_to_list}></a> 
+				<a href="?con=admin&ctl=system/role&act=delete&id=<{$data.id}>" class="lnkDelete" onclick="return chkDelete();"><{$lang->delete}></a>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

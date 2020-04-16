@@ -1,0 +1,17 @@
+@charset utf-8;
+
+#crop-window { position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.3); filter: progid:DXImageTransform.Microsoft.gradient( GradientType = 0, startColorstr = "#40000000", endColorstr = "#40000000"); overflow:hidden; z-index:999; overflow-y:auto; }
+.crop-window-wrapper { position:relative; left:50%; top:100px; width:1000px; margin-left:-500px; overflow:hidden; }
+.crop-window-wrapper .title { position:relative; height:28px; line-height:28px; padding:0 10px; background:url(ico-ow.gif) repeat-x; overflow:hidden; z-index:22; }
+.crop-window-wrapper .title h3 { float:left; font-size:12px; color:#FFF; }
+.crop-window-wrapper .title .close { float:right; width:29px; height:20px; text-indent:2000px; background:url(ico-ow.gif) 0 -30px no-repeat; overflow:hidden; }
+.crop-window-wrapper .title .close:hover { background:url(ico-ow.gif) 0 -52px no-repeat; }
+.crop-window-wrapper .content { padding:10px; background:#FFF; }
+.crop-window-wrapper .content .big { float:left; width:60%; }
+.crop-window-wrapper .content .big img { width:100%; transition:transform 0.3s; -webkit-transition:transform 0.3s; -moz-transition:transform 0.3s; -o-transition:transform 0.3s; -ms-transition:transform 0.3s; }
+.crop-window-wrapper .content .small { float:right; width:20%; overflow:hidden; }
+.crop-window-wrapper .content .small img { width:100%; transition:transform 0.3s; -webkit-transition:transform 0.3s; -moz-transition:transform 0.3s; -o-transition:transform 0.3s; -ms-transition:transform 0.3s; }
+.crop-window-wrapper .btns { position:relative; text-align:right; padding:8px 10px; background:#F4F4F4; border-top:1px solid #E2E2E2; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+.crop-window-wrapper .btns button { height:25px; line-height:24px; padding:0 8px; background:url(ico-ow.gif) 0 -75px repeat-x; border:1px solid #B8C7E1; cursor:pointer; overflow:hidden; -moz-border-radius:2px; -webkit-border-radius:2px; }
+.crop-window-wrapper .btns span.tool-btn { padding:0 10px 0 0; font-size:14px; cursor:pointer; }
+.crop-window-wrapper .btns span.tool-btn i { margin-right:3px; vertical-align:middle; font-size:18px; }

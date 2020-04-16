@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/niewei.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#sortable li').hover(function(){
+		$(this).addClass('Hover');
+	}, function(){
+		$(this).removeClass('Hover');
+	});
+
+	$("#sortable").sortable({
+		placeholder : 'ui-state-highlight'
+	});
+	$("#sortable").disableSelection();
+});
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips"></div>
+		<form action="?con=admin&ctl=hidden/column" method="post">
+			<table class="listTable">
+				<tr class="listHdTr">
+					<td align="left"><{$lang->whether_display_and_column_name}></td>
+				</tr>
+				<tr>
+					<td class="sortable-box" align="left">
+						<ul id="sortable">
+							<{foreach from=$data item=item key=key name=column_list}>
+								<li<{if $smarty.foreach.column_list.iteration % 2 == 0}> class="Alternating"<{/if}>>
+									<input name="<{$key}>[show]" value="1" type="checkbox"<{if $item.show}> checked<{/if}> /> <input name="<{$key}>[name]" value="<{$item.name}>" type="text" size="20" class="text" />
+								</li>
+							<{/foreach}>
+						</ul>
+					</td>
+				</tr>
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="?con=admin&ctl=info/" class="lnkReturn"><{$lang->return_to_list}></a> 
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

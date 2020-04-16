@@ -1,0 +1,502 @@
+参数错误,Parameter error
+暂时禁止注册,Registration is currently suspended
+"系统升级中，请稍后使用","System upgrade in progress, please try again later"
+请填写用户名,Please enter your username
+请填写密码,Please enter your password
+请填写确认密码,Please enter the password again to confirm
+"用户名格式不正确，请填写邮箱","Username format incorrect, please input a valid email address"
+"密码格式不正确，需要6-20个由a-zA-Z0-9_#@!*组成的字符串","Require additional password complexity, please use 6-20 characters with the combination consist of:a-z A-Z 0-9 _ # @ ! *"
+"密码格式不正确，需要8-20个由a-zA-Z0-9_#@!*组成的字符串","Require additional password complexity, please use 8-20 characters with the combination consist of:a-z A-Z 0-9 _ # @ ! *"
+"密码格式不正确，可能含有无法识别的符号，密码需要8-20个由a-zA-Z0-9_#@!*组成的字符串","The password format is incorrect and may contain unrecognized symbols. The password requires 8-20 characters consisting of a-zA-Z0-9_#@!*"
+"密码格式不正确，可能含有无法识别的符号，密码需要6-20个由a-zA-Z0-9_#@!*组成的字符串","The password format is incorrect and may contain unrecognized symbols. The password requires 6-20 characters consisting of a-zA-Z0-9_#@!*"
+"您输入的密码太简单了，为了保障您的资金安全请更换复杂密码","The password you have entered does not meet the minimum complexity requirements, please change to a more complex password to keep your assets safe"
+"您输入的密码太简单了，至少需要一个大写字母、一个小写字母和一个数字","The password you entered is too simple, requires at least one capital letter, one lowercase letter, and one number"
+确认密码不一致,Confirmation password is inconsistent with password
+"您输入的用户名已经存在，请更换其他用户名","The user name you entered already exists. Please change other user name"
+注册失败,Registration failed
+注册成功,Registration success
+暂时禁止登录,Login is temporarily suspended
+您填写的用户名或密码错误,The username or password you have entered is incorrect
+"您已被禁用，暂时不可以登录","Your account has been suspended, login is temporarily unavailable"
+"您连续登录失败超过%s次，已经被禁止登录，请%s后重新登录","Your login attempts have failed more than %s times, the account is now suspended, please wait for %s to log in again"
+"您连续输入验证码错误超过%s次，已经被禁止登录，请%s后重新登录","Your verification code has failed for more than %s times, the login has been suspended, please wait for %s to log in again"
+"小时","hour(s)"
+"秒","second(s)"
+"分","minute(s)"
+"您已被禁用，暂时不可以使用","Your account have been suspended, application is temporarily unavailable"
+"您填写的用户名或密码错误，%s次后将冻结账号","The username or password you have entered is incorrect, and accounts will be suspended after %s tries"
+"验证码输入错误，%s次后将冻结账号","Incorrect verification code, and accounts will be suspended after %s tries"
+"验证码输入错误","Incorrect verification code"
+币种不存在,The currency is currently unsupported
+请填写反馈内容,Please fill in the content of the feedback
+提交成功,Submit successfully
+提交失败,Submit failed
+APP不存在,APP does not exist
+写入成功,Write successfully
+写入失败,Write failed
+用户名长度不可以超过100个字符,Username length should not exceed 100 characters
+邮箱验证,E-mail verification
+"注册成功，系统已经向您的邮箱发送了验证邮件，请点击邮件中的链接完成邮箱绑定（如果没有收到验证邮件，可能在垃圾箱中，或者更换一个邮箱重新注册）","Registration success, welcome! The system has sent a confirmation email to your inbox, please click on the link in the message to complete binding of your email address"
+"您未验证邮箱，系统已经向您的邮箱发送了验证邮件，请点击邮件中的链接完成邮箱验证","You have not verified the email address, the system has sent a verification email to your inbox, please click the link in the email to complete the email verification(if the email has arrived in your inbox, it may be redirected to spam folder, please check closely to see if the email has been delivered)"
+系统提示,Information
+"链接已过期，请重新获取新的链接","The link has expired, please re-acquire a new link"
+验证邮箱成功,E-mail verification success
+验证邮箱失败,E-mail verification failed
+"您更换了设备，请验证短信","You have changed your device, please verify your login attempt via SMS"
+"您更换了设备，请输入邮件中的验证码","You have changed the device, please enter the verification code sent to you via email"
+"异地登录提醒，如果不是您的操作请通过邮件或者短信中的链接冻结账号","Remote login reminder, if this is not your action, please click on the link in the email or SMS to suspend the account"
+"异地登录提醒，如果不是您的操作请点击邮件中的链接冻结账号","Remote login reminder, if this is not your operation, please click on the link in the mail to suspend the account"
+异地登录提醒,Remote login reminder
+"会员不存在，或已被禁用","Member does not exist, or has been suspended"
+"不需要发送短信验证码","Do not send SMS verification code"
+"请等待%s后再重新发送","Please wait %s and then resend"
+您的账号未绑定手机,Your account has not been associated with a mobile number
+"您的验证码：%s。如非本人操作，请尽快修改您的密码，以免造成财产损失。","Your verification code is: %s. If you did not request this verification code, please change your password immediately."
+"您找回密码的验证码：%s。如非本人操作，请尽快修改您的密码，以免造成财产损失。","Your password reset verification code is: %s. If you did not request this code, please change your password immediately."
+"您修改手机的验证码：%s。如非本人操作，请尽快修改您的密码，以免造成财产损失。","Your mobile number re-binding verification code is: %s. If you did not request this code, please modify your password immediately."
+发送成功,Message sent
+发送失败,Failed to send
+不需要发送邮件验证码,Do not send e-mail verification code
+邮件验证码,Email verification code
+亲爱的用户：,Dear user:
+请点击链接完成邮箱验证,Please click the link to complete the email address verification
+"如果您的邮箱无法点击链接，请复制以下链接到浏览器中打开：","If your email link can not be clicked, please copy the following link to your browser to open:"
+"您的账号在异地登录，如果不是您的操作，<a href=""%s"" style=""text-decoration:underline;"">请点击这里冻结账号</a>，24小时后自动解冻。","Notice of remote site login, if this is not requested by you, <a href=""%s"" style=""text-decoration:underline;"">please click here to suspend the account</a>, the account will be reactivated automatically in 24 hours later."
+"如果误操作您可以在输入账号密码后根据提示操作解冻。","If operations resulted in account suspension, you can enter the account password and follow the prompts to unlock the account."
+冻结账号成功,Account suspended
+冻结账号失败,Account suspension failed
+请先登录,Please log in first
+token生成失败,Token generation failed
+请填写验证码,Please fill in the verification code
+验证码不正确,Incorrect verification code
+请填写当前登录密码,Please fill in the current login password
+请填写新登录密码,Please fill in the new login password
+已经使用过的密码不可以使用,Used passwords can not be reused
+"您连续输入验证码错误超过%s次，已经禁止找回密码，请%s后重新操作","You have consecutively entered incorrect verification code for more than %s times, the account is now suspended for password retrival, please wait for %s to submit the request again"
+"您连续输入验证码错误超过%s次，已经禁止修改邮箱，请%s后重新操作","You have consecutively entered incorrect verification code for more than %s times, the account is now suspended for changing email address, please wait for %s to submit the request again"
+"您连续输入验证码错误超过%s次，已经禁止修改手机，请%s后重新操作","You have consecutively entered incorrect verification code for more than %s times, the account is now suspended for changing phone number, please wait for %s to submit the request again"
+"您连续输入验证码错误超过%s次，已经禁止设置交易密码，请%s后重新操作","You have consecutively entered incorrect verification code for more than %s times, has been forbidden to change trade password, please wait for %s to submit the request again"
+"您连续输入验证码错误超过%s次，已经冻结账号，请%s后重新操作","You enter consecutive verification code error more than %s times, has been frozen account, please wait for %s to submit the request again"
+"您连续输入交易密码错误超过%s次，已经冻结账号，请%s后重新操作","You enter consecutive trade password error more than %s times, has been frozen account, please wait for %s to submit the request again"
+"验证码输入错误，%s次后将禁止操作","Verification code incorrect, after %s tries will suspend this request"
+修改登录密码成功,Login password has been changed
+修改登录密码失败,Failed to change login password
+当前登录密码不正确,The current login password is incorrect
+修改成功,Successfully modified
+修改失败,Fail to edit
+请输入旧邮箱的邮件验证码,Please enter the verification code sent to your old email address
+请输入新邮箱,Please enter a new email address
+请输入新邮箱的邮件验证码,Please enter the verification code for your new email address
+旧邮箱的邮件验证码不正确,The verification code from the old email address is incorrect
+新邮箱的邮件验证码不正确,The verification code from your new email address is incorrect
+邮箱长度不可以超过100个字符,Email address length can not exceed 100 characters
+"邮箱格式不正确，请填写邮箱","E-mail address format is incorrect, please fill in a new email address"
+"您填写的邮箱是当前正在使用的邮箱","The email address you submitted is your current email address"
+"您输入的邮箱已经存在，请更换其他邮箱","The email you have entered already exist. Please change to another one"
+请输入当前手机的验证码,Please enter the verification code for your current mobile
+请输入新手机号码,Please enter a new phone number
+请输入新手机的验证码,Please enter the verification code for your new mobile number
+您填写的手机号码是当前正在使用的手机号码,The phone number you filled in is the one you are currently using
+旧手机验证码不正确,The verification code from your old mobile number is incorrect
+新手机验证码不正确,The verification code from your new mobile number is incorrect
+"您输入的手机已经存在，请更换其他手机","You have entered a number that is already registered, please use another number"
+"您未绑定手机","You have not bind a mobile phone yet"
+您未设置交易密码,You have not set a payment password
+请填写新交易密码,Please fill in the new payment password
+请填写邮件验证码,Please fill in the e-mail verification code
+请填写短信验证码,Please fill in SMS verification code
+设置交易密码成功,Set payment password successfully
+设置交易密码失败,Failed to set trade password
+该地址不是一个有效的地址,The address is not a valid address
+该地址是一个有效的地址,The address is a valid address
+请输入地址标签,Please enter the address label
+"每人最多可以生成%s个收款地址","Each person can generate up to %s address(es)"
+生成地址失败,Failed to generate address
+生成地址成功,Generate address successfully
+地址标签重复,Address label already exists
+地址不存在,The address does not exist
+修改地址成功,Modify address successfully
+修改地址失败,Modify address failed
+移除地址成功,The address was removed successfully
+移除地址失败,Failed to remove address
+请填写收款方地址,Please fill in the payee address
+请填写收款方地址标签,Please fill in the payee address label
+请填写转出金额,Please fill in the transfer amount
+请填写交易密码,Please fill in the trade password
+交易密码不正确,Trade password is incorrect
+"交易密码不正确，%s次后将冻结账号","Trade password is incorrect, after %s time(s) the account will be suspended"
+短信验证码不正确,SMS verification code is incorrect
+当前币种暂时不允许对外转账,The current currency temporarily does not allow foreign transfers
+当前币种暂时不允许生成新地址,The current currency is temporarily not allowed to generate a new address
+您的账户已被禁止对外转账,Your account has been suspended from outgoing transfers
+转账金额不能小于%s,Transfer amount cannot be less than %s
+转账金额不能大于%s,Transfer amount cannot be greater than %s
+您一天内转账总金额已经达到最大额度,The total amount of your transfer within a day has reached the maximum amount
+接收方地址不是一个有效的地址,The recipient address is not a valid address
+您的余额不足,Your balance is not enough
+转账失败,Transfer failed
+转账成功,Transfer successful
+"暂时没有可用的钱包服务器，请稍候操作","No wallet server available, please wait"
+请填写昵称,Please fill in a nickname
+请选择图片文件,Please select a picture profile
+保存成功,Saved successfully
+保存失败,Save failed
+您的登录已过期,Your login has expired
+"您的账号在其他设备登录，请重新登录","Your account logged in from other device, please login again"
+邮箱不可以修改,E-mail can not be modified
+"转账失败，接收方生成地址失败","The transaction has failed, the receiver failed to generate an address"
+验证地址失败,Address validation failed
+"转账失败，主钱包余额不足","Transaction failed, the main wallet balance is not enough"
+"您的账号已被冻结，请%s后重新登录","Your account has been suspended, please log in again %s later"
+新手机号码不能与旧手机号码相同,The new mobile number cannot be the same as the old mobile number
+"您的转账提交成功，请等待审核","Your transfer request has been submitted, please wait for approval"
+"您有一笔转入到账，金额%s","You have a new received transaction with amount:%s"
+您的转出已审核通过,Your transfer out request has been approved
+您的转出审核不通过,Your transfer out audit did not pass
+请选择锁仓记录,Please select the lock record
+请填写锁定金额,Please fill in the lock amount
+锁定金额不能小于%s,Lock amount cannot be less than %s
+锁定金额不能大于%s,Lock amount cannot be greater than %s
+锁仓币种不正确,Locking currency is not the corresponding currency
+提交锁仓失败,Failed to submit lock request
+提交锁仓成功,Submit lock successfully
+"您收到一笔锁仓收益，金额%s","You receive a lock amount benefit, amount %s"
+请输入朋友的邮箱,"Please enter your friend's email"
+不可以添加自己为好友,You can not add yourself as a friend
+格式不正确，请填写邮箱,"The format is incorrect, please fill in the email address again"
+该用户不存在,This user does not exist
+"已发送请求，等待好友通过","Have sent the request to your friend, please wait for his response"
+"您有一条好友请求，请注意查看","You have a friend request, please response"
+发送好友请求成功,Send friend request successfully
+发送好友请求失败,Failed to send friend request
+申请记录不存在,Application record does not exist
+该请求已处理,The request has been processed
+操作成功,Successful operation
+操作失败,Operation failed
+添加成功,Added successfully
+添加失败,Add failed
+好友记录不存在,Friends record does not exist
+删除成功,Successfully deleted
+删除失败,Failed to delete
+短信验证码正确,SMS verification code is correct
+"该用户和您已经是好友了，不可再次添加","This user is already your friend, and cannot be added again"
+暂无,"Not available"
+昵称暂无,"Name undetermined"
+金额必须是整数,The amount must be an integer
+锁仓,Lock
+"新的好友：您的手机联系人 %s 正在使用Herperpay Wallet，立即添加好友，转账更安全、便捷。","New Friend: Your phone contact, %s is using Herperpay Wallet as well, you can add them as friends to enjoy a better transaction experience."
+"该锁仓活动已结束，截止时间：%s","The lock activity has ended, the deadline is: %s"
+"该锁仓活动未开始，起始时间：%s","The lock activity has not started, the starting time: %s"
+"您已（或将）达到该币种锁仓限额( %s )，剩余额度：%s ，无法锁仓，请核对","You have (or will) reach the currency lock limit (%s), remaining credit: %s, cannot be locked, please check"
+"该币种已达到锁仓限额( %s )，剩余额度：%s ，无法锁仓，请核对","The currency has reached the lock limit (%s), the remaining amount: %s, cannot be locked, please check"
+"该币种已达到锁仓总额，无法锁仓","The currency has reached the total amount of locks and cannot be locked"
+"无法向自己转账", Unable to transfer money to yourself"
+"【超级重磅福利】HPY存至钱包即可获得11种代币空投，北京时间3月26号中午12点快照，你们还在等什么？详情请关注微信公众号或官网News页。机不可失！失不再来！","[Mega Airdrop] Deposit HPY before Snapshot time (26 March 2018, UTC+8 12 noon [Beijing]) will receive 11 digital currencies airdrop. Don't miss the opportunity! Follow us on WeChat or go to the official website (news section) to learn more."
+"由于UBTC分叉升级原因，目前已暂停相关充提业务。升级完成后，会重新开启相关充提业务。","Due to hardfork upgrade of UBTC in progress, we have now suspended deposit and withdraw of the token. Once upgrade has finished, we will resume the service shortly."
+"您已被锁定，请联系管理员，谢谢","Your account has been suspended. Please contact the administrator. Thank you."
+"禁止注册，系统检测您为恶意注册","Cannot register, system has identified a malicious registration attempt"
+"系统检测您为恶意注册账户，禁止登录","System has identified your account as malicious account, login is suspended."
+
+"发送成功，邮件可能在垃圾箱中","Send successfully, please note the email may have been redirected to your spam folder."
+"注册成功，系统已经向您的邮箱发送了验证邮件，请点击邮件中的链接完成邮箱绑定（如果没有收到验证邮件，可能在垃圾箱中，或者更换一个邮箱重新注册，邮件可能在垃圾箱中）","Registered successfully, the system has sent a confirmation email to your mailbox, please click on the link in the message to complete the mailbox binding, the email may have been redirected to your spam folder"
+
+"暂无该币种行情","No currency quotes available"
+"提醒：%s的%s最新成交价大于 %s %s","Reminder: the latest transaction price for %s's %s is more than %s %s"
+"提醒：%s的%s最新成交价小于 %s %s","Reminder: the latest transaction price for %s's %s is less than %s %s"
+"提醒：%s的%s最新涨幅大于 %s %","Reminder: the latest increase in %s's %s is more than %s %"
+"因BCC钱包升级，目前正在同步至最新区块高度。aelf对此带来的不便深表歉意，服务将在同步后重新开放。谢谢理解","The BCC wallet has undergone an upgrade and is currently synching to the latest block. aelf apologize for the inconvenience and will resume the service promptly."
+
+同意,Agree
+已同意,Agreed
+抵押币种不存在,Mortgage currency is not currently supported
+借款币种不存在,Loan currency is not currently supported
+请填写金额,Please fill in the amount
+请选择借款天数,Please select the number of days loan
+请填写利率,Please fill in the interest rate
+借款币种不支持,Loan currency does not support
+借贷出资方不存在,Lending funder does not exist
+借贷不存在,Lending does not exist
+请填写正确的金额,Please fill in the correct amount
+借款成功,Successful loan
+借款失败,Loan failure
+放贷方余额不足,Lender does not have enough balance
+借款方不存在,The borrower does not exist
+放款失败,Loan failed
+放款成功,Loan success
+请填写内容,Please fill in the content
+放贷订单不存在,Lending order does not exist
+该笔放贷订单已经不可以取消,The loan order cannot be canceled
+取消失败,Cancellation failed
+取消成功,Cancel success
+抵押币种不支持,Mortgage currency does not support
+"汇率错误，请稍后再提交","Exchange rate error, please submit later"
+"当前已被锁定，不可以修改","Currently locked, cannot be modified"
+"当前已经成交，不可以修改","Currently closed, cannot be modified"
+不可以贷款给自己,"Can't lend to yourself"
+当前借款广告已经被其他用户锁定, The current loan advertisement have been locked by other users
+当前借款广告已经成交,The current loan advertisement has been traded
+订单不存在,Order does not exist
+"订单状态不正确，可能订单已过期，请重新提交订单","The order status is incorrect, the order may have expired, please resubmit the order"
+"您的订单已过期，已经不可以放款","Your order has expired and you can't already lend money"
+"订单错误，请重新提交订单","Wrong order, please resubmit order"
+借款订单不存在,The loan order does not exist
+该笔借款订单已经不可以取消,The loan order cannot be canceled
+不可以借自己发布的贷款,Cannot lend your own loan
+当前放贷需求已经被其他用户锁定,Current loan demand has been locked by other users
+当前放贷需求已经成交,Current lending demand has been traded
+"该笔订单已过期，已经不可以放款","The order has expired and it is no longer possible to lend money"
+订单错误,Order error
+"您有一笔借款到账，金额%s","You have a loan arrival, the amount of %s"
+到期未还款,No repayment due
+已过期,Expired
+已撤销,Revoked
+等待放款,Waiting for lending
+借款中,Borrowing
+已还款,Repayments
+关闭,Closed
+锁定中,Locked
+开启,Open
+已成交,Deal done
+借贷放款人不存在,Loan lender does not exist
+借款订单的状态不正确,The status of the loan order is incorrect
+还款失败,Repayment failed
+还款成功,Repayment successful
+"您有一笔放款已经还款成功，金额%s","You have a loan that has been repaid successfully, amount %s"
+
+
+抵押币种汇率不存在,The exchange rate of the mortgaged currency does not exist
+汇率异常,Abnormal exchange rate
+借款币种汇率不存在,The exchange rate of the currency of the loan does not exist
+
+code 错误,Code error
+app 不存在,App does not exist
+app 错误,App error
+二维码已过期,QR code expired
+扫码失败,Scan code failed
+扫码成功,Scan code successfully
+授权失败,Authorization failed
+授权成功,Successfully authorized
+
+请选择要转移的货币和金额,Please select the currency and amount to transfer
+交易所应用不存在,Exchange application does not exist
+交易所应用未绑定商家账号,Exchange application unbound merchant account
+交易所商家账号未开放转移资产功能,Exchange business account does not open transfer assets function
+交易所商家未开启支付接口,Exchange merchant does not open payment interface
+商家自己不可以转移资产,Businesses cannot transfer assets themselves
+您还未绑定该交易所,You have not bind the exchange
+您没有可以转移的资产,You have no assets to transfer
+"您的资产不足，无法转移","Your assets are not enough to transfer"
+转移资产提交失败,Failed to submit assets
+"转移资产失败，失败原因：%s","Failed to transfer assets, failure reason: %s"
+"转移资产失败，交易所没有响应请求","Failed to transfer assets, the exchange did not respond to the request"
+"转移资产申请提交成功，请等待审核","Transferred assets application submitted successfully, please wait for review"
+转移失败,Failed to transfer
+待确认,Pending
+转移失败,Failed to transfer
+系统撤销,System Undoing
+用户撤销,User revocation
+等待处理,Waiting for processing
+已发送申请,Sent application
+交易所已响应请求,Exchange has responded to the request
+划转成功,Success
+
+刚刚更新,Just now
+5分钟前,5min ago
+1小时前,1h ago
+1天前,1d ago
+合约不存在,The contract does not exist
+用户未添加此币种,The user did not add this currency
+该币种暂时不允许站内转账,This currency is temporarily not allowed to transfer within the station
+
+"通知：恭喜您获得两张《疯狂aelf，激情世界杯》竞猜门票！首战送福利，奖金不变，难度减半！第一轮竞猜机会将于25分钟后关闭，请尽快完成首战竞猜。","Reminder: Congrats! You have got 2 free chances of 2018 FIFA Prediction Game! First round of prediction will be closed in 25 mins. Take your guess ASAP to win one free bitcoin."
+"通知：《疯狂aelf，激情世界杯》竞猜机会确认的快照时间将于1小时后（北京时间下午4点）进行，请尽快完成充币，锁定第一轮竞猜机会。","Reminder: 2018 FIFA Prediction Game is on tonight. The prediction entries assignment starts in 1 hour（16：00 UTC+8）. Make sure tokens deposit is ready before assignment."
+"恭喜您获得《疯狂aelf，激情世界杯》神秘大礼包，48场比赛，58个比特币，登录钱包查看详情。","Congratulations! You have got a gift pack of 2018 FIFA Prediction. 48 games, 58 free bitcoins! Check it out in aelf wallet."
+
+购买RAM提交失败,Purchase RAM submission failed
+购买RAM提交成功,Purchase RAM successfully submitted
+出售RAM提交失败,Sell RAM submission failed
+出售RAM提交成功,Sell RAM successfully submitted
+金额不能小于%s,Amount cannot be less than %s
+金额不能大于%s,Amount cannot be greater than %s
+
+待交易,Pending transaction
+交易成功,Successful transaction
+交易失败,Transaction failed
+
+暂时未开启RAM购买功能,RAM buy function is currently unavailable
+暂时未开启RAM出售功能,RAM sell function is currently unavailable
+
+请输入短信验证码,Please enter SMS verification code
+请输入邮件中的验证码,Please enter the verification code in the email
+该币种对应的地址和昵称已存在,The address and nickname corresponding to the currency already exist
+
+请填写邮箱,Please enter your email
+请填写手机号码,Please fill in cell phone number
+请选择国家,Please select a country
+邮箱格式不正确,E-mail format is incorrect
+手机号码格式不正确,Phone number format is incorrect
+"您输入的手机号码已经存在，请更换其他手机号码","The mobile number you entered already exists. Please change the other mobile number."
+发送验证邮件成功,Send verification email successfully
+发送验证邮件失败,Send verification email failed
+您的注册验证码：%s,Your registration verification code:%s
+短信验证码已发送,SMS verification code has been sent
+发送短信验证码失败,Send SMS verification code failed
+"你似乎还没通过邮箱验证，验证邮件有时会被邮箱误标为垃圾邮件，请注意查收。你还可以返回使⽤手机注册或重发验证邮件。","Seems like you haven't verified your Email. If no verification Email is received in your inbox, it may be sent to your spam folder or in trash folder. You can go back to sign up with a mobile number or request the verification Email again."
+绑定邮箱成功,Bind the mailbox successfully
+绑定邮箱失败,Binding mailbox failed
+
+锁仓已结束,The lock activity has ended
+活动已结束,The activity has ended
+
+今天,Today
+%s天前,%s day(s) ago
+
+格式不正确,The format is incorrect
+
+无法向该账户转账,Unable to transfer to this account
+
+失败,Failed
+成功,Success
+
+理财产品不存在,Product not available
+购买理财产品失败,Invest unsuccessful
+购买理财产品成功,Invest successful
+投资中,In Progress
+已到期,Completed
+
+币增宝收益,BitEarn yield
+锁仓收益,Lock Position
+理财产品,Investment Products
+PoS矿池,PoS Reward
+空投,Airdrop
+币增宝暂时不支持该币种,Token currently is not supported
+转入币增宝失败,Transfer unsuccessful
+转入币增宝成功,Transfer successful
+您的币增宝余额不足,Balance insufficient
+转出到余额失败,Transfer unsuccessful
+转出到余额成功,Transfer successful
+转入,Deposit
+转出,Withdraw
+PoS暂时不支持该币种,Token currently not supported for PoS
+转入PoS失败,Transfer unsuccessful
+转入PoS成功,Transfer successful
+您的PoS余额不足,Balance insufficient
+币增宝暂未开放该币种，敬请期待,Coming soon
+暂未开启，敬请期待,Coming soon
+已关闭，敬请期待,Not available
+
+"抱歉，此功能暂不向您所在地区用户开放。","Sorry, this function is not available in your region."
+"输入的不是一个有效的账户","The account is invalid, please try again"
+
+不可以填写此地址,Cannot fill in this address
+%s无效,Invalid %s
+二维码无效,Invalid QR code
+二维码已过期,QR code has expired
+"生成交易失败，失败原因：%s","Generate transaction failed, failure reason: %s"
+
+转账最小精度为%s位,Transfer minimum precision is %s
+
+请先解绑您在该交易所的原绑定账户,"You already have a %s account linked to your aelf. Please visit %s exchange to unlink first."
+
+"PoS已关闭，暂时禁止转入","POS for this coin has been closed, deposit to POS has now been suspended."
+
+"所选共管钱包无法编辑","Cannot edit the selected ""Shared Wallet"""
+"操作错误，请稍后重试","Operation error, please try again later"
+"所选共管钱包不存在，请重新选择钱包。","The selected ""Shared Wallet"" does not exist, please select another one"
+"用户不可重复确认","Confirmation has been recorded, cannot confirm action again"
+"对不起，该转账流程已结束","Sorry, the transfer process has concluded"
+"成功加入共享钱包","Successfully joined the ""Shared Wallet"""
+"邀请失败，请稍后重试","Invitation failed, please try again later"
+该钱包已完成创建,Wallet has been initiated
+该钱包已经被关闭,Wallet has been closed
+该钱包创建超时,The creation of the wallet has exceeded the maximum allowed invitation period
+"成功加入共享钱包","Successfully joined the ""Shared Wallet"""
+"请下载aelf完成注册，即可加入钱包","Please download aelf to finish registration in order to join the ""Shared Wallet"""
+份额比例分配不正确,Authority weight distribution is incorrect
+已经是该钱包会员,Already a member of the wallet
+"创建钱包失败，请稍后再试","Failed to create the wallet, please try again later"
+该钱包人数已满,Wallet has exceeded maximum allowed participants
+"钱包正在创建中或已被删除,不可转账","Wallet is being created or has been deleted, cannot transfer to this wallet at the moment"
+该邀请地址已经失效,Invitation link has expired
+"该份额分配成员已满,不可重复加入","The weighted distributibon share wallet has reached maximum participants. Cannot join again."
+
+"您有一笔资金等待确认，金额%s","You have a pending transaction with amount %s"
+"您有一笔资金转出超时，金额%s","Your pending transfer with amount %s has timed out"
+"你的好友%s邀请你加入%s钱包","Your friend %s invites you to join $s wallet"
+"你参与的共管钱包%s创建超时","One of your shared wallet: %s has timed out on the creation process"
+"你参与的共管钱包%s创建完成","One of your shared wallet: %s has been successfully created"
+"您有一笔资金转出失败，金额%s","A debit with amount %s has failed"
+"您有一笔资金转出超时，金额%s","A debit with amount %s has timed out"
+"您有一笔资金转出到账，金额%s","A debit with amount %s has successfully transferred"
+"该转账不允许取消","This pending transfer cannot be cancelled"
+"对不起，该转账流程已结束","Apologies, this transfer process has ended"
+"提醒成功","Reminder sent"
+"只有发起人才可取消本次交易","Only the person who initiated the transaction can cancel"
+该商户不支持转出操作,The merchant currently does not support withdraw operations
+
+"%s - %s共管模式","%s - %s Mode"
+"%s发起了一笔%s转账请求，需在%s前确认，点击查看详情","%s proposed a payment of %s. Please confirm before %s"
+"%s发起的%s转账请求已失败，原因：超时未确认，点击查看详情","%s's payment proposal of %s has expired."
+"%s发起的%s转账请求已失败，原因：被拒绝，点击查看详情","%s's payment proposal of %s has been rejected. VIEW DETAIL>>"
+"%s发起的%s转账请求已获得成员授权通过，点击查看详情","%s's payment proposal of %s has been approved by enough owners."
+"%s发起的%s转账请求已失败，点击查看详情","%s's payment proposal of %s has failed."
+"%s发起的%s转账已成功，点击查看详情","%s's payment proposal of %s has been successfully transferred"
+"%s发起的%s转账请求已取消，点击查看详情","%s cancelled the payment proposal of %s."
+"%s正在邀请你加入该钱包，需在%s前确认，点击查看详情","%s invites your to join this shared wallet. Please confirm before %s."
+"共管钱包创建成功","Shared wallet has been created successfully."
+"共管钱包创建失败，原因：超时未确认，点击查看详情","Failed to create this shared wallet. VIEW DETAIL>>"
+"%s 已经加入过该钱包","%s has already joined this shared wallet"
+"你已经加入过该钱包","You have already joined this shared wallet"
+"一份份额只能分配一人","Please assign this weight to only one owner"
+"你不是该钱包成员，请切换账号重新登录","You are not the owner of this shared wallet. Please log in with another account."
+
+取消绑定失败,Unbind failed
+取消绑定成功,Unbind successfully
+%s不存在,%s does not exist
+"您有待处理交易 请在交易完成后解绑","You have in process order, please unbind after complete"
+"稳定币","Stable Cryptocurrency"
+"主链币","Main chain currency"
+"基于%s主链的币", "Base on %s Main chain"
+"相同的币价预警仅能设置一条","Same price alert can only be set once."
+
+"您的转入审核通过，金额%s","Your deposit has been approved, amount %s has been credited to your account."
+"您的转入异常，审核未通过","The deposit has failed the audit, transaction failed."
+审核中,Manual Processing
+
+"单笔最低限额:%s","Minimum exchange amount:%s"
+"单笔最高限额:%s","Maximum exchange amount:%s"
+"每日最高限额:%s","Daily exchange limit:%s"
+"每日最多兑换:%s次","You can only exchange %s times in a day"
+"兑换币种汇率变化，请重试","Exchange rate fluctuates, please try again"
+"暂时无法兑换，请稍后重试","Exchange service is temporarily unavailable, please try again later"
+"暂时无法兑换该币种, 请稍后重试","Exchange service for this token is temporarily unavailable, please try again later"
+"兑换币种不存在","Exchange for this token is not supported"
+"兑换成功","Exchange Complete"
+"兑换失败","Exchange has failed"
+"兑换中...","Exchanging..."
+"资金将稍后到账你的钱包","Funds will arrive in your wallet shortly"
+"您的兑换订单正在处理，请稍后查询进度","Please allow some time for confirmation"
+"%s 加入了该钱包，点击查看详情","%s just joined this shared wallet, tap to view more"
+"%s同意了你的好友请求","%s has accepted your friend request"
+
+"系统繁忙,请稍后重试","System busy, please try again later"
+"%s交易所","%s Exchange"
+"托管理财钱包","Off-chain Wallet"
+"自管钱包","On-chain Wallet"
+"划转至Coinw","Transfer to Coinw"
+"您划转了%s%s至Coinw账户，已提交成功，请等待审核确认","Your transfer request to Coinw has been submitted, amount: %s %s. Please wait for approval."
+"您有一笔划转审核确认失败，金额%s%s，请联系客服处理","Failed to transfer %s %s to your Coinw account, please contact customer service for more detail."
+"市场汇率可能变动，请以实际到账的资产数量为准","Exchange rate may fluctuate,the final received amount is subject to the actual exchange process."
+"兑换汇率由第三方制定，由于兑换成本及市场波动，您兑换的汇率可能会高于市场汇率，请仔细确认后进行操作","Exchange rate is from third-party service,it might be higher than the real-time market price due to the price fluctuation and exchange mechanism."
+"aelf对每笔兑换收取大约%s的手续费，这笔手续费已经包含在兑换汇率内","aelf charges a commission fee of about %s which is already included in the exchange rate."
+
+"您已（或将）达到该理财产品限额( %s )，剩余额度：%s ，无法购买，请核对","This investment plan is nearly sold out. Plan quota: %s, remaining quota: %s"
+"该理财产品已达到限额( %s )，剩余额度：%s ，无法购买，请核对","This investment plan is sold out. Plan quota: %s, remaining quota: %s"
+"保险","Cover"
+
+"赎回中","Withdrawing"
+"已赎回","Withdrawn"
+"低于可购买最低限额:%s","Less than minimum amount:%s"
+"您已（或将）达到该理财产品最大份数( %s )，剩余份数：%s ，无法购买，请核对","You have reached (nearly reached) the maximum shares of this plan( %s ), remaining shares:%s . Please check"
+"优选理财项目","Premium Investment Plan"
+"优选定投项目","Automatic Investment Plan"

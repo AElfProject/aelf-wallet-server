@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/menu.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/menu.js"></script>
+</head>
+
+<body>
+<div id="menu-area">
+	<div id="menu">
+		<dl>
+			<{foreach from=$data item=item key=key}>
+				<{if !$item.hide}>
+					<dt class="<{if $key==0}>first<{/if}>"><{if $item.url}><a href="<{$item.url}>" target="<{if $item.target==''}>main<{else}><{$item.target}><{/if}>"><{else}><a href="#"><{/if}><span><{$item.name}><{if $item.name == "交易"}><span style="color:red;" id="<{$item.id}>"> (<{$item.num}>)</span><{/if}></span></a></dt>
+					<{if $item.childCount > 0}>
+						<dd style="display:none;">
+							<ul class="third-menu">
+								<{foreach from=$item.child item=sub key=subkey}>
+									<{if !$sub.hide}>
+										<li class="clearfix"><a href="<{$sub.url}>" target="<{if $sub.target==''}>main<{else}><{$sub.target}><{/if}>"><{$sub.name}><{if $sub.name == "转出审核"||$sub.name == "转入审核"||$sub.name == "转移审核"}><span style="color:red;" id="<{$sub.id}>"> (<{$sub.num}>)</span><{/if}></a></li>
+									<{/if}>
+								<{/foreach}>
+							</ul>
+						</dd>
+					<{/if}>
+				<{/if}>
+			<{/foreach}>
+		</dl>
+	</div>
+</div>
+</body>
+<script>
+    function reqs() {
+        $.ajax({
+            type: 'get',
+            url: '<{$http_root_www}>index.php?con=admin&ctl=common/menu&act=ajax_data',
+            dataType: 'json',
+            success: function(res) {
+                try {
+                    $("#110").html('（'+res.all+'）');
+                    $("#110103").html('（'+res.out+'）');
+                    $("#110106").html('（'+res.order+'）');
+                    $("#110111").html('（'+res.receipt+'）');
+                }catch(err){
+
+                }
+                //console.log(res.out);
+            },
+            error: function() {
+                console.log('请求失败');
+            }
+        });
+    }
+    //reqs();
+    setInterval(reqs, 10000);
+</script>
+
+
+</html>

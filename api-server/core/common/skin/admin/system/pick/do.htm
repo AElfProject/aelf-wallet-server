@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+</head>
+
+<body>
+<table class="listTable" id="preloader">
+	<tr class="listHdTr">
+		<td align="left" style="padding-left:20px;"><{$lang->pick_rate}></td>
+	</tr>
+	<tr>
+		<td>
+			<div class="pick-result"><span></span><strong><em>5</em>/20</strong></div>
+			<script type="text/javascript"> var pickResult = $('script:last').prev(); var pickResultPreloader = pickResult.find('span'); var pickResultPreloaderText = pickResult.find('em'); </script>
+			<script type="text/javascript"> pickResultPreloader.css( 'width', ( 5 / 20 ) * 100 + '%' ); pickResultPreloaderText.html(  ); </script>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript"> $('#preloader').hide(); </script>
+<table class="listTable">
+	<tr class="listHdTr">
+		<td align="left" style="padding-left:20px;"><{$lang->pick_result}></td>
+	</tr>
+	<tr>
+		<td><!--To information were collected:<{$listCount}> which the successful storage:<{$infoCnt}> download pictures:<{$urlItemImgCount}>!--></td>
+	</tr>
+</table>
+</body>
+</html>

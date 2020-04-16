@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+<script>
+function searchSubmit ()
+{
+	var createTime		= document.getElementsByName('createTime')[0].value;
+	var updateTime		= document.getElementsByName('updateTime')[0].value;
+	var type			= document.getElementsByName('type')[0].value;
+	var keyword			= document.getElementsByName('keyword')[0].value;
+	var perPageCount	= document.getElementsByName('perPageCount')[0].value;
+
+	window.location.href = '?con=admin&ctl=system/pick&createTime=' + createTime + '&updateTime=' + updateTime + '&type=' + type + '&perPageCount=' + perPageCount + '&keyword=' + encodeURI(keyword);
+}
+
+function countSelect ()
+{
+	var cnt		= 0;
+	var list	= document.getElementsByName('ids[]');
+	for (var i = 0; i < list.length; i++)
+	{
+		if (list[i].checked) cnt++;
+	}
+	return cnt;
+}
+
+function bulkPick() {
+	if (countSelect() <= 0)
+	{
+		alert('<{$lang->please_select_batch_records}>');
+		return false;
+	}
+	if ( window.confirm('<{$lang->are_you_sure_pick_selected_records}>') ) {
+		$('#listForm').submit();
+	}
+}
+
+$(function(){
+	$('#checkAll').click(function(){
+		$('input.listChk').attr('checked', $(this).attr('checked'));
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$refreshUrl}>" class="lnkRefresh"><{$lang->refresh}></a>
+			<{if $hideColumn.pick_add}><a href="?con=admin&ctl=system/pick&act=add" class="lnkAdd"><{$lang->add_pick}></a><{/if}>
+			&nbsp;&nbsp;<a href="#" onclick="bulkPick(); return false;"><{$lang->bulk_pick}></a>
+		</div>
+		<div class="search">
+			<select onchange="searchSubmit();" name="createTime">
+				<option value=""<{if $search.createTime==''}> selected<{/if}>><{$lang->create_time}></option>
+				<option value="today"<{if $search.createTime=='today'}> selected<{/if}>><{$lang->today}></option>
+				<option value="week"<{if $search.createTime=='week'}> selected<{/if}>><{$lang->this_week}></option>
+				<option value="month"<{if $search.createTime=='month'}> selected<{/if}>><{$lang->this_month}></option>
+				<option value="year"<{if $search.createTime=='year'}> selected<{/if}>><{$lang->this_year}></option>
+			</select>
+			<select onchange="searchSubmit();" name="updateTime">
+				<option value=""<{if $search.updateTime==''}> selected<{/if}>><{$lang->update_time}></option>
+				<option value="today"<{if $search.updateTime=='today'}> selected<{/if}>><{$lang->today}></option>
+				<option value="week"<{if $search.updateTime=='week'}> selected<{/if}>><{$lang->this_week}></option>
+				<option value="month"<{if $search.updateTime=='month'}> selected<{/if}>><{$lang->this_month}></option>
+				<option value="year"<{if $search.updateTime=='year'}> selected<{/if}>><{$lang->this_year}></option>
+			</select>
+			<select name="type">
+				<option value="name"<{if $search.type=='name'}> selected<{/if}>><{$lang->name}></option>
+				<option value="createUser"<{if $search.type=='createUser'}> selected<{/if}>><{$lang->create_user}></option>
+			</select>
+			<input type="text" style="width:100px;" maxlength="50" name="keyword" value="<{$search.keyword}>" />
+			<a onclick="searchSubmit();" class="lnkSearch"><{$lang->search}></a>
+		</div>
+		<table class="listTable">
+			<tr class="listHdTr">
+				<td width="30"><input type="checkbox" id="checkAll" /></td>
+				<td><a href="<{$refreshUrl}>order=name&ordertype=<{if $order.order=='name'}><{if $order.ordertype=='desc'}>asc<{else}>desc<{/if}><{else}>desc<{/if}>"><{$lang->name}></a></td>
+				<td width="6%"><a href="<{$refreshUrl}>order=charset&ordertype=<{if $order.order=='charset'}><{if $order.ordertype=='desc'}>asc<{else}>desc<{/if}><{else}>desc<{/if}>"><em class="tip" tips="<{$lang->pick_charset_tips}>"><{$lang->charset}></em></a></td>
+				<td width="16%"><a href="<{$refreshUrl}>order=createUserId&ordertype=<{if $order.order=='createUserId'}><{if $order.ordertype=='desc'}>asc<{else}>desc<{/if}><{else}>desc<{/if}>"><{$lang->create_user}></a></td>
+				<td width="12%"><a href="<{$refreshUrl}>order=update_time&ordertype=<{if $order.order=='update_time'}><{if $order.ordertype=='desc'}>asc<{else}>desc<{/if}><{else}>desc<{/if}>"><{$lang->update_time}></a></td>
+				<{if $hideColumn.pick_doTest}><td width="6%"><{$lang->test}></td><{/if}>
+				<{if $hideColumn.pick_do}><td width="6%"><{$lang->pick}></td><{/if}>
+				<{if $hideColumn.pick_delete}><td width="6%"><{$lang->delete}></td><{/if}>
+			</tr>
+			<form id="listForm" action="?con=admin&ctl=system/pick&act=doBulk" method="post" target="_blank">
+				<input type="hidden" name="autoCheck" value="0" />
+				<input type="hidden" name="perCount" value="0" />
+				<input type="hidden" name="maxCount" value="0" />
+				<{foreach from=$data item=item key=key}>
+					<tr<{if $key % 2 == 0}> class="Alternating"<{/if}>>
+						<td width="30"><input type="checkbox" name="ids[]" value="<{$item.id}>" class="listChk" /></td>
+						<td><{if $hideColumn.pick_edit}><a href="?con=admin&ctl=system/pick&act=edit&id=<{$item.id}>"><{$item.name}></a><{else}><{$item.name}><{/if}></td>
+						<td><{$item.charset}></td>
+						<td><{$item.userName}> (<{$item.userDisplayName}>)</td>
+						<td><{int2string str='Y-m-d H:i:s' time=$item.update_time}></td>
+						<{if $hideColumn.pick_doTest}><td><a href="?con=admin&ctl=system/pick&act=doTest&id=<{$item.id}>"><{$lang->test}></a></td><{/if}>
+						<{if $hideColumn.pick_do}><td><a href="?con=admin&ctl=system/pick&act=do&confirm=1&id=<{$item.id}>"><{$lang->pick}></a></td><{/if}>
+						<{if $hideColumn.pick_delete}><td><a href="?con=admin&ctl=system/pick&act=delete&id=<{$item.id}>" class="lnkDelete" onclick="return chkDelete();"></a></td><{/if}>
+					</tr>
+				<{/foreach}>
+			</form>
+			<tr class="listFtTr">
+				<td colspan="9"><{$pager}></td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>

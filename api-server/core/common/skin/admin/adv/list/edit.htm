@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script src="<{$STATIC_PATH}>crop/crop.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>crop/crop.css">
+<link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>crop/Jcrop/jquery.Jcrop.css">
+<script type="text/javascript" src="<{$STATIC_PATH}>crop/Jcrop/jquery.Jcrop.js"></script>
+<script type="text/javascript">
+	function check (form) {
+		var name = document.getElementsByName('data[name]')[0];
+		if (name.value == '')
+		{
+			alert('<{$lang->category_name}> <{$lang->can_not_empty}>');
+			name.focus();
+			return false;
+		}
+
+		<{if $data.extend.hasAlias}>
+			name = document.getElementsByName('data[alias]')[0];
+			if (name.value == '')
+			{
+				alert('<{$lang->alias}> <{$lang->can_not_empty}>');
+				name.focus();
+				return false;
+			}
+		<{/if}>
+
+		return true;
+	}
+
+	$(function(){
+		$('input[name="imageUrl"]').crop();
+		$('input[name="bigImageUrl"]').crop();
+	});
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$returnUrl}>" class="lnkReturn"><{$lang->return_to_list}></a>
+		</div>
+		<form method="post" onsubmit="return check(this);" enctype="multipart/form-data">
+			<table class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2"><{$lang->edit_category}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="<{$lang->smaller_front}>"><{$lang->ordinal}></em></td>
+					<td class="editRtTd"><input name="data[ordinal]" value="<{$data.ordinal}>" type="text" size="20" class="text" /></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->category_name}></td>
+					<td class="editRtTd"><input name="data[name]" value="<{$data.name}>" type="text" size="30" class="text" /></td>
+				</tr>
+				<{if $data.extend.hasNameEn}>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->category_name_en}></td>
+						<td class="editor"><input name="data[nameEn]" type="text" value="<{$data.nameEn}>" size="30" class="text" /></td>
+					</tr>
+				<{/if}>
+				<{if $data.extend.hasAlias}>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->alias}></td>
+						<td class="editRtTd"><input name="data[alias]" value="<{$data.alias}>" type="text" size="60" class="text" /></td>
+					</tr>
+				<{/if}>
+				<{if $data.extend.hasImageUrl}>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->thumbnail}></td>
+						<td class="editRtTd">
+							<input name="imageUrl" type="file" size="30" cropsize="<{$data.other.cpic1width}>,<{$data.other.cpic1height}>" />
+							<{if $data.imageUrl}><a href="<{$UPLOAD_PATH}><{$data.imageUrl}>" target="_blank">[<{$lang->have}>]</a><{/if}>
+						</td>
+					</tr>
+				<{/if}>
+				<{if $data.extend.hasBigImageUrl}>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->enlarge}></td>
+						<td class="editRtTd">
+							<input name="bigImageUrl" type="file" size="30" cropsize="<{$data.other.cpic2width}>,<{$data.other.cpic2height}>" />
+							<{if $data.bigImageUrl}><a href="<{$UPLOAD_PATH}><{$data.bigImageUrl}>" target="_blank">[<{$lang->have}>]</a><{/if}>
+						</td>
+					</tr>
+				<{/if}>
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="<{$returnUrl}>" class="lnkReturn"><{$lang->return_to_list}></a>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

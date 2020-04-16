@@ -1,0 +1,52 @@
+<table width="100%" class="editTable" style="margin-bottom:0;">
+	<tr class="editHdTr">
+		<td colspan="2">Common filtering rules</td>
+	</tr>
+	<tr class="editTr">
+		<td class="editRtTd"><input type="checkbox" id="reg1" name="reg" value="<a([^>]*)>(.*)</a>" /><label for="reg1">Hyperlink</label></td>
+		<td class="editRtTd"><input type="checkbox" id="reg2" name="reg" value="<object([^>]*)>(.*)</object>" /><label for="reg2">Object</label></td>
+	</tr>
+	<tr class="editTr">
+		<td class="editRtTd"><input type="checkbox" id="reg3" name="reg" value="<script([^>]*)>(.*)</script>" /><label for="reg3">javascript</label></td>
+		<td class="editRtTd"><input type="checkbox" id="reg4" name="reg" value="<embed([^>]*)>(.*)</embed>" /><label for="reg4">embed</label></td>
+	</tr>
+	<tr class="editTr">
+		<td class="editRtTd"><input type="checkbox" id="reg5" name="reg" value="<!--(.*)-->" /><label for="reg5">&lt;!--()--&gt;</label></td>
+		<td class="editRtTd"><input type="checkbox" id="reg6" name="reg" value="<iframe([^>]*)>(.*)</iframe>" /><label for="reg6">iframe</label></td>
+	</tr>
+	<tr class="editTr">
+		<td class="editRtTd"><input type="checkbox" id="reg7" name="reg" value="<table([^>]*)>(.*)</table>" /><label for="reg7">table</label></td>
+		<td class="editRtTd"><input type="checkbox" id="reg8" name="reg" value="<param([^>]*)>(.*)</param>" /><label for="reg8">param</label></td>
+	</tr>
+	<tr class="editTr">
+		<td class="editRtTd"><input type="checkbox" id="reg9" name="reg" value="<style([^>]*)>(.*)</style>" /><label for="reg9">style</label></td>
+		<td class="editRtTd"><input type="checkbox" id="reg10" name="reg" value="<div([^.]*)>" /><label for="reg10">&lt;div([^.]*)&gt;</label></td>
+	</tr>
+	<tr class="editTr">
+		<td class="editRtTd"><input type="checkbox" id="reg11" name="reg" value="<img([^>]*)>" /><label for="reg11">img</label></td>
+		<td class="editRtTd"><input type="checkbox" id="reg12" name="reg" value="</div>" /><label for="reg12">&lt;/div&gt;</label></td>
+	</tr>
+	<tr class="editFtTr">
+		<td colspan="2" align="center"><input type="button" value="" class="lnkSave" onclick="setVal('reg', 'item[content_replace]')" /></td>
+	</tr>
+</table>
+
+
+[replace value=""]//i[/replace]
+
+
+<script>
+function setVal(objName, targetObjName)
+{
+	var str = '';
+	var obj = document.getElementsByName(objName);
+	for (var i = 0; i < obj.length; i++)
+	{
+		if (obj[i].checked) str += "[trim value=\"\"]" + obj[i].value + "[/trim]\n";
+	}
+	var targetObj	= document.getElementsByName(targetObjName)[0];
+	targetObj.value	= str;
+
+	oWindowHide();
+}
+</script>

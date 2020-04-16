@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+	<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+	<link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>font-awesome-4.3.0/css/font-awesome.min.css" />
+	<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+	<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+	<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+	<script type="text/javascript" src="<{$STATIC_PATH}>DatePicker/My97DatePicker/WdatePicker.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$refreshUrl}>" class="lnkRefresh">刷新</a>
+		</div>
+		<div class="search">
+			<form method="get">
+				<input type="hidden" name="con" value="admin" />
+				<input type="hidden" name="ctl" value="convert/convert_list" />
+				<input type="text" class="text" name="t1" readonly placeholder="开始时间" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{$search.t1}>" style="float:none; width:150px; margin-left:0;" />
+				~
+				<input type="text" class="text" name="t2" readonly placeholder="结束时间" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{$search.t2}>" style="float:none; width:150px; margin-left:0;" />
+				<input type="text" class="text"  name="coin_source" style="width:150px; margin-left:0;" placeholder="原始币种" value="<{$search.coin_source}>" />
+				<input type="text" class="text" name="coin_target" style="width:150px; margin-left:0;" placeholder="目标币种" value="<{$search.coin_target}>" />
+				<input type="text" class="text" name="s" style="width:200px; margin-left:0;" placeholder="输入用户名或者txid搜索" value="<{$search.s}>" />
+				<button type="submit" class="custom-button">搜索</button>
+				<button data-href="<{$doUrl}>act=export"  id="export" class="custom-button">导出</button>
+			</form>
+		</div>
+
+		<{include file='form-result.htm'}>
+
+		<form id="listForm" name="listForm" action="" method="post">
+			<table class="listTable">
+				<tr class="listHdTr">
+					<td>用户</td>
+					<td>原始币种</td>
+					<td>目标币种</td>
+					<td>兑换数量</td>
+					<td>获得数量</td>
+					<td>汇率</td>
+					<td>创建时间</td>
+					<td>更新时间</td>
+					<td>状态</td>
+					<td>收益</td>
+					<td>支出</td>
+				</tr>
+				<{foreach from=$list item=item key=key}>
+				<tr<{if $key % 2 == 0}> class="Alternating"<{/if}>>
+				<td><{$item.username}>-<{$item.phone}></td>
+				<td><{$item.coin_source}></td>
+				<td><{$item.coin_target}></td>
+				<td><{(string)$item.amount_source}> / <{$item.amount_source_convert}></td>
+				<td><{$item.amount_target}> / <{$item.amount_target_convert}></td>
+				<td><{(string)$item.rate}></td>
+				<td><{date('Y-m-d H:i:s',$item.add_time)}></td>
+				<td><{date('Y-m-d H:i:s',$item.update_time)}></td>
+				<td>
+					<{if $item.status==0}>
+					<span style="color:grey;">兑换中</span>
+					<{elseif $item.status==1}>
+					<span style="color:green;">兑换成功</span>
+					<{elseif $item.status==2}>
+					<span style="color:blue;">部分成功</span>
+					<{else}>
+					<span style="color:red;">兑换失败</span>
+					<{/if}>
+				</td>
+				<td><{$item.amount_income}> <{$item['income_coin']}> </td>
+				<td><{$item.amount_pay}> <{$item['pay_coin']}></td>
+				</tr>
+				<{/foreach}>
+				<tr class="listFtTr">
+					<td colspan="15" align="right"><{$pager}></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+
+</body>
+<script>
+    $("#export").click(function () {
+        var href = $(this).attr('data-href')
+
+        console.log(href);
+        window.open(href);
+    })
+</script>
+</html>

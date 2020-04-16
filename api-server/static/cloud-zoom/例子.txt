@@ -1,0 +1,8 @@
+<div class="big-pic"><a href="大图" class="cloud-zoom" id="zoom1" rel="adjustX: 10, adjustY:-4"><img src="这里可以是裁剪的图片" width="360" height="325" alt="" /></a></div>
+<div class="small-pic clearfix">
+	<ul class="clearfix">
+		<li><a href="大图" class="cloud-zoom-gallery" rel="useZoom: 'zoom1 对应上面的id', smallImage: '裁剪过的图片，会放在上面img的src中'"><span></span><img src="裁剪过的小图" width="56" height="50" alt="" class="zoom-tiny-image" /></a></li>
+	</ul>
+</div>
+
+使用1.0.1.min.js可以在rel中position:'inside', adjustX:-4, adjustY:-4, showTitle:false，这样能在图片内部放大，而不遮住其他内容

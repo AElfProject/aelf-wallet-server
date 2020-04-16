@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+    <link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+    <link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>font-awesome-4.3.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+    <script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+    <script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+    <script type="text/javascript" src="<{$STATIC_PATH}>DatePicker/My97DatePicker/WdatePicker.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+    <div class="container">
+        <div class="tips">
+            <a href="<{$refreshUrl}>" class="lnkRefresh">刷新</a>
+        </div>
+        <div class="search">
+            <form method="get">
+                <input type="hidden" name="con" value="admin" />
+                <input type="hidden" name="ctl" value="convert/convert_count" />
+                <input type="text" class="text" name="t1"  id="t1" readonly placeholder="开始时间" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{$search.t1}>" style="float:none; width:150px; margin-left:0;" />
+                <input type="text" class="text" name="t2" id="t2" readonly placeholder="结束时间" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{$search.t2}>" style="float:none; width:150px; margin-left:0;" />
+                <button type="submit" class="custom-button">搜索</button>
+
+                <button data-href="<{$doUrl}>act=index&type=export"  id="export" class="custom-button">导出</button>
+
+            </form>
+        </div>
+
+        <{include file='form-result.htm'}>
+
+        <form id="listForm" name="listForm" action="" method="post">
+            交易总笔数：<{array_sum(array_column($list, 'count'))}>
+
+            <table class="listTable">
+                <tr class="listHdTr">
+                    <td>交易对ID编号</td>
+                    <td>交易对名称</td>
+                    <td>交易笔数</td>
+                    <td>交易数量（原始币种）</td>
+                    <td>手续费收入a（成交币种）</td>
+                    <td>成交数量（成交币种）</td>
+                    <td>手续费支出b（成交币种）</td>
+                    <td>净收益（a-b）（成交币种）</td>
+                    <td>明细</td>
+                </tr>
+                <{foreach from=$list item=item key=key}>
+                <tr <{if $key % 2 == 0}> class="Alternating"<{/if}>>
+                <td><{$item.id}></td>
+                <td><{$item.symbol}></td>
+                <td><{$item.count}></td>
+                <td><{(string)$item.amount_source_convert}></td>
+                <td><{$item.amount_income}></td>
+                <td><{(string)$item.amount_target_convert}></td>
+                <td><{$item.amount_pay}></td>
+                <td><{$item.amount_income - $item.amount_pay}></td>
+                <td><a style="color:green;" href="<{$doUrl}>act=convert_list&coin_source=<{$item.coin_source}>&coin_target=<{$item.coin_target}>">交易明细</a></td>
+                <{/foreach}>
+                <tr class="listFtTr">
+                    <td colspan="15" align="right"><{$pager}></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+<script>
+    $("#export").click(function () {
+        var href = $(this).attr('data-href')
+
+        console.log(href);
+        window.open(href);
+    })
+</script>
+</html>

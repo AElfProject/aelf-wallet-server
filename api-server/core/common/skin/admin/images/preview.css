@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* 清除内外边距 */
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td { margin:0; padding:0; }
+
+/* 设置默认字体 */
+body,button,input,select,textarea { font:12px/1.5 \5b8b\4f53,arial,sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; }
+address,cite,dfn,em,var { font-style:normal; }
+code,kbd,pre,samp { font-family:courier new,courier,monospace; }
+small { font-size:12px; }
+ul { list-style:none; }
+a { text-decoration:none; }
+sup { vertical-align:text-top; }
+sub { vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset,img { border:0; }
+button,input,select,textarea{ font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+
+.title{text-align:center;}
+.artbox { padding:0 20px 0; text-align:center; }
+.artbox h1 { padding:18px 0 0; border-bottom:1px solid #ddd; color:#333; font:800 16px/30px "宋体",arial; }
+.artbox .info { padding:0; color:#666; line-height:24px; }
+.article { min-height:300px; _height:300px; padding:20px; margin:0 10px 10px; color:#666; line-height:200%; word-wrap:break-word; word-break:break-all; }

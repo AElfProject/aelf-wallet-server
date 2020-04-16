@@ -1,0 +1,82 @@
+#l-modal_dialog{
+    height:  1000px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom:0;
+    right:0;
+    background: rgba(85,85,85,0.6);
+    z-index: 1000;
+}
+#l-modal_dialog .l-modal_box{
+    height: 450px;
+    width: 800px;
+    margin: 0 auto;
+    background: white;
+    text-align: center;
+}
+#l-modal_dialog .l-modal_box h1,#l-modal_dialog .l-modal_box P{
+    text-align: center;
+    margin-bottom: 20px;
+}
+#l-modal_dialog #back
+{
+    height: 56px;
+    width: 200px;
+    background-color: #525263;
+    font-family:  Helvetica,​Arial,​sans-serif;
+    font-size: 16px;
+    font-weight:  700;
+    text-align:  center;
+    line-height:  60px;
+    margin-left: 450px;
+    margin-top: -55px;
+    cursor: pointer;
+}
+#l-modal_dialog #update
+{
+    height: 56px;
+    width: 200px;
+    background-color: #13C093;
+    font-family:  Helvetica,​Arial,​sans-serif;
+    font-size: 16px;
+    font-weight:  700;
+    text-align:  center;
+    line-height:  60px;
+    margin-left: 180px;
+    cursor: pointer;
+}
+/*#update:hover{ background-color: #13C093;}*/
+
+#l-modal_dialog a{ text-decoration:none;}
+
+
+#l-modal_dialog #btn,#l-modal_dialog #btn2{ color:  white;}
+
+#l-modal_dialog .font-style{
+    color: #525263;
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+#l-modal_dialog .modal-textarea {
+    width: 70%;
+    height: 48px;
+    padding-left: 10px;
+    margin-left: 30px;
+    border: 1px solid #c4ccce;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 6px 12px;
+    vertical-align:middle;
+}
+
+#l-modal_dialog .font-style label{
+    width: 100px;
+    text-align: right;
+    display:inline-block;
+}
+
+#l-modal_dialog .btn-style{
+    margin-top: 50px;
+}

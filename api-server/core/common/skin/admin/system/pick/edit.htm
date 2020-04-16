@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>oWindow/oWindow.js"></script>
+<script type="text/javascript">
+function check (form)
+{
+	var name = document.getElementsByName('data[name]')[0];
+	if (name.value == '')
+	{
+		alert('<{$lang->name}><{$lang->can_not_empty}>');
+		name.focus();
+		return false;
+	}
+
+	return true;
+}
+
+function addLine ()
+{
+	$('#lineArray').append('<tr>' + $('#lineArray tr:first').html() + '</tr>');
+}
+
+function removeLine (obj)
+{
+	if ($('#lineArray tr').length < 2)
+		alert('<{$lang->last_can_not_delete}>');
+	else
+		$(obj).parent().parent().parent().remove();
+}
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="?con=admin&ctl=system/pick" class="lnkReturn"><{$lang->return_to_list}></a> 
+			<{if $hideColumn.pick_delete}><a href="?con=admin&ctl=system/pick&act=delete&id=<{$data.id}>" class="lnkDelete" onclick="return chkDelete();"><{$lang->delete}></a> <{/if}>
+			<{if $hideColumn.pick_doTest}><a href="?con=admin&ctl=system/pick&act=doTest&id=<{$data.id}>"><{$lang->test}></a> <{/if}>
+			<{if $hideColumn.pick_do}><a href="?con=admin&ctl=system/pick&act=do&confirm=1&id=<{$data.id}>"><{$lang->pick}></a><{/if}>
+		</div>
+		<table class="tabTable" id="tableTab">
+			<tr>
+				<td><a class="current" href="#"><{$lang->pick_target_url_setting}></a></td>
+				<td id="tdInfoClass"><a href="#"><{$lang->pick_target_detail_setting}></a></td>
+			</tr>
+		</table>
+		<form action="?con=admin&ctl=system/pick&act=edit&id=<{$data.id}>" method="post" onsubmit="return check(this);">
+			<div id="panes">
+				<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+					<tr class="editHdTr">
+						<td colspan="2"><{$lang->pick_target_url_setting}></td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->pick_copy_source_tips}>"><{$lang->pick_copy_source}></em></td>
+						<td class="editRtTd"><select name="copyfrom">
+							<option value="">--<{$lang->select_copy_pick}>--</option>
+							<{foreach from=$picks item=item key=key}>
+								<option value="<{$item.id}>"<{if $item.id == $data.copyfrom}> selected<{/if}>><{$item.name}></option>
+							<{/foreach}>
+						</select></td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->name}></td>
+						<td class="editRtTd"><input name="data[name]" value="<{$data.name}>" type="text" size="30" class="text" /></td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->pick_charset_tips}>"><{$lang->charset}></em></td>
+						<td class="editRtTd">
+							<input id="gb2312" name="data[charset]" value="GB2312" type="radio"<{if $data.charset == 'GB2312'}> checked<{/if}> /><label for="gb2312">GB2312</label>
+							<input id="utf-8" name="data[charset]" value="UTF8" type="radio"<{if $data.charset == 'UTF8'}> checked<{/if}> /><label for="utf-8">UTF-8</label>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->whether_open_pick}></td>
+						<td class="editRtTd">
+							<input name="data[isOpen]" id="data[isOpen]1" type="radio" value="1"<{if $data.isOpen==1}> checked<{/if}> /><label for="data[isOpen]1"><{$lang->open}></label>
+							<input name="data[isOpen]" id="data[isOpen]0" type="radio" value="0"<{if $data.isOpen==0}> checked<{/if}> /><label for="data[isOpen]0"><{$lang->close}></label>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->pick_target_url_setting}></td>
+						<td class="editRtTd">
+							<input id="list[itemtype]1" name="list[itemtype]" value="1" type="radio"<{if $data.list.itemtype == '1'}> checked<{/if}> /><label for="list[itemtype]1"><{$lang->bulk_auto_generate}></label>
+							<input id="list[itemtype]2" name="list[itemtype]" value="2" type="radio"<{if $data.list.itemtype == '2'}> checked<{/if}> /><label for="list[itemtype]2"><{$lang->manually_specify}></label>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->pick_and_output_tips}>"><{$lang->pick_and_output}></em></td>
+						<td class="editRtTd editor">
+							<table width="100%" id="lineArray">
+								<{foreach from=$data.list.start item=ss key=kk}>
+									<tr>
+										<td class="editor">
+											<{$lang->auto_generate_url}><{$lang->maohao}>
+											<p><{$lang->match_url}><{$lang->maohao}><input type="text" name="list[url][]" value="<{$data.list.url[$kk]}>" size="80" class="text" /></p>
+											<p style="padding-top:5px;">(*)<{$lang->from}><input name="list[start][]" value="<{$data.list.start[$kk]}>" type="text" size="6" class="text" /><{$lang->to}><input name="list[end][]" value="<{$data.list.end[$kk]}>" type="text" size="6" class="text" /> &nbsp; <{$lang->increment}><{$lang->maohao}><input name="list[step][]" value="<{$data.list.step[$kk]}>" type="text" size="6" class="text" /></p>
+											<{$lang->manually_specify}><{$lang->maohao}>
+											<textarea name="list[extend][]" class="text" style="width:98%; height:100px;"><{$data.list.extend[$kk]}></textarea>
+										</td>
+										<td>
+											<span class="removeLine"><a href="javascript:void(0);" onclick="removeLine(this);"><{$lang->delete}></a></span>
+											<select name="data[outClassId][]">
+												<option value="">--<{$lang->pick_output_category}>--</option>
+												<{foreach from=$class item=item key=key}>
+													<option value="<{$item.id}>"<{if md5($data.outClassId[$kk]) == md5($item.id)}> selected<{/if}>><{strpad str='' len=$item.level pad='-'}><{$item.name}></option>
+												<{/foreach}>
+											</select>
+										</td>
+									</tr>
+								<{/foreach}>
+							</table>
+							<p><a href="javascript:addLine();"><{$lang->add}></a></p>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->pick_list_area_start}></td>
+						<td class="editor">
+							<textarea name="list[htmlstart]" class="text" style="width:98%; height:100px;"><{$data.list.htmlstart}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->pick_list_area_end}></td>
+						<td class="editor">
+							<textarea name="list[htmlend]" class="text" style="width:98%; height:100px;"><{$data.list.htmlend}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->pick_url_list_filter}></td>
+						<td class="editor">
+							<textarea name="list[urlfilter]" class="text" style="width:98%; height:100px;"><{$data.list.urlfilter}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><{$lang->if_link_has_image}></td>
+						<td class="editRtTd">
+							<input id="list[img]" name="list[img]" value="" type="radio"<{if $data.list.img != '1'}> checked<{/if}> /><label for="list[img]"><{$lang->not_process}></label>
+							<input id="list[img]1" name="list[img]" value="1" type="radio"<{if $data.list.img == '1'}> checked<{/if}> /><label for="list[img]1"><{$lang->pick_for_thumbnail}></label>
+						</td>
+					</tr>
+				</table>
+				<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable" style="display:none;">
+					<tr class="editHdTr">
+						<td colspan="2"><{$lang->pick_target_detail_setting}></td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->js_parent_url_tips}>"><{$lang->js_parent_url}></em></td>
+						<td class="editor">
+							<input type="text" name="item[parentUrl]" class="text" value="<{$data.item.parentUrl}>" size="50" />
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->detail_for_test_url_tips}>"><{$lang->detail_for_test_url}></em></td>
+						<td class="editor">
+							<input type="text" name="item[url]" class="text" value="<{$data.item.url}>" size="50" />
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->detail_area_start_tips}>"><{$lang->detail_area_start}></em></td>
+						<td class="editor">
+							<textarea name="item[htmlstart]" class="text" style="width:98%; height:100px;"><{$data.item.htmlstart}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->keywords_filter_tips}>"><{$lang->keywords_filter}></em></td>
+						<td class="editor">
+							<textarea name="item[keywords_replace]" class="text" style="width:98%; height:100px;"><{$data.item.keywords_replace}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->description_filter_tips}>"><{$lang->description_filter}></em></td>
+						<td class="editor">
+							<textarea name="item[description_replace]" class="text" style="width:98%; height:100px;"><{$data.item.description_replace}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->title_rule_tips}>"><{$lang->title_rule}></em></td>
+						<td class="editor">
+							<textarea name="item[title]" class="text" style="width:98%; height:100px;"><{$data.item.title}></textarea>
+							<textarea name="item[title_replace]" class="text" style="width:98%; height:100px;"><{$data.item.title_replace}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->author_rule_tips}>"><{$lang->author_rule}></em></td>
+						<td class="editor">
+							<textarea name="item[author]" class="text" style="width:98%; height:100px;"><{$data.item.author}></textarea>
+							<textarea name="item[author_replace]" class="text" style="width:98%; height:100px;"><{$data.item.author_replace}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->source_rule_tips}>"><{$lang->source_rule}></em></td>
+						<td class="editor">
+							<textarea name="item[source]" class="text" style="width:98%; height:100px;"><{$data.item.source}></textarea>
+							<textarea name="item[source_replace]" class="text" style="width:98%; height:100px;"><{$data.item.source_replace}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->publish_date_rule_tips}>"><{$lang->publish_date_rule}></em></td>
+						<td class="editor">
+							<textarea name="item[publishdate]" class="text" style="width:98%; height:100px;"><{$data.item.publishdate}></textarea>
+							<textarea name="item[publishdate_replace]" class="text" style="width:98%; height:100px;"><{$data.item.publishdate_replace}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->content_rule_tips}>"><{$lang->content_rule}></em></td>
+						<td class="editor">
+							<textarea name="item[content]" class="text" style="width:98%; height:100px;"><{$data.item.content}></textarea>
+							<textarea name="item[content_replace]" class="text" style="width:98%; height:100px;"><{$data.item.content_replace}></textarea>
+							<input id="item[downimg]" name="item[downimg]" type="checkbox" value="1"<{if $data.item.downimg}> checked<{/if}> /><label for="item[downimg]"><em class="tip" tips="<{$lang->download_content_pics_tips}>"><{$lang->download_content_pics}></em></label>
+							<a href="javascript:void(0);" onclick="oWindowShow('<{$SKIN_PATH}>oWindow/common_reg');"><{$lang->common_rules}></a>
+							<input type="checkbox" id="item[isJsContent]" onclick="if (this.checked) { document.getElementById('item[jsContent]').style.display = 'block'; } else document.getElementById('item[jsContent]').style.display = 'none';" name="item[isJsContent]" value="1"<{if $data.item.isJsContent}> checked<{/if}> /><label for="item[isJsContent]"><em class="tip" tips="<{$lang->js_content_tips}>"><{$lang->js_content}></em></label>
+							<textarea id="item[jsContent]" name="item[jsContent]" class="text" style="width:98%; height:100px;<{if !$data.item.isJsContent}> display:none;<{/if}>"><{$data.item.jsContent}></textarea>
+						</td>
+					</tr>
+					<tr class="editTr">
+						<td class="editLtTd"><em class="tip" tips="<{$lang->content_page_rule_tips}>"><{$lang->content_page_rule}></em></td>
+						<td class="editor">
+							<textarea name="item[page]" class="text" style="width:98%; height:100px;"><{$data.item.page}></textarea>
+							<textarea name="item[page_replace]" class="text" style="width:98%; height:100px;"><{$data.item.page_replace}></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="?con=admin&ctl=system/pick" class="lnkReturn"><{$lang->return_to_list}></a> 
+				<{if $hideColumn.pick_doTest}><a href="?con=admin&ctl=system/pick&act=doTest&id=<{$data.id}>"><{$lang->test}></a> <{/if}>
+				<{if $hideColumn.pick_do}><a href="?con=admin&ctl=system/pick&act=do&confirm=1&id=<{$data.id}>"><{$lang->pick}></a><{/if}>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

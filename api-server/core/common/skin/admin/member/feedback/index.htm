@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+	<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+	<link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>font-awesome-4.3.0/css/font-awesome.min.css" />
+	<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+	<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+	<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$refreshUrl}>" class="lnkRefresh">刷新</a>
+		</div>
+
+		<{include file='form-result.htm'}>
+
+		<form id="listForm" name="listForm" action="" method="post">
+			<table class="listTable">
+				<tr class="listHdTr">
+					<td>id</td>
+					<td>标题</td>
+					<td>描述</td>
+					<td>email</td>
+					<td>用户id</td>
+					<td>用户昵称</td>
+					<td>ip</td>
+					<td>创建时间</td>
+					<td width="6%">查看</td>
+				</tr>
+
+				<{foreach from=$list item=item key=key}>
+				<tr<{if $key % 2 == 0}> class="Alternating"<{/if}>>
+				<td><{$item.id}></td>
+				<td><{$item.title}></td>
+				<td><{$item.desc}></td>
+				<td><{$item.email}></td>
+				<td><{$item.user_id}></td>
+				<td><{$item.userName}></td>
+				<td><{$item.ip}></td>
+				<td><{$item.create_time|date_format:'Y-m-d H:i:s'}></td>
+				<td><a style="color:green;" href="<{$doUrl}>act=detail&id=<{$item.id}>">详情</a></td>
+				</tr>
+				<{/foreach}>
+
+				<tr class="listFtTr">
+					<td colspan="15" align="right"><{$pager}></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>font-awesome-4.3.0/css/font-awesome.min.css" />
+<script type="text/javascript" src="<{$STATIC_PATH}>jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$returnUrl}>" class="lnkReturn">返回列表</a>
+		</div>
+
+		<{include file='form-result.htm'}>
+
+		<form method="post" id="form1">
+			<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2">风险告知</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd">语言</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<select name="lang">
+								<option value="">请选择语言</option>
+								<{foreach from=$langs item=item}>
+								<option value="<{$item.id}>"<{if $item.id==$formData.lang}> selected<{/if}>><{$item.name}></option>
+								<{/foreach}>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd">key</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<input type="text" name="key" value="<{$formData.key}>" placeholder="" class="text" size="100"<{if $formData.id>0}> readonly<{/if}> />
+						</div>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd">标题</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<input type="text" name="title" value="<{$formData.title}>" placeholder="" class="text" size="100" />
+						</div>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd">内容</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<textarea name="content" class="text" style="width:80%; height:80px;"><{$formData.content}></textarea>
+						</div>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd">状态</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<label><input type="checkbox" name="status" value="1"<{if $formData.status}> checked<{/if}> />启用</label>
+						</div>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd">显示／隐藏</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<label><input type="checkbox" name="show" value="1"<{if $formData.show}> checked<{/if}> />显示</label>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" />
+				<a href="<{$returnUrl}>" class="lnkReturn">返回列表</a>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

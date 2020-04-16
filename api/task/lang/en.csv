@@ -1,0 +1,7 @@
+"您有一笔交易已发送成功，金额：%s","A transaction with amount: %s has been successfully broadcasted."
+"您有一笔收款到账，金额：%s","You have received a transaction with %s"
+"您有一笔交易已发送失败，金额：%s","You have failed to make the transaction. Amount: %s"
+"您有一笔收款失败，金额：%s","You have failed to receive the transfer. Amount: %s"
+"ELF钱包","ELF Wallet"
+
+"您有一笔转账已提交，金额：%s","A transaction with amount: %s has been submitted."

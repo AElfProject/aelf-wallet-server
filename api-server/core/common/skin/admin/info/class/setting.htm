@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$refreshUrl}>" class="lnkReturn"><{$lang->return_to_list}></a> 
+		</div>
+		<table class="tabTable" id="tableTab">
+			<tr>
+				<td><a href="?con=admin&ctl=info/class&act=edit&id=<{$data.id}>"><{$lang->basic_parameters}></a></td>
+				<td><a class="current" href="#"><em class="tip" tips="<{$lang->advanced_parameters_tips}>"><{$lang->advanced_parameters}></em></a></td>
+			</tr>
+		</table>
+		<form action="?con=admin&ctl=info/class&act=setting&id=<{$data.id}>" method="post">
+			<table class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2"><{$lang->advanced_parameters}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->per_page_count_of_list}></td>
+					<td class="editRtTd">
+						<input type="text" name="data[perPageCount]" size="10" maxlength="3" class="text" value="<{$data.perPageCount}>" />
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->category_thumbnail_size}></td>
+					<td class="editRtTd">
+						<input type="text" name="other[cpic1width]" size="10" maxlength="4" class="text" value="<{$data.other.cpic1width}>" /> <{$lang->width}> 
+						<input type="text" name="other[cpic1height]" size="10" maxlength="4" class="text" value="<{$data.other.cpic1height}>" /> <{$lang->height}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->category_enlarge_size}></td>
+					<td class="editRtTd">
+						<input type="text" name="other[cpic2width]" size="10" maxlength="4" class="text" value="<{$data.other.cpic2width}>" /> <{$lang->width}> 
+						<input type="text" name="other[cpic2height]" size="10" maxlength="4" class="text" value="<{$data.other.cpic2height}>" /> <{$lang->height}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->article_thumbnail_size}></td>
+					<td class="editRtTd">
+						<input type="text" name="other[pic1width]" size="10" maxlength="4" class="text" value="<{$data.other.pic1width}>" /> <{$lang->width}> 
+						<input type="text" name="other[pic1height]" size="10" maxlength="4" class="text" value="<{$data.other.pic1height}>" /> <{$lang->height}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->article_enlarge_size}></td>
+					<td class="editRtTd">
+						<input type="text" name="other[pic2width]" size="10" maxlength="4" class="text" value="<{$data.other.pic2width}>" /> <{$lang->width}> 
+						<input type="text" name="other[pic2height]" size="10" maxlength="4" class="text" value="<{$data.other.pic2height}>" /> <{$lang->height}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->article_pics_thumbnail_size}></td>
+					<td class="editRtTd">
+						<input type="text" name="other[infopic1width]" size="10" maxlength="4" class="text" value="<{$data.other.infopic1width}>" /> <{$lang->width}> 
+						<input type="text" name="other[infopic1height]" size="10" maxlength="4" class="text" value="<{$data.other.infopic1height}>" /> <{$lang->height}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->article_pics_enlarge_size}></td>
+					<td class="editRtTd">
+						<input type="text" name="other[infopic2width]" size="10" maxlength="4" class="text" value="<{$data.other.infopic2width}>" /> <{$lang->width}> 
+						<input type="text" name="other[infopic2height]" size="10" maxlength="4" class="text" value="<{$data.other.infopic2height}>" /> <{$lang->height}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->attachment_allow_types}></td>
+					<td class="editRtTd">
+						<input type="text" name="other[exts]" size="60" class="text" value="<{$data.other.exts}>" />
+						<{$lang->attachment_allow_types_tips}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->display_mode}></td>
+					<td class="editRtTd">
+						<{foreach from=$data.displayModes item=item key=key}>
+							<input id="displayModes<{$item[0]}>" name="displayModes[]" value="<{$item[0]}>" type="checkbox"<{if $item[2]}> checked<{/if}> /><label for="displayModes<{$item[0]}>"><{$item[1]}></label>
+						<{/foreach}>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="Control the basic parameters of the information classification can be configured item"><{$lang->category_setting}></em></td>
+					<td class="editRtTd">
+						<input id="classhasDisplayMode" name="class[hasDisplayMode]" value="1" type="checkbox"<{if $data.extend.hasDisplayMode}> checked<{/if}> /><label for="classhasDisplayMode"><{$lang->display_mode}></label>
+						<input id="classhasNameEn" name="class[hasNameEn]" value="1" type="checkbox"<{if $data.extend.hasNameEn}> checked<{/if}> /><label for="classhasNameEn"><{$lang->category_name_en}></label>
+						<input id="classhasAlias" name="class[hasAlias]" value="1" type="checkbox"<{if $data.extend.hasAlias}> checked<{/if}> /><label for="classhasAlias"><{$lang->alias}></label>
+						<input id="classhasDomain" name="class[hasDomain]" value="1" type="checkbox"<{if $data.extend.hasDomain}> checked<{/if}> /><label for="classhasDomain"><{$lang->category_directory}></label>
+						<input id="classStyle" name="class[hasclassStyle]" value="1" type="checkbox"<{if $data.extend.hasclassStyle}> checked<{/if}> /><label for="classStyle"><{$lang->style}></label>
+						<input id="classhasUrl" name="class[hasUrl]" value="1" type="checkbox"<{if $data.extend.hasUrl}> checked<{/if}> /><label for="classhasUrl"><{$lang->link_address}></label>
+						<input id="classhasPageTitle" name="class[hasPageTitle]" value="1" type="checkbox"<{if $data.extend.hasPageTitle}> checked<{/if}> /><label for="classhasPageTitle"><{$lang->page_title}></label>
+						<input id="classhasKeywords" name="class[hasKeywords]" value="1" type="checkbox"<{if $data.extend.hasKeywords}> checked<{/if}> /><label for="classhasKeywords"><{$lang->page_keywords}></label>
+						<input id="classhasDescription" name="class[hasDescription]" value="1" type="checkbox"<{if $data.extend.hasDescription}> checked<{/if}> /><label for="classhasDescription"><{$lang->page_description}></label>
+						<input id="classhasImageUrl" name="class[hasImageUrl]" value="1" type="checkbox"<{if $data.extend.hasImageUrl}> checked<{/if}> /><label for="classhasImageUrl"><{$lang->thumbnail}></label>
+						<input id="classhasBigImageUrl" name="class[hasBigImageUrl]" value="1" type="checkbox"<{if $data.extend.hasBigImageUrl}> checked<{/if}> /><label for="classhasBigImageUrl"><{$lang->enlarge}></label>
+						<input id="classhasFiles" name="class[hasFiles]" value="1" type="checkbox"<{if $data.extend.hasFiles}> checked<{/if}> /><label for="classhasFiles"><{$lang->attachment}></label>
+						<br />
+						<input id="classhasIntro" name="class[hasIntro]" value="1" type="checkbox"<{if $data.extend.hasIntro}> checked<{/if}> /><label for="classhasIntro"><{$lang->intro}></label>
+						<input id="classhasContent" name="class[hasContent]" value="1" type="checkbox"<{if $data.extend.hasContent}> checked<{/if}> /><label for="classhasContent"><{$lang->detail}></label>
+						<input id="classhasTemplate" name="class[hasTemplate]" value="1" type="checkbox"<{if $data.extend.hasTemplate}> checked<{/if}> /><label for="classhasTemplate"><{$lang->template}></label>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><em class="tip" tips="Control of all information in the classification of configuration items"><{$lang->article_setting}></em></td>
+					<td class="editor">
+						<input id="hasTop" name="info[hasTop]" value="1" type="checkbox"<{if $data.info.hasTop}> checked<{/if}> /><label for="hasTop"><{$lang->status_top}></label>
+						<input id="hasRecommended" name="info[hasRecommended]" value="1" type="checkbox"<{if $data.info.hasRecommended}> checked<{/if}> /><label for="hasRecommended"><{$lang->status_recommend}></label>
+						<input id="hasHot" name="info[hasHot]" value="1" type="checkbox"<{if $data.info.hasHot}> checked<{/if}> /><label for="hasHot"><{$lang->status_hot}></label>
+						<input id="hasView" name="info[hasView]" value="1" type="checkbox"<{if $data.info.hasView}> checked<{/if}> /><label for="hasView"><{$lang->hits}></label>
+						<input id="hasSubTitle" name="info[hasSubTitle]" value="1" type="checkbox"<{if $data.info.hasSubTitle}> checked<{/if}> /><label for="hasSubTitle"><{$lang->sub_title}></label>
+						<input id="hasPageTitle" name="info[hasPageTitle]" value="1" type="checkbox"<{if $data.info.hasPageTitle}> checked<{/if}> /><label for="hasPageTitle"><{$lang->page_title}></label>
+						<input id="hasKeywords" name="info[hasKeywords]" value="1" type="checkbox"<{if $data.info.hasKeywords}> checked<{/if}> /><label for="hasKeywords"><{$lang->page_keywords}></label>
+						<input id="hasDescription" name="info[hasDescription]" value="1" type="checkbox"<{if $data.info.hasDescription}> checked<{/if}> /><label for="hasDescription"><{$lang->page_description}></label>
+						<input id="hasPublishdate" name="info[hasPublishdate]" value="1" type="checkbox"<{if $data.info.hasPublishdate}> checked<{/if}> /><label for="hasPublishdate"><{$lang->publish_date}></label>
+						<input id="hasSource" name="info[hasSource]" value="1" type="checkbox"<{if $data.info.hasSource}> checked<{/if}> /><label for="hasSource"><{$lang->source}></label>
+						<br />
+						<input id="hasAuthor" name="info[hasAuthor]" value="1" type="checkbox"<{if $data.info.hasAuthor}> checked<{/if}> /><label for="hasAuthor"><{$lang->author}></label>
+						<input id="hasUrl" name="info[hasUrl]" value="1" type="checkbox"<{if $data.info.hasUrl}> checked<{/if}> /><label for="hasUrl"><{$lang->link_address}></label>
+						<input id="hasTitleStyle" name="info[hasTitleStyle]" value="1" type="checkbox"<{if $data.info.hasTitleStyle}> checked<{/if}> /><label for="hasTitleStyle"><{$lang->style}></label>
+						<input id="hasAlias" name="info[hasAlias]" value="1" type="checkbox"<{if $data.info.hasAlias}> checked<{/if}> /><label for="hasAlias"><{$lang->alias}></label>
+						<input id="hasImageUrl" name="info[hasImageUrl]" value="1" type="checkbox"<{if $data.info.hasImageUrl}> checked<{/if}> /><label for="hasImageUrl"><{$lang->thumbnail}></label>
+						<input id="hasBigImageUrl" name="info[hasBigImageUrl]" value="1" type="checkbox"<{if $data.info.hasBigImageUrl}> checked<{/if}> /><label for="hasBigImageUrl"><{$lang->enlarge}></label>
+						<input id="hasInfoPic" name="info[hasInfoPic]" value="1" type="checkbox"<{if $data.info.hasInfoPic}> checked<{/if}> /><label for="hasInfoPic"><{$lang->album}></label>
+						<input id="hasFiles" name="info[hasFiles]" value="1" type="checkbox"<{if $data.info.hasFiles}> checked<{/if}> /><label for="hasFiles"><{$lang->attachment}></label>
+						<br />
+						<input id="hasIntro" name="info[hasIntro]" value="1" type="checkbox"<{if $data.info.hasIntro}> checked<{/if}> /><label for="hasIntro"><{$lang->intro}></label>
+						<input id="hasSourceHtml" name="info[hasSourceHtml]" value="1" type="checkbox"<{if $data.info.hasSourceHtml}> checked<{/if}> /><label for="hasSourceHtml"><{$lang->source_url}></label>
+						<input id="hasContent" name="info[hasContent]" value="1" type="checkbox"<{if $data.info.hasContent}> checked<{/if}> /><label for="hasContent"><{$lang->detail}></label>
+						<input id="hasTags" name="info[hasTags]" value="1" type="checkbox"<{if $data.info.hasTags}> checked<{/if}> /><label for="hasTags"><{$lang->tags}></label>
+					</td>
+				</tr>
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+				<a href="<{$refreshUrl}>" class="lnkReturn"><{$lang->return_to_list}></a> 
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/* 清除内外边距 */
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td { margin:0; padding:0; }
+
+/* 设置默认字体 */
+body { font:12px/1.5 arial,"microsoft Yahei",\5b8b\4f53,sans-serif; }
+button,input,select,textarea{ font:12px arial,"microsoft Yahei",\5b8b\4f53,sans-serif;}
+input{ margin:0 5px; }
+textarea{ margin:0 5px; }
+.droplist { margin:0 5px; }
+
+h1,h2,h3,h4,h5,h6 { font-size:100%; }
+address,cite,dfn,em,var { font-style:normal; }
+code,kbd,pre,samp { font-family:courier new,courier,monospace; }
+small { font-size:12px; }
+ul,ol { list-style:none; }
+a { cursor:pointer; text-decoration:none; }
+sup { vertical-align:text-top; }
+sub { vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset,img { border:0; }
+table { border-collapse:collapse; border-spacing:0; }
+
+.col-main{ float:left; width:100%; min-height:1px; }
+.col-sub,.col-extra { float:left; }
+.layout:after,.main-wrap:after,.col-sub:after,.col-extra:after { content:'\20'; display:block; height:0; clear:both; }
+.layout,.main-wrap,.col-sub,.col-extra { zoom:1; }
+
+/* 常见功能 */
+.hidden { display:none; }
+.invisible { visibility:hidden; }
+.nobg { background:none !important; }
+
+/* 清除浮动 */
+.clear { display:block; height:0; overflow:hidden; clear:both; }
+.clearfix:after { content:'\20'; display:block; height:0; clear:both; }
+.clearfix { *zoom:1; }
+
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁*/
+html { overflow-y:scroll; }
+
+/* 默认链接样式 */
+a:link,a:visited { text-decoration:none; }
+a:hover,a:active { text-decoration:underline; }
+
+/* 根据不同项目进行设置 */
+body { background:#fff; color:#000; }
+a { color:#000}
+a:hover { color:#f60; }
+select { margin-left:5px; }

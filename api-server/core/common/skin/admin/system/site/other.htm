@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips"></div>
+		<table class="tabTable">
+			<tr>
+				<{if $hideColumn.site_index}><td><a href="?con=admin&ctl=system/site"><{$lang->basic_setting}></a></td><{/if}>
+				<{if $hideColumn.site_other}><td><a class="current" href="#"><{$lang->advanced_setting}></a></td><{/if}>
+			</tr>
+		</table>
+		<form action="?con=admin&ctl=system/site&act=other&cl=<{$cl}>" method="post" onsubmit="return check(this);">
+			<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2"><{$lang->advanced_setting}></td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->select_lang}></td>
+					<td class="editRtTd">
+						<select onchange="window.location.href = '?con=admin&ctl=system/site&act=other&cl=' + this.value;">
+							<{foreach from=$langs item=item}>
+								<option value="<{$item.id}>"<{if $cl==$item.id}> selected<{/if}>><{$item.name}></option>
+							<{/foreach}>
+						</select>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->copyright_info}></td>
+					<td class="editRtTd">
+						<input id="isCopyrightEnabled1" name="data[isCopyrightEnabled]" value="1" type="radio"<{if $data.isCopyrightEnabled}> checked<{/if}> /><label for="isCopyrightEnabled1"><{$lang->show}></label>
+						<input id="isCopyrightEnabled2" name="data[isCopyrightEnabled]" value="0" type="radio"<{if !$data.isCopyrightEnabled}> checked<{/if}> /><label for="isCopyrightEnabled2"><{$lang->hide}></label>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->contact_info}></td>
+					<td class="editRtTd">
+						<input id="isContactEnabled1" name="data[isContactEnabled]" value="1" type="radio"<{if $data.isContactEnabled}> checked<{/if}> /><label for="isContactEnabled1"><{$lang->show}></label>
+						<input id="isContactEnabled2" name="data[isContactEnabled]" value="0" type="radio"<{if !$data.isContactEnabled}> checked<{/if}> /><label for="isContactEnabled2"><{$lang->hide}></label>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->head_javascript}></td>
+					<td class="editRtTd">
+						<input id="isHeadJavascriptEnabled1" name="data[isHeadJavascriptEnabled]" value="1" type="radio"<{if $data.isHeadJavascriptEnabled}> checked<{/if}> /><label for="isHeadJavascriptEnabled1"><{$lang->show}></label>
+						<input id="isHeadJavascriptEnabled2" name="data[isHeadJavascriptEnabled]" value="0" type="radio"<{if !$data.isHeadJavascriptEnabled}> checked<{/if}> /><label for="isHeadJavascriptEnabled2"><{$lang->hide}></label>
+					</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd"><{$lang->foot_javascript}></td>
+					<td class="editRtTd">
+						<input id="isFootJavascriptEnabled1" name="data[isFootJavascriptEnabled]" value="1" type="radio"<{if $data.isFootJavascriptEnabled}> checked<{/if}> /><label for="isFootJavascriptEnabled1"><{$lang->show}></label>
+						<input id="isFootJavascriptEnabled2" name="data[isFootJavascriptEnabled]" value="0" type="radio"<{if !$data.isFootJavascriptEnabled}> checked<{/if}> /><label for="isFootJavascriptEnabled2"><{$lang->hide}></label>
+					</td>
+				</tr>
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" /> 
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

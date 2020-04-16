@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/header.css">
+</head>
+
+<body>
+<div class="header">
+	<div class="inhead clearfix">
+		<h1 class="logo"><a href="javascript:;"><{$lang->website_management_center}></a><em class="ver"><{$CMS_VERS}></em></h1>
+		<{if $langs_count>1000}>
+		<div class="lang-set">
+			<!--span><{$lang->select_lang}>: </span-->
+			<{foreach from=$langs item=item key=key}>
+			<a<{if $admin_lang==$item.id}> class="current" href="javascript:;" style="cursor:default;"<{else}> href="<{$http_root_www}>?con=admin&ctl=default&admin_lang=<{$item.id}>" target="_parent"<{/if}>><{$item.name}></a>
+			<{/foreach}>
+		</div>
+		<{/if}>
+	</div>
+	<div class="set clearfix">
+		<div class="breadcrumbs"><{$admin_name}></div>
+		<ul class="quick-menu clearfix">
+			<li class="nobg"><a href="<{$http_root_www}>" target="_blank"><{$lang->home}></a></li>
+			<{if $hideColumn.user_changepass}><li><a href="?con=admin&ctl=system/user&act=changepass" target="main"><{$lang->change_password}></a></li><{/if}>
+			<li class="exit"><a href="?con=admin&ctl=common/login&act=logout"><{$lang->exit_system}></a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

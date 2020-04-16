@@ -1,0 +1,6 @@
+<script type="text/javascript" language="javascript" src="<%=STATIC_PATH%>/editor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" language="javascript">
+	$(function(){
+		CKEDITOR.replace('content', { toolbar: 'Full' });
+	});
+</script>

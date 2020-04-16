@@ -1,0 +1,29 @@
+<div class="page">
+[<{$lang->total_records_number}>:<{$rc}>]&nbsp;
+<{if $sy==1}>
+<a href="<{$url}>"><{$lang->first_page}></a>&nbsp;
+<a href="<{$url}><{$cp-1}>"><{$lang->previous_page}></a>&nbsp;
+<{/if}>
+<{section name=id loop=$pg}>
+	<a href="<{$pg[id].url}>"<{if $pg[id].isCurrent}> class="current"<{/if}>><{$pg[id].nr}></a>&nbsp;
+<{/section}>
+<{if $wy==1}>
+<a href="<{$url}><{$cp+1}>"><{$lang->next_page}></a>&nbsp;
+<a href="<{$url}><{$pc}>"><{$lang->last_page}></a>&nbsp;
+<{/if}>
+[<{$cp}>/<{$pc}>]&nbsp;[<{$lang->per_page_count}> <input type="text" name="perPageCount" size="5" value="<{$ps}>" onkeypress="chkKeyDownForPage(this, event)" />]
+</div>
+<script>
+function chkKeyDownForPage(o, e)
+{
+	var e		= e || event;
+	var key		= e.keyCode || e.which || e.charCode;
+	if (key == 13)
+	{
+		var url	= '<{$url}>';
+		url		= url.replace(/&?perPageCount=\d+/g, '');
+		window.location.href = url + '&perPageCount=' + o.value;
+	}
+	
+}
+</script>

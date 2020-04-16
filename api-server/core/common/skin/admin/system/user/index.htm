@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+<script type="text/javascript">
+function searchSubmit ()
+{
+	var role	= document.getElementsByName('role')[0].value;
+	var type	= document.getElementsByName('type')[0].value;
+	var keyword	= document.getElementsByName('keyword')[0].value;
+	var onlyNotApproved	= document.getElementsByName('onlyNotApproved')[0];
+	if (onlyNotApproved.checked) onlyNotApproved = 1;
+	else onlyNotApproved = 0;
+
+	window.location.href = '?con=admin&ctl=system/user&role=' + role + '&type=' + type + '&keyword=' + encodeURI(keyword) + '&onlyNotApproved=' + onlyNotApproved;
+}
+</script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="?con=admin&ctl=system/user" class="lnkRefresh"><{$lang->refresh}></a>
+			<a href="?con=admin&ctl=system/user&act=add" class="lnkAdd"><{$lang->add_user}></a>
+		</div>
+		<div class="search clearfix">
+			<select onchange="searchSubmit()" name="role">
+				<option value="0"><{$lang->filter_by_role}></option>
+				<{foreach from=$rolelist item=item key=key}>
+					<option value="<{$item.id}>"<{if $item.id==$search.role}> selected<{/if}>><{$item.name}></option>
+				<{/foreach}>
+			</select>
+			<select name="type">
+				<option value="name"<{if $search.type=="name"}> selected="selected"<{/if}>><{$lang->user_name}></option>
+				<option value="displayName"<{if $search.type=="displayName"}> selected="selected"<{/if}>><{$lang->person_name}></option>
+				<option value="email"<{if $search.type=="email"}> selected="selected"<{/if}>><{$lang->email}></option>
+			</select>
+			<input type="text" class="text" style="width:100px;" maxlength="50" name="keyword" value="<{$search.keyword}>" />
+			<a onclick="searchSubmit()" class="lnkSearch"><{$lang->search}></a>
+		</div>
+		<table class="listTable">
+			<tr class="listHdTr">
+				<td width="15%"><{$lang->email}></td>
+				<td width="15%"><{$lang->user_name}></td>
+				<td width="20%"><{$lang->person_name}></td>
+				<td width="15%"><{$lang->role_name}></td>
+				<td width="8%"><em class="tip" tips="<{$lang->user_administrator_tips}>"><{$lang->administrator}></em></td>
+				<td width="8%"><em class="tip" tips="<{$lang->user_audit_tips}>"><{$lang->whether_audit}></em></td>
+				<td width="12%"><{$lang->register_date}></td>
+				<td width="12%"><{$lang->last_login_time}></td>
+				<!-- <td width="6%"><em class="tip" tips="<{$lang->user_authorize_tips}>"><{$lang->authorize}></em></td> -->
+				<td width="6%"><{$lang->delete}></td>
+			</tr>
+			<{foreach from=$data item=item key=key}>
+				<tr<{if $key % 2 == 0}> class="Alternating"<{/if}>>
+					<td><{$item.email}></td>
+					<td><a href="?con=admin&ctl=system/user&act=edit&id=<{$item.id}>"><{$item.name}></a></td>
+					<td><{$item.displayName}></td>
+					<td><{$item.roleName}></td>
+					<td><{if $item.isAdmin==1}><{$lang->yes}><{else}><font color="FF0000"><{$lang->no}></font><{/if}></td>
+					<td><{if $item.isApproved==1}><{$lang->yes}><{else}><font color="FF0000"><{$lang->no}></font><{/if}></td>
+					<td><{if $item.createdDate}><{date('Y-m-d H:i:s', $item.createdDate)}><{/if}></td>
+					<td><{if $item.lastLoginDate}><{date('Y-m-d H:i:s', $item.lastLoginDate)}><{/if}></td>
+					<!-- <td><{if ($item.roleExtendType!=1 || $item.role==0) && ($item.groupid==1 || $user_id==-1)}><a href="?con=admin&ctl=system/user&act=authorize&id=<{$item.id}>" class="lnkAuthorize"></a><{/if}></td> -->
+					<td><a href="?con=admin&ctl=system/user&act=delete&id=<{$item.id}>" class="lnkDelete" onclick="return chkDelete();"></a></td>
+				</tr>
+			<{/foreach}>
+			<tr class="listFtTr">
+				<td colspan="10" align="right"><{$pager}></td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>

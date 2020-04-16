@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><{$data.pageTitle}></title>
+<meta name="keywords" content="<{$data.keywords}>" />
+<meta name="description" content="<{$data.description}>" />
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/preview.css">
+</head>
+
+<body>
+<div class="artbox">
+	<h1 style="<{$data.titleStyle}>"><{$data.title}></h1>
+	<div class="info"><{$data.publishedDate}> <{$lang->author}><{$lang->maohao}> <{$data.author}> &nbsp; <{$lang->source}><{$lang->maohao}> <{$data.source}> &nbsp; <{$lang->hits}><{$lang->maohao}> <{$data.hits}></div>
+</div>
+<div class="article" id="article">
+	<{$data.content}>
+</div>
+</body>
+</html>

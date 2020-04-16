@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+</head>
+
+<body>
+<div class="wrap clearfix">
+	<div class="container">
+		<div>
+			<ul class="msg clearfix">
+				<li class="adminFace"><img src="<{$SKIN_PATH}>images/admin_face.png" width="84" height="84" alt="admin face" /></li>
+				<li class="name"><em><{$user.displayName}></em>&nbsp;<{$lang->welcome_management}></li>
+				<li class="time"><{$time}></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="grid-m0s330 layout">
+			<div class="col-main">
+				<div class="main-wrap">
+					<div class="statistics box-skin-blue">
+						<div class="hd">
+							<h4><{$lang->statistics}></h4>
+						</div>
+						<div class="bd clearfix">
+							<div class="column">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sub">
+				<div class="information box-skin-blue">
+					<div class="hd">
+						<h4><{$lang->your_nformation}></h4>
+					</div>
+					<div class="bd">
+						<ul class="info-list">
+							<li class="clearfix"><span><{$lang->user_name}>:</span>admin<{$user.name}></li>
+							<li class="clearfix"><span><{$lang->ip}>:</span><{$user.lastLoginIP}></li>
+							<li class="clearfix"><span><{$lang->login_count}>:</span><{$user.loginCount}></li>
+							<li class="clearfix"><span><{$lang->last_login_time}>:</span><{$user.lastLoginDate}></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

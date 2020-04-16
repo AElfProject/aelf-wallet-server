@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+<link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>font-awesome-4.3.0/css/font-awesome.min.css" />
+<script type="text/javascript" src="<{$STATIC_PATH}>jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+<script type="text/javascript" src="<{$STATIC_PATH}>DatePicker/My97DatePicker/WdatePicker.js"></script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+	<div class="container">
+		<div class="tips">
+			<a href="<{$returnUrl}>" class="lnkReturn">返回列表</a>
+		</div>
+
+		<{include file='form-result.htm'}>
+
+		<form method="post" id="form1" enctype="multipart/form-data">
+			<table width="98%" align="center" height="100%" border="0" cellspacing="0" cellpadding="0" class="editTable">
+				<tr class="editHdTr">
+					<td colspan="2">版本信息</td>
+				</tr>
+				<tr class="editTr">
+					<td class="editLtTd">版本号</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<input type="text" name="verNo" value="<{$formData.verNo}>"  class="text" size="20" />
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">状态</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<label><input type="checkbox" name="status" value="1"<{if $formData.status}> checked<{/if}> />启用</label>
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">是否强制更新</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<label><input type="checkbox" name="is_force" value="1"<{if $formData.is_force}> checked<{/if}> />是</label>
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">下载链接</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<input type="text" name="appUrl" value="<{$formData.appUrl}>" placeholder="" class="text" size="100" />
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">设备名称</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<input type="text" name="key" value="<{$formData.key}>" placeholder="" class="text" size="100" />
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">最小版本</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<input type="text" name="min_version" value="<{$formData.min_version}>" placeholder="" class="text" size="100" />
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr" id="upgrade_time">
+					<td class="editLtTd">升级时间</td>
+					<td class="editRtTd">
+						<div class="input-box">
+							<input type="text" name="upgrade_time" value="<{if $formData.upgrade_time > 0}><{date( 'Y-m-d H:i:s', $formData.upgrade_time)}><{/if}>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  placeholder="" class="text" size="30" />
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">中文介绍</td>
+					<td class="editRtTd">
+						<div class="input-box" style="padding-right:15px;">
+							<textarea name="intro" class="text" style="width:80%; height:80px;"><{$formData.intro}></textarea>如果有多行用#@#@#@隔开
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">英文介绍</td>
+					<td class="editRtTd">
+						<div class="input-box" style="padding-right:15px;">
+							<textarea name="intro_en" class="text" style="width:80%; height:80px;"><{$formData.intro_en}></textarea>如果有多行用#@#@#@隔开
+						</div>
+					</td>
+				</tr>
+
+				<tr class="editTr">
+					<td class="editLtTd">韩文介绍</td>
+					<td class="editRtTd">
+						<div class="input-box" style="padding-right:15px;">
+							<textarea name="intro_ko" class="text" style="width:80%; height:80px;"><{$formData.intro_ko}></textarea>如果有多行用#@#@#@隔开
+						</div>
+					</td>
+				</tr>
+
+			</table>
+			<div class="editBtn clearfix">
+				<input type="submit" value="Save" class="lnkSave" />
+				<a href="<{$returnUrl}>" class="lnkReturn">返回列表</a>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

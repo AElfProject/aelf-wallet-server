@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Flash详细参数设置</title>
+<link rel="stylesheet" type="text/css" href="global.css">
+<link rel="stylesheet" type="text/css" href="main.css">
+<script language="javascript">
+	function setFlashAttribute(flashWidth, flashHeight, timeOut, txtColor, txtColor2, titleY, btnWidth, btnHeight, btnInterval, btnX, btnY, btnColor, delay, btnVisible, playMode)
+	{
+		var flashVars = "&flashWidth=" + flashWidth + "&flashHeight=" + flashHeight + "&timeOut=" + timeOut + "&txtColor=" + txtColor + "&txtColor2=" + txtColor2 + "&btnWidth=" + btnWidth + "&btnHeight=" + btnHeight + "&btnX=" + btnX + "&btnY=" + btnY + "&titleY=" + titleY + "&playMode=" + playMode + "&btnInterval=" + btnInterval + "&btnVisible=" + btnVisible + "&btnColor=" +btnColor + "&delay=" +delay;
+
+		window.returnValue = flashVars;
+		window.close();
+	}
+
+	function getFlashAttribute()
+	{
+		var form = document.editForm;
+		var flashWidth = form.flashWidth.value;			//Flash宽度
+		var flashHeight = form.flashHeight.value;		//Flash高度
+		var timeOut = 4000;								//图片播放速度
+		var txtColor = "0x" + form.txtColor.value;		//标题颜色
+		var txtColor2 = "0x" + form.txtColor2.value;	//鼠标触碰标题颜色
+		var titleY = 5;									//标题Y轴
+		var btnWidth = form.btnWidth.value;				//按钮宽
+		var btnHeight = form.btnHeight.value;			//按钮高
+		var btnInterval = 0;							//按钮间隔
+		var btnX = 1;									//按钮X轴
+		var btnY = 1;									//按钮Y轴
+		var btnColor = "0x" + form.btnColor.value;		//按钮触碰或点击颜色
+		var delay = 0;									//延迟
+		var btnVisible = 1;								//按钮可见，"0"不可见，"1"可见
+		for (i = 0; i < form.btnVisible.length; i++)
+		{
+			if (form.btnVisible[i].checked)
+			{
+				btnVisible = form.btnVisible[i].value;
+				break;
+			}
+		}
+		var playMode = 1;								//播放模式,"0"手动，"1"自动
+
+		setFlashAttribute(flashWidth, flashHeight, timeOut, txtColor, txtColor2, titleY, btnWidth, btnHeight, btnInterval, btnX, btnY, btnColor, delay, btnVisible, playMode);
+	}
+</script>
+</head>
+<body>
+
+<form name="editForm">
+	<table class="editTable">
+		<tr class="heaer">
+			<td colspan="2">Flash详细参数</td>
+		</tr>
+		<tr>
+			<td class="left" style="width:35%">Flash尺寸</td>
+			<td>
+				宽度：<input type="text" name="flashWidth" value="220" size="5" maxlength="5" class="text" />
+				高度：<input type="text" name="flashHeight" value="160" size="5" maxlength="5" class="text" />
+			</td>
+		</tr>
+		<tr>
+			<td class="left">数字按钮</td>
+			<td>
+				<input type="radio" name="btnVisible" value="0" /> 不显示
+				<input type="radio" name="btnVisible" value="1" checked /> 显示
+			</td>
+		</tr>
+		<tr>
+			<td class="left">数字按钮尺寸</td>
+			<td>
+				宽度：<input type="text" name="btnWidth" value="20" size="5" maxlength="5" class="text" />
+				高度：<input type="text" name="btnHeight" value="20" size="5" maxlength="5" class="text" />
+			</td>
+		</tr>
+		<tr>
+			<td class="left">鼠标触碰按钮颜色</td>
+			<td>
+				#<input type="text" name="btnColor" value="FF6600" size="10" maxlength="10" class="text" />
+			</td>
+		</tr>
+		<tr>
+			<td class="left">标题颜色</td>
+			<td>
+				#<input type="text" name="txtColor" value="FFFFFF" size="10" maxlength="10" class="text" />
+			</td>
+		</tr>
+		<tr>
+			<td class="left">鼠标触碰标题颜色</td>
+			<td>
+				#<input type="text" name="txtColor2" value="FF0000" size="10" maxlength="10" class="text" />
+			</td>
+		</tr>
+		<tr class="footer">
+			<td colspan="2">
+				<input type="button" class="lnkSave" value="" onclick="getFlashAttribute();" />
+			</td>
+		</tr>
+	</table>
+</form>
+
+<script language="javascript">
+	Request = {QueryString : function(item){
+		var svalue = location.search.match(new RegExp("[\?\&]" + item + "=([^\&]*)(\&?)","i"));
+		return svalue ? svalue[1] : svalue;
+		}
+	}
+	var flashWidth = Request.QueryString("flashWidth");
+	var flashHeight = Request.QueryString("flashHeight");
+	var btnVisible = Request.QueryString("btnVisible");
+	var btnWidth = Request.QueryString("btnWidth");
+	var btnHeight = Request.QueryString("btnHeight");
+	var btnColor = Request.QueryString("btnColor").substr(2);
+	var txtColor = Request.QueryString("txtColor").substr(2);
+	var txtColor2 = Request.QueryString("txtColor2").substr(2);
+	var form = document.editForm;
+
+	form.flashWidth.value = flashWidth ? flashWidth : 220;
+	form.flashHeight.value = flashHeight ? flashHeight : 160;
+	form.btnVisible[(btnVisible == 0 || btnVisible == 1) ? btnVisible : 1].checked = "checked";
+	form.btnWidth.value = btnWidth ? btnWidth : 20;
+	form.btnHeight.value = btnHeight ? btnHeight : 20;
+	form.btnColor.value = btnColor ? btnColor : "FF6600";
+	form.txtColor.value = txtColor ? txtColor : "FFFFFF";
+	form.txtColor2.value = txtColor2 ? txtColor2 : "FF0000";
+</script>
+
+</body>
+</html>

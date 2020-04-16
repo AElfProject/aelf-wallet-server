@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><{$lang->login_management}> <{$CMS_VERS}></title>
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css" />
+<link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/login.css" />
+<script type="text/javascript"src="<{$SKIN_PATH}>js/jquery.js" /></script>
+<script>
+function check (form)
+{
+	if (form.name.value == '')
+	{
+		form.name.focus();
+		return false;
+	}
+	if (form.pass.value == '')
+	{
+		form.pass.focus();
+		return false;
+	}
+//	if (form.verifyCode.value == '')
+//	{
+//		form.verifyCode.focus();
+//		return false;
+//	}
+
+	return true;
+}
+
+window.onload = function () { document.form_job.name.focus(); }
+</script>
+</head>
+<body>
+<div class="mask"></div>
+<div class="middle">
+	<div class="logo"><a href=""><img src="<{$SKIN_PATH}>images/logo.jpg" alt="" /></a></div>
+	<div class="login clearfix">
+		<h2>Hello</h2>
+		<{if $langs_count>1}>
+		<div class="lang-set clearfix">
+			<!--span><{$lang->select_lang}>: </span-->
+			<{foreach from=$langs item=item key=key}>
+			<a<{if $admin_lang==$item.id}> class="current" href="javascript:;" style="cursor:default;"<{else}> href="<{$http_root_www}>?con=admin&ctl=default&admin_lang=<{$item.id}>" target="_parent"<{/if}>><{$item.name}></a>
+			<{/foreach}>
+		</div>
+		<{/if}>
+		<div class="clear"></div>
+		<!--div class="version"><em><{$CMS_VERS}></em></div-->
+		<div class="login-panel">
+			<form action="?con=admin&ctl=common/login&act=login&k=<{$k}>" name="form_job" method="post" onsubmit="return check(this);">
+				<input type="hidden" name="formKey" value="<{$formKey}>" />
+				<ul>
+					<li class="rows clearfix">
+						<span><label><{$lang->user_name}></label></span>
+						<div class="input"><input name="name" type="text" size="30" maxlength="50" class="text" placeholder="<{$lang->user_name}>" /></div>
+					</li>
+					<li class="rows clearfix">
+						<span><label><{$lang->password}></label></span>
+						<div class="input"><input name="pass" type="password" size="30" maxlength="50" class="text" placeholder="<{$lang->password}>" /></div>
+					</li>
+					<!--<li class="rows clearfix">-->
+						<!--<span><label>Google Authenticator</label></span>-->
+						<!--<div class="input"><input name="code" type="text" size="9" maxlength="9" class="text" placeholder="请输入6位动态码" /></div>-->
+					<!--</li>-->
+					<li class="rows rowsYzm clearfix">
+						<span><label><{$lang->verify_code}></label></span>
+						<div class="input">
+							<input name="verifyCode" type="text" size="10" maxlength="20" class="text" placeholder="<{$lang->verify_code}>" />
+							<img src="<{$http_root_www}>verifycode.gif?w=80&h=30" width="120" height="50" alt="Not see, tap" style="vertical-align:middle; cursor:pointer;" onclick="this.src = '<{$http_root_www}>verifycode.gif?w=80&h=30&rnd=' + Math.random();" />
+						</div>
+					</li>
+					<li class="rows rowsYzm clearfix">
+						<span><label><{$lang->verify_code}></label></span>
+						<div class="input">
+						</div>
+					</li>
+					<li class="rowsSubmit clearfix">
+						<div class="input clearfix"><input type="submit" value="Login" class="btn-submit" /></div>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="bg1"></div>
+		<div class="bg2"></div>
+		<div class="pic"></div>
+		<div class="copyright"></div>
+	</div>
+</div>
+<script>
+	$(function(){
+		function topScroll(){
+			var vieHeight = parseInt($(window).height()-86);
+			var loginHeight = parseInt($('.login').height());
+			$('.login').stop(true,true).animate({"top":((vieHeight-loginHeight)/2)+'px'});
+		}
+		topScroll();
+		$(window).resize(function(){
+			topScroll();
+		});
+	});
+</script>
+</body>
+</html>

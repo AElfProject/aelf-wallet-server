@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<title><{__( '系统提示' )}></title>
+<{if $pageKeywords}><meta name="keywords" content="<{$pageKeywords}>" /><{/if}>
+<{if $pageDescription}><meta name="description" content="<{$pageDescription}>" /><{/if}>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+
+<link href="../themes/zh-cn/favicon.ico" mce_href="/favicon.ico" rel="bookmark" type="image/x-icon" />
+<link href="../themes/zh-cn/favicon.ico" mce_href="/favicon.ico" rel="icon" type="image/x-icon" />
+<link href="../themes/zh-cn/favicon.ico" mce_href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="../themes/zh-cn/dist/font-awesome-4.6.3/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../themes/zh-cn/dist/fonts/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../themes/zh-cn/dist/font-en.min.css" />
+<link rel="stylesheet" type="text/css" href="../themes/zh-cn/dist/plugin.min.css" />
+<link rel="stylesheet" type="text/css" href="../themes/zh-cn/dist/layout.min.css" />
+<link rel="stylesheet" type="text/css" href="../themes/zh-cn/dist/desktop.min.css" />
+<link rel="stylesheet" type="text/css" href="../themes/zh-cn/dist/responsive.min.css" />
+<script type="text/javascript" src="../themes/zh-cn/dist/jquery-1.10.2.min.js"></script>
+<!--[if lt IE 9]><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+</head>
+<body class="msg-body">
+
+    <header class="msg-header clearfix ta-c">
+        <a href="#"><img src="../themes/zh-cn/dist/images/logo2.svg" alt=""></a>
+    </header>
+
+    <section class="container msg-con">
+        <div class="wrapper pt80 pb80">
+           <div class="msg-box">
+               <div class="ta-c"><div class="icon-msg icon-2"></div></div>
+               <div class="msg-title mt40 mb30 ls-20 fs-30 ff-rsb ta-c lh-16em"><{$msg}></div>
+               <!-- <div class="msg-info lh-24em fs-18 ff-rr ta-c m-auto">It is a long established fact that a reader will be distracted by the readable  content of a page when looking at its layout.</div> -->
+           </div> 
+        </div>
+    </section>
+
+    <footer class="footer fs-13 ff-rr">
+        <div class="grow clearfix">
+            <div class="col12-tn-12 ta-c"><p>© Copyright 2018 aelf Ltd, All rights reserved</p></div>
+        </div>
+    </footer>
+<script type="text/javascript">
+    var js_path = '';
+</script>
+<script type="text/javascript" src="../themes/zh-cn/dist/all.min.js"></script>
+<script type="text/javascript">
+var _winHeight = $(window).height();
+var _theight = $(".msg-header").outerHeight();
+var _ftheight = $(".footer").outerHeight();
+var _con = $(".msg-con .wrapper");
+var _conH = _winHeight - _theight - _ftheight -80;
+_con.css("height",_conH);
+$(window).resize(function(event) {
+    /* Act on the event */
+    _winHeight = $(window).height();
+    _theight = $(".msg-header").outerHeight();
+    _ftheight = $(".footer").outerHeight();
+    _conH = _winHeight - _theight - _ftheight -80;
+    _con.css("height",_conH);
+});
+
+</script>
+</body>
+</html>

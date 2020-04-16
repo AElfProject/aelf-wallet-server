@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/global.css">
+    <link rel="stylesheet" type="text/css" href="<{$SKIN_PATH}>images/main.css">
+    <link rel="stylesheet" type="text/css" href="<{$STATIC_PATH}>font-awesome-4.3.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="<{$SKIN_PATH}>js/jquery.js"></script>
+    <script type="text/javascript" src="<{$SKIN_PATH}>js/global.js"></script>
+    <script type="text/javascript" src="<{$SKIN_PATH}>js/list.js"></script>
+    <script type="text/javascript" src="<{$STATIC_PATH}>DatePicker/My97DatePicker/WdatePicker.js"></script>
+    <script>
+        function countSelect ()
+        {
+            var cnt		= 0;
+            var list	= document.getElementsByName('ids[]');
+            for (var i = 0; i < list.length; i++)
+            {
+                if (list[i].checked) cnt++;
+            }
+            return cnt;
+        }
+        function DeleteSome ()  //批量删除
+        {
+            if (countSelect() <= 0)
+            {
+                alert('<{$lang->please_select_batch_records}>');
+                return false;
+            }
+            if (window.confirm('<{$lang->are_you_sure_delete_selected_records}>')) $('#listForm').attr('action', '<{$doUrl}>act=delete').submit();
+        }
+
+        $(function(){
+            $('#checkAll').click(function(){
+                $('input.listChk').attr('checked', $(this).attr('checked'));
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrap inner clearfix">
+    <div class="container">
+        <a href="/index.php?con=admin&ctl=convert/convert_count" class="">返回</a>
+        <div class="tips">
+            <a href="<{$refreshUrl}>" class="lnkRefresh">刷新</a>
+            <!--<a href="<{$doUrl}>act=edit" class="lnkAdd">添加</a>-->
+        </div>
+
+        <div class="search">
+            日期: <{(empty($search['t1'])) ? date('Y-m-d') : $search['t1']}> - <{(empty($search['t2'])) ? date('Y-m-d') : $search['t2']}>
+            <br>
+            交易对名称:<{$search['coin_source']}>_<{$search['coin_target']}>
+            <br>
+            <button data-href="<{$doUrl}>act=convert_list&type=export"  id="export" class="custom-button">导出</button>
+        </div>
+
+        <{include file='form-result.htm'}>
+
+        <form id="listForm" name="listForm" action="" method="post">
+
+            <b>汇总信息：</b>
+            <table class="listTable">
+                <tr class="listHdTr">
+                    <td>交易笔数</td>
+                    <td>交易数量</td>
+                    <td>手续费收入</td>
+                    <td>成交数量</td>
+                    <td>手续费支出</td>
+                    <td>净收益</td>
+                </tr>
+
+                <tr>
+                    <td><{count($list)}></td>
+                    <td><{array_sum(array_column($list,'amount_source_convert'))}></td>
+                    <td><{array_sum(array_column($list,'amount_income'))}></td>
+                    <td><{array_sum(array_column($list,'amount_target_convert'))}></td>
+                    <td><{array_sum(array_column($list,'amount_pay'))}></td>
+                    <td><{array_sum(array_column($list,'amount_income')) - array_sum(array_column($list,'amount_pay'))}></td>
+                </tr>
+            </table>
+            <br>
+            <b>兑换明细：</b>
+            <table class="listTable">
+                <tr class="listHdTr">
+                    <td>交易序列号</td>
+                    <td>交易日期</td>
+                    <td>交易时间</td>
+                    <td>交易数量（原始币种）</td>
+                    <td>手续费收入a（成交币种）</td>
+                    <td>成交数量（成交币种）</td>
+                    <td>手续费支出b（成交币种）</td>
+                    <td>净收益（a-b）（成交币种）</td>
+                    <td>状态</td>
+                </tr>
+                <{foreach from=$list item=item key=key}>
+                <tr<{if $key % 2 == 0}> class="Alternating"<{/if}>>
+                <td><{$item.id}></td>
+                <td><{date('Y-m-d',$item.update_time)}></td>
+                <td><{date('H:i:s',$item.update_time)}></td>
+                <td><{(string)$item.amount_source_convert}></td>
+                <td><{$item.amount_income}></td>
+                <td><{(string)$item.amount_target_convert}></td>
+                <td><{$item.amount_pay}></td>
+                <td><{$item.amount_income - $item.amount_pay}></td>
+                <td>
+                    <{if $item.status==0}>
+                    <span style="color:grey;">兑换中</span>
+                    <{elseif $item.status==1}>
+                    <span style="color:green;">兑换成功</span>
+                    <{elseif $item.status==2}>
+                    <span style="color:blue;">部分成功</span>
+                    <{else}>
+                    <span style="color:red;">兑换失败</span>
+                    <{/if}>
+                </td>
+                <{/foreach}>
+                <tr class="listFtTr">
+                    <td colspan="15" align="right"><{$pager}></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+<script>
+    $("#export").click(function () {
+        var href = $(this).attr('data-href')
+
+        console.log(href);
+        window.open(href);
+    })
+</script>
+</html>

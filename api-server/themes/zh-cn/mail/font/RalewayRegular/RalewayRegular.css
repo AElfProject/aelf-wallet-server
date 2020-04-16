@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'RalewayRegular';
+    src: url('fonts/RalewayRegular.eot');
+    src: url('fonts/RalewayRegular.eot') format('embedded-opentype'),
+         url('fonts/RalewayRegular.woff2') format('woff2'),
+         url('fonts/RalewayRegular.woff') format('woff'),
+         url('fonts/RalewayRegular.ttf') format('truetype'),
+         url('fonts/RalewayRegular.svg#RalewayRegular') format('svg');
+}

@@ -1,0 +1,21 @@
+html { overflow:auto; }
+body { color:#444444; }
+body a { color:#444444; }
+body a:hover { color:#11AC84; text-decoration:none; }
+body a:current { color:#11AC84; }
+
+#menu-area, .menu-area { width:182px; margin:0 auto; }
+#menu {}
+dl { padding-top:10px; border-bottom:1px solid #eee; }
+
+dt { padding:20px 0; border-top:1px solid #eee; }
+dt.first { border-top:0; }
+dt a { font-size:14px; font-family:"Shruti"; display:block; width:162px; min-height:16px; _height:16px; line-height:15px; background:url(menu_03_tp.gif) no-repeat right top; padding-right:20px; }
+dt a:hover { color:#11AC84; background:url(menu_03_bt.gif) no-repeat no-repeat right top; }
+dt.current a { font-weight:bold; color:#11AC84; background:url(menu_03_bt.gif) no-repeat no-repeat right top; }
+
+dd { margin-left:30px; }
+dd a { display:block; width:100%; min-height:16px; line-height:14px; padding:8px 0; }
+dd a:hover {}
+dd .current { color:#11AC84; }
+li { border-top:1px solid #eee; vertical-align: bottom; }
