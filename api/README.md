@@ -1,28 +1,27 @@
-# AELF钱包接口系统
+# AELF Wallet interface system
 
-该系统为AELF APP提供接口支持、数据服务，包含了资产数据、市场数据、 Dapp数据
-   个人信息等模块。
+The system provides interface support and data service for aelf app, including asset data, market data and DAPP data
+Personal information and other modules.
 
+### First
 
-### 前提
-
->1.部署AELF、tDVV节点                  
+>1.Deploy aelf and tdvv nodes                  
 >*https://github.com/AElfProject/AElf*
 
->2.部署AELF、tDVV链的扫链程序以及api服务 *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer* 
+>2.Deploy AELF、tDVV scaner and api server *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer* 
 
->3.部署接口后台系统
+>3.Deploy admin System [admin](https://github.com/AElfProject/aelf-wallet-server/tree/master/api-server)
 
-### 开发环境
+### development environment
 
 - Linux Ubuntu 16.04.6 LTS
 - PHP 7.3.6
 - Mysql 5.6.16
 - Nginx 1.10.3
 
-### 部署步骤
+### Deployment steps
 
-1. Nginx 部分配置
+1. Nginx Partial configuration
 ```nginx
 location / {
             #root   html;
@@ -34,8 +33,8 @@ location / {
         }
 ```
 
-2. 修改配置文件 data/config.inc.php
-3. AliYun OSS配置信息
+2. Modify profile data/config.inc.php
+3. AliYun OSS configuration information
 ```php
 //path core/v2.1/Aliyun_OSS.php
 private static function instance() {
@@ -49,32 +48,32 @@ private static function instance() {
 		return self::$inst;
 	}
 ```
-文档管理>> api.html
+Document management >> api.html
 
-# AELF钱包后台任务  
-该系统为AELF钱包提供用户数据更新和存储服务、消息推送服务
+# Aelf wallet crontab task 
+The system provides users' data update, storage and message push services for aelf wallet
 
-### 前提
+### First
 
->1.部署AELF、tDVV节点                  
+>1.Deploy aelf and tdvv nodes                  
 >*https://github.com/AElfProject/AElf*
 
->2.部署AELF、tDVV链的扫链程序以及api服务 *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer* 
+>2.DeployAELF、tDVV scanner and api server *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer* 
 
 
-### 开发环境
+### development environment
 
 - Linux Ubuntu 16.04.6 LTS
 - PHP 7.3.6
 - Mysql 5.6.16
 
-### 部署步骤
-- **task为后台任务目录，可进行单独部署**
-- 配置文件路径 data/config.inc.php
-- umeng 配置信息
+### Deployment steps
+- **Task is the background task directory, which can be deployed separately**
+- Profile path data/config.inc.php
+- umeng config information
 ```php
 //path pusher/message_push.php
-define("PUSHENV", false); //true正式环境false测试环境
+define("PUSHENV", false); //=true product, false test
 
 //android key、seckey
 define("UMENGKEY", '');
@@ -83,26 +82,26 @@ define("UMENGSECKEY", "");
 define("IOSUMENGKEY", '');
 define("IOSUMENGSECKEY", "");
 ```
-- Supervisord管理进程
-`进程配置文件路径 ./supervisord.d`
+- Supervisord supervisor process
+`#path ./supervisord.d`
 
-启动命令
+Start command
 `supervisorctal start all`
 
-- 进程任务说明
+- some task description
 ```$xslt
-1.blockSync_aelf AELF链区块扫描
-2.blockSync_tDVV tDVV链区块扫描
-3.elf-go elf-go-tokens  解析跨链交易数据
-4.getAllContracts 缓存合约
-5.mail_send  邮箱发送
-6.market_chart  汇率
-7.message_push 消息推送
-8.sys_message_push sys_message_queue 系统消息推送
-9.transSync_aelf_0 transSync_tDVV_0 区块交易扫描
-10.updateBalanceInit updateBalanceSig 更新钱包余额
-11.updateIndex 跨链索引
-12.updateTrans 交易更新
+1.blockSync_aelf #AELF scaner
+2.blockSync_tDVV #tDVV scaner
+3.elf-go elf-go-tokens  #parse crosschain data
+4.getAllContracts #cache contract
+5.mail_send  #send mail message
+6.market_chart  #rate
+7.message_push #send message
+8.sys_message_push sys_message_queue #system msssage
+9.transSync_aelf_0 transSync_tDVV_0 #sancer block transaction 
+10.updateBalanceInit updateBalanceSig #update wallet balance
+11.updateIndex # crosschain index
+12.updateTrans #update transactions
 
 ```
 
