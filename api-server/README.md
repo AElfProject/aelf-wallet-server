@@ -17,6 +17,7 @@ The system provides data service, announcement management, user statistics and s
 location / {
             #root   html;
             index  index.html index.htm index.php;
+            rewrite ^/verifycode.gif$ /index.php?con=admin&ctl=verifycode&$args;
             if (!-e $request_filename){
                  rewrite ^/(.*)$ /index.php/$1 last;
                  #break;
