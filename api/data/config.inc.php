@@ -15,7 +15,7 @@ $DB_LIST = [
             'slaves' => []  //从库
         ],
 
-        //aelf链上数据mysql连接方式
+        //aelf扫链 AELF链数据mysql连接  https://github.com/AElfProject/aelf-scan-mysql
         'AELF' => [
             'host'   => '',
             'port'   => '',
@@ -24,6 +24,8 @@ $DB_LIST = [
             'db'     => '',
             'slaves' => []  //从库
         ],
+
+        //aelf扫链 tDVV链数据mysql连接  https://github.com/AElfProject/aelf-scan-mysql
         'tDVV' => [
             'host'   => '',
             'port'   => '',
