@@ -9,7 +9,7 @@ require_once '../task.php';
 class task_updateBalance extends task
 {
 
-    private $balance_url = "https://hp-pre-wallet.aelf.io/app/elf/balance";//交易详情api url
+    private $balance_url;
     private $queueName = 'balance_push_queue';
     private $init;
 
@@ -20,6 +20,8 @@ class task_updateBalance extends task
 
         set_time_limit(0);
         $this->interval();
+
+        $this->balance_url = $GLOBALS['API_URL']."/app/elf/balance";
     }
 
     function interval()
