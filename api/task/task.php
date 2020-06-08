@@ -6,7 +6,6 @@ header( 'Content-Type:text/html;charset=utf-8;' );
 
 require_once 'data.config.php';
 require_once 'base.php';
-require_once 'coin/manager.php';
 
 set_time_limit( 0 );
 
