@@ -17,21 +17,21 @@ $DB_LIST = [
 
     //aelf扫链 AELF链数据mysql连接  https://github.com/AElfProject/aelf-scan-mysql
     'AELF' => [
-        'host'   => '3.112.73.152',
-        'port'   => '3306',
-        'name'   => 'normal_aelf',
-        'pwd'    => 'password',
-        'db'     => 'aelf_test',
+        'host'   => '',
+        'port'   => '',
+        'name'   => '',
+        'pwd'    => '',
+        'db'     => '',
         'slaves' => []  //从库
     ],
 
     //aelf扫链 tDVV链数据mysql连接  https://github.com/AElfProject/aelf-scan-mysql
     'tDVV' => [
-        'host'   => '18.179.200.57',
-        'port'   => '3306',
-        'name'   => 'root',
-        'pwd'    => 'root',
-        'db'     => 'aelf_side_01',
+        'host'   => '',
+        'port'   => '',
+        'name'   => '',
+        'pwd'    => '',
+        'db'     => '',
         'slaves' => []  //从库
     ]
 ];
