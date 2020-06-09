@@ -3,10 +3,10 @@
 $DB_LIST = array(
     //主索引库
     'index' => array(
-        'host' => '127.0.0.1',
+        'host' => 'mymysql',
         'port' => '3306',
         'name' => 'root',
-        'pwd' => 'root',
+        'pwd' => '123456',
         'db' => 'aelf_bk2020',
         'slaves' => array(  //从库
 
@@ -21,10 +21,10 @@ $DB_LIST = array(
 
 $REDIS_LIST = array(
     'index' => array(
-        'host' => '127.0.0.1',
+        'host' => 'myredis',
         'port' => '6379',
-        'auth' => 'today',
-        'dbNumber' => '0',
+        'auth' => '123456',
+        'dbNumber' => '1',
     )
 );
 
