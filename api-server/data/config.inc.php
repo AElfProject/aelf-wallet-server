@@ -24,7 +24,7 @@ $REDIS_LIST = array(
         'host' => '127.0.0.1',
         'port' => '6379',
         'auth' => 'today',
-        'dbNumber' => '1',
+        'dbNumber' => '0',
     )
 );
 

@@ -21,7 +21,10 @@ class task_updateBalance extends task
         set_time_limit(0);
         $this->interval();
 
-        $this->balance_url = $GLOBALS['API_URL']."/app/elf/balance";
+        $url = $this->getConfig('url');
+        if(!$url) $url="htpp://127.0.0.1:8081";
+
+        $this->balance_url = $url."/app/elf/balance";
     }
 
     function interval()

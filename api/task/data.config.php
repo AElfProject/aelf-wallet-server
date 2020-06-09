@@ -22,7 +22,4 @@ $REDIS_LIST = [
     ]
 ];
 
-//api域名
-$API_URL = "";  //li: https://hp-pre-wallet.aelf.io
-
 ?>
