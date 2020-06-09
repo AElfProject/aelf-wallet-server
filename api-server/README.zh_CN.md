@@ -57,7 +57,7 @@ aelf接口文件配置
     "balance_url": "http://127.0.0.1:8000/elf", //go crontab服务
     "base58_url": "http://127.0.0.1:8000/elf_trans", //go crontab服务
     "address_url": "http://127.0.0.1:8000/elf_address", //go crontab服务
-    "tokens_url": "http://127.0.0.1:8001/elf_tokens", //go crontab服务
+    "tokens_url": "http://127.0.0.1:8000/elf_tokens", //go crontab服务
     "history_api": {
         "AELF": "", //aelf扫链api http://127.0.0.1:7101
 	    "tDVV": "" //tdvv扫链api http://127.0.0.1:7102
@@ -109,6 +109,18 @@ aelf接口文件配置
 ]
 
 ```
+其他信息
+```json
+//#table cc_config_data-->access_ip
+//用来调试的ip
+127.0.0.1
+
+//#table cc_config_data-->url
+//当前api服务url
+http://127.0.0.1:8081
+
+```
+
 ### 登录
 ```
  url http://ip:port/index.php?con=admin&ctl=default
