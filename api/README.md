@@ -69,7 +69,8 @@ The system provides users' data update, storage and message push services for ae
 
 ### Deployment steps
 - **Task is the background task directory, which can be deployed separately**
-- Profile path data/config.inc.php
+- Profile path data.config.php
+- go crontab profile cli/conf.ini
 - umeng config information
 ```php
 //path pusher/message_push.php

@@ -70,7 +70,8 @@ private static function instance() {
 
 ### 部署步骤
 - **task为后台任务目录，可进行单独部署**
-- 配置文件路径 data/config.inc.php
+- 配置文件路径 data.config.php
+- go服务配置文件路径 cli/conf.ini
 - umeng 配置信息
 ```php
 //path pusher/message_push.php
