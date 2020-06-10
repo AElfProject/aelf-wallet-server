@@ -28,7 +28,7 @@ class ctl_login extends adminPage
 		if ( !$this->verifyFormKey( 'admin_login', $_POST['formKey'] ) ) $this->sheader( null, '表单Token验证失败，请重新提交' );
 		//if ( empty( $code ) ) $this->sheader( null, '请输入验证码' );
 
-        //if ( strtolower( $verifyCode ) != strtolower( $_SESSION['yzm'] ) ) $this->sheader(null, $this->lang->verification_code_error);
+        if ( strtolower( $verifyCode ) != strtolower( $_SESSION['yzm'] ) ) $this->sheader(null, $this->lang->verification_code_error);
 
 		if (strlen($pass) < 6) $this->sheader(null, $this->lang->username_password_not_correct);
 

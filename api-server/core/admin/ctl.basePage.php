@@ -65,7 +65,7 @@ class adminPage extends corecms
 		//super master
 		if ($this->user_id == '-1') {
             $u			= $this->loadModel('user');
-            $user	= $u->getUserById(1);
+            $this->user = $user	= $u->getUserById(1);
 			if ( $this->user_shell != $this->md5( $user['id'].$user['name'].$user['password'] )) {
 				$this->session('admin_user_id', '');
 				$this->session('admin_user_shell', '');

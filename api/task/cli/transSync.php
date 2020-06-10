@@ -31,7 +31,7 @@ class task_transSync extends task
 	    try {
 	        $m= 0;
             $height = $this->redis()->get($this->trans_height_cahce);
-            $height || $height = 1;
+            $height || $height = 2;  //跳过初始快
 
             //是否该进程处理
             if($height%$this->den != $this->isex){

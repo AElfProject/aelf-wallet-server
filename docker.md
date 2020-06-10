@@ -9,6 +9,9 @@ yum install yum-utils device-mapper-persistent-data lvm2
 yum install docker –y 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
 sudo chmod +x /usr/local/bin/docker-compose 
+#关闭 selinux
+sed -i 's/enforcing/disabled/g' /etc/sysconfig/selinux
+#reboot
 ```
 
 2、git拉取php代码：
