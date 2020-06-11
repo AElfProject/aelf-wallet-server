@@ -44,8 +44,7 @@ chmod 0777 tpl_cache tpl_compile
 
 3、部署编排容器代码
 ```bash
-cd ~
-wget https://github.com/AElfProject/aelf-wallet-server/blob/master/aelf-wallet-docker.tar.gz
+cd /data/www/aelf-wallet-server
 tar -zxvf aelf-wallet-docker.tar.gz 
 #到相关目录下，启动编排好的容器：
 cd aelf-wallet-docker/
