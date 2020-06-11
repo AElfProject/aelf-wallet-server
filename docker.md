@@ -72,6 +72,18 @@ bash start_plan.sh
  admin  super_admin
  passwd Admin@123
 ```
+7、api接口接入
+https://github.com/AElfProject/aelf-wallet-server/blob/master/api/api.html
+```json
+//#table cc_config_data-->access_ip
+//debug api ip
+127.0.0.1
+
+//#table cc_config_data-->url
+//web domain
+http://127.0.0.1:8081
+
+```
 
 ### 二、相关目录及文件介绍
 ```text
