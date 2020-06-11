@@ -51,20 +51,20 @@ aelf接口文件配置
 //#table cc_config_data-->api_config
 {
     "web_api": {
-        "AELF": "",  //aelf链节点（代理）https://xx.aelf.io/8000
-        "tDVV": ""   //tdvv链节点（代理）https://xx.aelf.io/8001
+        "AELF": "http://54.199.254.157:8000",  //aelf链节点（代理）https://xx.aelf.io/8000
+        "tDVV": "http://3.112.250.87:8000"   //tdvv链节点（代理）https://xx.aelf.io/8001
     },
     "balance_url": "http://127.0.0.1:8000/elf", //go crontab服务
     "base58_url": "http://127.0.0.1:8000/elf_trans", //go crontab服务
     "address_url": "http://127.0.0.1:8000/elf_address", //go crontab服务
     "tokens_url": "http://127.0.0.1:8000/elf_tokens", //go crontab服务
     "history_api": {
-        "AELF": "", //aelf扫链api http://127.0.0.1:7101
-	    "tDVV": "" //tdvv扫链api http://127.0.0.1:7102
+        "AELF": "http://3.112.73.152:7101", //aelf扫链api http://127.0.0.1:7101
+	    "tDVV": "http://18.179.200.57:7101" //tdvv扫链api http://127.0.0.1:7102
     },
     "scaner_node": {
-        "AELF": "", //aelf链节点 http://127.0.0.1:8000
-        "tDVV": ""  //tdvv链节点 http://127.0.0.1:8001
+        "AELF": "http://54.199.254.157:8000", //aelf链节点 http://127.0.0.1:8000
+        "tDVV": "http://3.112.250.87:8000"  //tdvv链节点 http://127.0.0.1:8001
     },
     "chain_color": {
         "AELF": "#5C28A9",
@@ -85,7 +85,8 @@ aelf接口文件配置
         "name": "AELF",
         //链合约地址
         "contract_address": "25CecrU94dmMdbhC3LWMKxtoaL4Wv8PChGvVJM6PxkHAyvXEhB",
-        "node": "",
+        //aelf链节点
+        "node": "http://54.199.254.157:8000/",
         "symbol": "ELF",
         "logo": "elf_wallet/elf/elf.png",
         "explorer": "https://explorer-test.aelf.io",
@@ -98,7 +99,8 @@ aelf接口文件配置
         "name": "tDVV",
         //链合约地址
         "contract_address": "EReNnYPBeZ3AfAjPXXdpNK7AV5YCjRPvM7d5M3SLettMZpxre",
-        "node": "",
+        //tDVV链节点
+        "node": "http://3.112.250.87:8000/",
         "symbol": "ELF",
         "logo": "elf_wallet/elf/tDVV.png",
         "explorer": "https://explorer-test-side01.aelf.io",

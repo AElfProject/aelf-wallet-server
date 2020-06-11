@@ -90,3 +90,17 @@ log/supervisor  // supervisor各个任务的日志目录
 /data/mysql    //mysql数据文件目录
 /data/redis     //redis数据文件的目录
 ```
+
+### docker环境变量
+```text
+cd aelf-wallet-docker/
+vi .env
+
+MYSQL_ROOT_PASSWORD=123456
+REDIS_PASSWORD=123456
+
+DIR_WWW=/data/www/
+DIR_REDIS_DATA=/data/redis/
+DIR_MYSQL_DATA=/data/mysql/
+TIMEZONE=Asia/Shanghai
+```
