@@ -73,7 +73,7 @@ bash start_plan.sh
  passwd Admin@123
 ```
 
-###二、相关目录及文件介绍
+### 二、相关目录及文件介绍
 ```text
 cd aelf-wallet-docker/
 conf/mysql  //mysql的配置文件
