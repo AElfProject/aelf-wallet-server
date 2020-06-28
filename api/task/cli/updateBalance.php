@@ -18,13 +18,13 @@ class task_updateBalance extends task
         $inits = getopt('', ['init:']);
         $this->init = $inits['init']?intval($inits['init']):0;
 
-        set_time_limit(0);
-        $this->interval();
-
         $url = $this->getConfig('url');
-        if(!$url) $url="htpp://127.0.0.1:8081";
+        if(!$url) $url="http://127.0.0.1:8081";
 
         $this->balance_url = $url."/app/elf/balance";
+
+        set_time_limit(0);
+        $this->interval();
     }
 
     function interval()
