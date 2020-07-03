@@ -5,10 +5,10 @@ Personal information and other modules.
 
 ### First
 
->1.Deploy aelf and tdvv nodes                  
+>1.Deploy aelf and tdvv nodes
 >*https://github.com/AElfProject/AElf*
 
->2.Deploy AELF、tDVV scaner and api server *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer* 
+>2.Deploy AELF、tDVV scaner and api server *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer*
 
 >3.Deploy admin System [admin](https://github.com/AElfProject/aelf-wallet-server/tree/master/api-server)
 
@@ -22,44 +22,52 @@ Personal information and other modules.
 ### Deployment steps
 
 1. Nginx Partial configuration
+
 ```nginx
 location / {
-            #root   html;
-            index  index.html index.htm index.php;
-            if (!-e $request_filename){
-                 rewrite ^/(.*)$ /index.php/$1 last;
-                 #break;
-            }
-        }
+    #root   html;
+    index  index.html index.htm index.php;
+    if (!-e $request_filename){
+          rewrite ^/(.*)$ /index.php/$1 last;
+          #break;
+    }
+}
 ```
 
-2. Modify profile data/config.inc.php
-3. AliYun OSS configuration information
+2. Modify profile `data/config.inc.php`
+
+3. AliYun OSS configuration information `core/v2.1/Aliyun_OSS.php`
+
 ```php
 //path core/v2.1/Aliyun_OSS.php
 private static function instance() {
-		if ( ! isset( self::$inst ) ) {
-			self::$inst = new self();
-            self::$inst->keyID = '';
-            self::$inst->keySecret = '';
-			self::$inst->endPoint = '';
-			self::$inst->ossClient = new OssClient( self::$inst->keyID, self::$inst->keySecret, self::$inst->endPoint );
-		}
-		return self::$inst;
-	}
+  if ( ! isset( self::$inst ) ) {
+    self::$inst = new self();
+    self::$inst->keyID = '';
+    self::$inst->keySecret = '';
+    self::$inst->endPoint = 'oss-accelerate.aliyuncs.com'; // No http, https
+    self::$inst->ossClient = new OssClient( self::$inst->keyID, self::$inst->keySecret, self::$inst->endPoint );
+  }
+  return self::$inst;
+  }
 ```
+
+If permission deny. FYI
+
+`chmod 0777 /data/www/aelf-wallet-server/api-server/data/upload`
+
 Document management >> api.html
 
-# Aelf wallet crontab task 
+# Aelf wallet crontab task
+
 The system provides users' data update, storage and message push services for aelf wallet
 
 ### First
 
->1.Deploy aelf and tdvv nodes                  
+>1.Deploy aelf and tdvv nodes
 >*https://github.com/AElfProject/AElf*
 
->2.DeployAELF、tDVV scanner and api server *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer* 
-
+>2.DeployAELF、tDVV scanner and api server *https://github.com/AElfProject/aelf-scan-mysql* *https://github.com/AElfProject/aelf-block-explorer*
 
 ### development environment
 
@@ -68,12 +76,22 @@ The system provides users' data update, storage and message push services for ae
 - Mysql 5.6.16
 
 ### Deployment steps
+
 - **Task is the background task directory, which can be deployed separately**
-- Profile path data.config.php
-- go crontab profile cli/conf.ini
-- umeng config information
+- Profile path `data.config.php`
+- go crontab profile `cli/conf.ini`
+
+```ini
+ip = 127.0.0.1
+port = 3306
+user = user
+passwd = user
+database = aelf
+```
+
+- umeng config information `pusher/message_push.php`
+
 ```php
-//path pusher/message_push.php
 define("PUSHENV", false); //=true product, false test
 
 //android key、seckey
@@ -83,6 +101,7 @@ define("UMENGSECKEY", "");
 define("IOSUMENGKEY", '');
 define("IOSUMENGSECKEY", "");
 ```
+
 - Supervisord supervisor process
 `#path ./supervisord.d`
 
@@ -90,6 +109,7 @@ Start command
 `supervisorctal start all`
 
 - some task description
+
 ```$xslt
 1.blockSync_aelf #AELF scaner
 2.blockSync_tDVV #tDVV scaner
@@ -105,8 +125,3 @@ Start command
 12.updateTrans #update transactions
 
 ```
-
-
-
-
-
