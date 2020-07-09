@@ -44,8 +44,16 @@ class blockSync extends task
             for ($i = $cur_height + 1; $i <= $hheight; $i++) {
                 //获取区块信息
                 $url = $this->block_info . "?blockHeight={$i}&includeTransactions=true";
-                $res = $this->request($url);
-                if ($res && strpos($res, '{') !== false) {
+                $true = 0;
+                $res = "";
+                for($j=0; $j<5; $j ++) { //retry 5次
+                    $res = $this->request($url);
+                    if ($res && strpos($res, '{') !== false) {
+                        $true = 1;
+                        break;
+                    }
+                }
+                if($true == 1){
                     $res = json_decode($res);
                     $block_arr = [
                         'hash' => $res->BlockHash,
