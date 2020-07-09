@@ -690,7 +690,7 @@ CREATE TABLE `cc_user_address` (
 DROP TABLE IF EXISTS `cc_user_transaction`;
 CREATE TABLE `cc_user_transaction` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `tx_id` varchar(500) NOT NULL DEFAULT '' COMMENT '交易id',
+  `tx_id` varchar(200) NOT NULL DEFAULT '' COMMENT '交易id',
   `chain_id` varchar(50) NOT NULL DEFAULT '' COMMENT '链id',
   `address_from` varchar(200) NOT NULL DEFAULT '',
   `address_to` varchar(200) NOT NULL DEFAULT '',
@@ -708,6 +708,7 @@ CREATE TABLE `cc_user_transaction` (
   `to_chainid` varchar(20) NOT NULL DEFAULT '' COMMENT '接收链本链为空',
   `from_chainid` varchar(20) NOT NULL DEFAULT '' COMMENT '转出链本连为空',
   PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `tx_id` (`tx_id`),
   KEY `to_chainid` (`to_chainid`),
   KEY `from_chainid` (`from_chainid`),
   KEY `symbol` (`symbol`),
