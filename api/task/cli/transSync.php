@@ -43,6 +43,16 @@ class task_transSync extends task
             $blockey = "aelf:block:{$this->chainid}:{$height}";
             $blockinfo = $this->redis()->get($blockey);
             if(empty($blockinfo)){
+
+                //继续下一个高度处理
+                $next= "aelf:block:{$this->chainid}:".($height+1);
+                $blockinfo = $this->redis()->get($next);
+                if($blockinfo){
+                    $this->redis()->set($this->trans_height_cahce, $height+1);
+                    $this->logScreen("miss or empty transactions in block:".$height);
+                    return;
+                }
+
                 sleep(3);
                 throw new Exception("waiting for block {$height}");
             }
