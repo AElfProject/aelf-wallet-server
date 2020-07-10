@@ -62,7 +62,7 @@ class blockSync extends task
                         'time'=>$res->Header->Time,
                         'chain_id'=>$res->Header->ChainId,
                     ];
-                    $this->redis()->set("aelf:block:{$this->chainid}:{$i}", $block_arr, 86400);
+                    $this->redis()->set("aelf:block:{$this->chainid}:{$i}", $block_arr, 432000); //保存5天时间
 
                     $msg = "checked block:{$i}";
                     $this->logScreen($msg);
