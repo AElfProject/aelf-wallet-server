@@ -19,7 +19,7 @@ class app_elf_concurrent_address extends app_elf_base{
         //echo $cacheKey;
         $json = $this->redis()->get($cacheKey);
         if($json && app::REDISENV){
-            //$this->success('', $json);
+            $this->success('', $json);
         }
 
         //$tokens = $this->getAddressTokensFromLocal($address);
