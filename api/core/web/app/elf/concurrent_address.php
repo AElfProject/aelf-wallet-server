@@ -19,7 +19,7 @@ class app_elf_concurrent_address extends app_elf_base{
         //echo $cacheKey;
         $json = $this->redis()->get($cacheKey);
         if($json && app::REDISENV){
-            $this->success('', $json);
+            //$this->success('', $json);
         }
 
         //$tokens = $this->getAddressTokensFromLocal($address);
@@ -67,6 +67,7 @@ class app_elf_concurrent_address extends app_elf_base{
             //汇率
             $rate = $this->getExchangeRate( $item['symbol'], $currency );
             $item['rate'] = $rate;
+            $item['issue_chain_id'] = $this->getIsuseChainId($item);
         },[$ossUrl,$currency,$this->chain_color, $mainCoin, $this->decimal]);
 
         //根据token获取整合数据
@@ -91,6 +92,24 @@ class app_elf_concurrent_address extends app_elf_base{
 
         $this->redis()->set($cacheKey, $json, 300); //5分钟
         $this->returnSuccess('', $json);
+    }
+
+
+    private function getIsuseChainId($token){
+        //获取链所有的币种
+        $all_tokens = $this->getAllContract();
+
+        $chainid = '';
+        if(isset($all_tokens[$token['chain_id']])){
+            foreach($all_tokens[$token['chain_id']] as $item){
+                if($item['contract_address'] == $token['contractAddress'] && $item['symbol']==$token['symbol']){
+                    $chainid = $item['issue_chain_id'];
+                    break;
+                }
+            }
+        }
+
+        return $chainid;
     }
 
 
