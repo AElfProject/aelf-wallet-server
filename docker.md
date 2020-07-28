@@ -22,6 +22,7 @@ git clone https://github.com/AElfProject/aelf-wallet-server.git
 
 cd /data/www/aelf-wallet-server/api-server/data
 chmod 0777 tpl_cache tpl_compile upload
+chmod 0777 /data/www/aelf-wallet-server/api/data/upload
 
 ```
 修改项目配置信息

@@ -108,8 +108,8 @@ class ctl_dapps_banner extends adminPage{
 
                 //删除图片逻辑
                 if (isset($logoDel[$item]) && $logoDel[$item]==1 ) {
-                    echo $item;
-                    var_dump($info_content[$item]['img']);
+                    //echo $item;
+                    //var_dump($info_content[$item]['img']);
                     //die;
                     AliYun_OSS::delFile( 'aelf', $info_content[$item]['img'] );
                 }

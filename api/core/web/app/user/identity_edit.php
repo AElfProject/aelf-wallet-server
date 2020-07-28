@@ -62,7 +62,7 @@ class app_user_identity_edit extends app_user_base {
         /*临时路径*/
         {
             $upload_file = 'elf_wallet/' . $avatar;
-            $ossStatus = AliYun_OSS::uploadFile('elf', $upload_file, UPDATE_DIR . $avatar);
+            $ossStatus = AliYun_OSS::uploadFile('aelf', $upload_file, UPDATE_DIR . $avatar);
         }
 
         $file->deletefile(UPDATE_DIR . $avatar);
