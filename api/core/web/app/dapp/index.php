@@ -43,7 +43,8 @@ class app_dapp_index extends app_dapp_base
                     $banner[$k]['name'] = '';
                 }
             }
-            !$banner && $banner = array();
+            //!$banner && $banner = array();
+            !$banner && $banner = null;
 
             $games = $this->getAllGameData();
             $toolGames = $this->getToolData();
@@ -80,7 +81,8 @@ class app_dapp_index extends app_dapp_base
         $games = $mdl_games->getList(array('id', 'ico', 'coin', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'isindex' => 1, 'cat<>3'), 'sort desc', 100);
         $games = $this->handleData($games);
 
-        !$games && $games = (object)array();
+        //!$games && $games = (object)array();
+        !$games && $games = null;
         return $games;
     }
 
@@ -90,7 +92,8 @@ class app_dapp_index extends app_dapp_base
         $mdl_games = $this->db('index', 'dapps_games');
         $games = $mdl_games->getList(array('id', 'ico', 'coin', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'isindex' => 1, 'cat' => 3), 'sort desc', 100);
         $games = $this->handleData($games);
-        !$games && $games = (object)array();
+        //!$games && $games = (object)array();
+        !$games && $games = null;
         return $games;
     }
 
@@ -111,7 +114,8 @@ class app_dapp_index extends app_dapp_base
             }
         }, $this->lang);
 
-        !$group && $group = (object)array();
+        //!$group && $group = (object)array();
+        !$group && $group = null;
         return $group;
     }
 
