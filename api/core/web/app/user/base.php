@@ -11,6 +11,7 @@ require_once __DIR__.'/../app.php';
 class app_user_base extends app {
 
     protected $r_nodes;
+    protected $decimal;
 
     function before()
     {
@@ -47,8 +48,18 @@ class app_user_base extends app {
         $apiConfig = $this->getConfig('api_config');
         $apiConfig = json_decode($apiConfig, true);
         $this->r_nodes = array_flip($apiConfig["base58_nodes"]);
-    }
 
+
+        //初始化所有代币的精度
+        //$allContract = $this->getAllContract();
+        $cacheName = 'getAllContracts';
+        $allContract = $this->redis()->get($cacheName);
+        foreach ($allContract as $item){
+            foreach ($item as $item2){
+                $this->decimal[$item2['symbol']] = $item2['decimals'];
+            }
+        }
+    }
 
     /**
      * 获取用户是否有未读的内容项条数
