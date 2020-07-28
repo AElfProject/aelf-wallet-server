@@ -95,7 +95,7 @@ class app_dapp_index extends app_dapp_base
     }
 
     //
-    private function getExchange()
+    protected function getExchange()
     {
         $mdl_exchange = $this->db('index', 'exchange');
         $group = $mdl_exchange->getList(['name', 'fullName', 'logo', 'website'], ['status' => 1, 'inindex' => 1], 'sortnum AES', 10);
@@ -110,6 +110,8 @@ class app_dapp_index extends app_dapp_base
                 }
             }
         }, $this->lang);
+
+        !$group && $group = (object)array();
         return $group;
     }
 
