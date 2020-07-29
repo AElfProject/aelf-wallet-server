@@ -57,6 +57,7 @@ class app_elf_concurrent_address extends app_elf_base{
 
             $item['balance_o'] = $item['balance'];
             $item['balance'] = $this->formatBalance($item['balance'], $decimal[$item['symbol']]);
+            $item['decimals'] = $decimal[$item['symbol']];
             /*
             if($item['chain_id'] == $this->formatChainName('AELF')){
                 $item['sort'] = 0;
