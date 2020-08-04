@@ -197,7 +197,7 @@ class app_elf_base extends app {
     public function getElfChain($symbol, $address, $contractAddress,$pageSize=5, $page=1, $currency='RMB', $type){
 
         $lang = str_replace('-', '_', get2( 'lang' ));
-        $cacheName = "elf:address:{$address}:{$this->chain}:{$contractAddress}:{$symbol}:".$lang.'_'.$pageSize.'_'.$page."_".$type;
+        $cacheName = "elf:address:{$address}:{$this->chain}:{$contractAddress}:{$symbol}:".$lang.'_'.$pageSize.'_'.($page+1)."_".$type;
         //$method = "Transfer";
         $cache = $this->redis()->get( $cacheName );
         //$cache = [];
