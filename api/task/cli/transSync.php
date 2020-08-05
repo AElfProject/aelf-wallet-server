@@ -44,13 +44,15 @@ class task_transSync extends task
             $blockinfo = $this->redis()->get($blockey);
             if(empty($blockinfo)){
 
-                //继续下一个高度处理
-                $next= "aelf:block:{$this->chainid}:".($height+1);
-                $blockinfo = $this->redis()->get($next);
-                if($blockinfo){
-                    $this->redis()->set($this->trans_height_cahce, $height+1);
-                    $this->logScreen("miss or empty transactions in block:".$height);
-                    return;
+                //继续下一个高度(10)处理
+                for ($i = 1; $i<10; $i++) {
+                    $next = "aelf:block:{$this->chainid}:" . ($height + $i);
+                    $blockinfo = $this->redis()->get($next);
+                    if ($blockinfo) {
+                        $this->redis()->set($this->trans_height_cahce, $height + $i);
+                        $this->logScreen("miss or empty transactions in block:" . $height);
+                        return;
+                    }
                 }
 
                 sleep(3);
