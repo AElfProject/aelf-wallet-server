@@ -12,7 +12,17 @@ class ctl_address extends adminPage
         $mdl_address = $this->db('index', 'user_address');
 
         $search = array();
-        $search['address'] = trim(get2('address'));
+
+        $_address0  = $_address = trim(get2('address'));
+        if($_address){
+            $_address = explode("_", $_address);
+            if(count($_address) > 1){
+                $_address = $_address[1];
+            }else{
+                $_address = $_address[0];
+            }
+        }
+        $search['address'] = $_address;
         $search['name'] = trim(get2('name'));
 
         //查询数量
@@ -37,6 +47,7 @@ class ctl_address extends adminPage
 
         $this->setData($list, 'list');
         $this->setData($page['pageStr'], 'pager');
+        $search['address'] = $_address0;
         $this->setData($search, 'search');
         $this->setData($this->parseUrl()->set('act'), 'doUrl');
         $this->setData($this->parseUrl(), 'refreshUrl');
