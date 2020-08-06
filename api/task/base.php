@@ -450,6 +450,8 @@ class base {
 		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, 0 );
 		curl_setopt( $curl, CURLOPT_SSL_VERIFYHOST, 0 );
+        curl_setopt( $curl, CURLOPT_TIMEOUT, 60); //超时时间
+
 
         if($data) {
             curl_setopt($curl, CURLOPT_POST, 1);
