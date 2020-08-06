@@ -48,37 +48,42 @@ class app_dapp_index extends app_dapp_base
 
             $games = $this->getAllGameData();
             $toolGames = $this->getToolData();
+            $list = $this->getAllCatGames();
 
             //获取交易所
             $group = $this->getExchange();
 
+            //获取所有
             $result["banner"] = $banner;
             $result["dapp"] = $games;
             $result["group"] = $group;
             $result["tool"] = $toolGames;
+            $result['list'] = $list;
 
             $this->redis()->set($cacheName, $result, 1 * 60);
         }
-
         $this->returnSuccess('', $result);
     }
 
-
-    private function getGameData($cat)
-    {
-
-        $mdl_games = $this->db('index', 'dapps_games');
-        $games = $mdl_games->getList(array('id', 'ico', 'coin', 'tag', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'cat' => $cat), 'sort desc', 10);
-        $games = $this->handleData($games);
-        return $games;
+    private function getAllCatGames(){
+        $cats = [];
+        foreach ($this->cats as $k=>$item){
+            $res = $this->getGameData($k, 1);
+            if($res){
+                $cats[] = [
+                    'category_title' => __($item),
+                    'data' => $res,
+                ];
+            }
+        }
+        return $cats;
     }
 
     //首页推荐的dapp 除去工具类
     private function getAllGameData()
     {
-
         $mdl_games = $this->db('index', 'dapps_games');
-        $games = $mdl_games->getList(array('id', 'ico', 'coin', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'isindex' => 1, 'cat<>3'), 'sort desc', 100);
+        $games = $mdl_games->getList(array('id', 'ico', 'coin', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'isindex' => 1), 'sort desc', 100);
         $games = $this->handleData($games);
 
         //!$games && $games = (object)array();

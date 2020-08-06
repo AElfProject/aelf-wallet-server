@@ -13,7 +13,7 @@ class app_dapp_base extends app {
     protected $dappsChainUrl = '';
     protected $lang;
     protected $ossUrl;
-    protected $cats = [1=>"游戏",2=>"交易",3=>"其他"];
+    protected $cats = [1=>"游戏",2=>"交易",3=>"工具",4=>"其他"];
     protected $hex = ['hot'=>"FF2E6B","new"=>"0555FF"];
 
     public function __construct() {
@@ -28,6 +28,25 @@ class app_dapp_base extends app {
             $this->ossUrl = $this->getConfig( 'oss_url' );
         }
 
+    }
+
+    /**
+     * 获取游戏数据
+     * @param $cat
+     * @param $isindex
+     * @return mixed
+     */
+    protected function getGameData($cat, $isindex=0 )
+    {
+
+        $mdl_games = $this->db('index', 'dapps_games');
+        if($isindex) {
+            $games = $mdl_games->getList(array('id', 'ico', 'coin', 'tag', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'isindex' => $isindex, 'cat' => $cat), 'sort desc', 10);
+        }else{
+            $games = $mdl_games->getList(array('id', 'ico', 'coin', 'tag', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'cat' => $cat), 'sort desc', 10);
+        }
+        $games = $this->handleData($games);
+        return $games;
     }
 
     protected function handleData($games){
@@ -64,7 +83,6 @@ class app_dapp_base extends app {
         }
         return $games;
     }
-
 
     protected function request($url, $data = array(), $type = '')
     {
