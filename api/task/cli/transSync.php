@@ -13,16 +13,23 @@ class task_transSync extends task
     private $trans_url = '';    //获取交易详情
     private $trans_height_cahce = '';
     private $addressKey = "aelf:address:"; //app用户address
+    private $block_height_cache;    //块扫链高度key
+    private $wait_transaction = [];   //待处理交易
+    private $wait_small = [];   //待处理交易列表
+
 
 	function doRequest() {
 		set_time_limit( 0 );
         $this->trans_url = "{$this->scaner_node}/api/blockChain/transactionResults";
         $this->trans_height_cahce = 'trans_height:'.$this->chainid.":".$this->isex;
+        $this->block_height_cache = "aelf:height:".$this->chainid;
 
 		while ( true ) {
-            //$this->before();
+            $this->before();
 			$this->interval();
-            //$this->after();
+            $this->wait_transaction_handle();
+            $this->wait_small_handle();
+            $this->after();
 			//sleep( 1 );
 		}
 	}
@@ -39,18 +46,27 @@ class task_transSync extends task
                 return;
             }
 
-
             $blockey = "aelf:block:{$this->chainid}:{$height}";
             $blockinfo = $this->redis()->get($blockey);
             if(empty($blockinfo)){
-
                 //继续下一个高度处理
-                $next= "aelf:block:{$this->chainid}:".($height+1);
-                $blockinfo = $this->redis()->get($next);
-                if($blockinfo){
-                    $this->redis()->set($this->trans_height_cahce, $height+1);
-                    $this->logScreen("miss or empty transactions in block:".$height);
-                    return;
+                $i = 1;
+                while(1) {
+                    $cur_height = $this->redis()->get($this->block_height_cache);
+                    if($height + $i > $cur_height){
+                        break;
+                    }
+                    $next = "aelf:block:{$this->chainid}:" . ($height + $i);
+                    $blockinfo = $this->redis()->get($next);
+                    if ($blockinfo) {
+                        $this->redis()->set($this->trans_height_cahce, $height + $i);
+                        return;
+                    }else{
+                        //异常处理
+                        $this->wait_transaction = array_merge($this->wait_transaction, [$height+$i]);
+                        $this->logScreen("miss or empty transactions in block:" . ($height+$i), 1);
+                    }
+                    $i ++;
                 }
 
                 sleep(3);
@@ -65,12 +81,17 @@ class task_transSync extends task
                 //echo $url;
                 $res = $this->request($url);
                 if(!$res || stripos($res, '{')===false) {
-                    throw new Exception("Request trans_url Error");
+                    $this->wait_small = array_merge($this->wait_small, [["height"=>$height, "limit"=>$this->trans_limit, "offset"=>$offset, "blockHash"=>$blockinfo['hash']]]);
+                    //throw new Exception("Request trans_url Error");
+                    $this->logScreen("Request trans_url Error" , 1);
+                    continue;
                 }
                 $list = json_decode($res, true);
                 if (count($list) == 0) {
                     $msg = "block {$height} data is full";
-                    throw new Exception($msg);
+//                    throw new Exception($msg);
+                    $this->logScreen($msg);
+                    continue;
                 }
                 $list = $this->getUserAddressList($list, $blockinfo);   //该项目中存在的elf地址
                 foreach ($list as $k => $transaction) {
@@ -102,6 +123,111 @@ class task_transSync extends task
         }
 
 	}
+
+    /**
+     * 处理异常高度交易
+     */
+    function wait_transaction_handle() {
+
+        if(count($this->wait_transaction) == 0){
+            return;
+        }
+        $m = 0;
+        $wait_transaction = [];
+        foreach ($this->wait_transaction as $height) {
+            $this->logScreen("处理异常高度交易：".$height);
+
+            $blockey = "aelf:block:{$this->chainid}:{$height}";
+            $blockinfo = $this->redis()->get($blockey);
+
+            if(empty($blockinfo)){
+                $wait_transaction = array_merge($wait_transaction, [$height]);
+                continue;
+            }
+            $pages = ceil($blockinfo['txcount'] / $this->trans_limit);
+            for ($i = 0; $i < $pages; $i++) {
+                $offset = $i * $this->trans_limit;
+
+                $url = $this->trans_url . "?limit={$this->trans_limit}&offset={$offset}&blockHash={$blockinfo['hash']}";
+                $res = $this->request($url);
+                if (!$res || stripos($res, '{') === false) {
+                    //异常的交易详情
+                    $this->wait_small = array_merge($this->wait_small, [["height"=>$height,"limit"=>$this->trans_limit, "offset"=>$offset, "blockHash"=>$blockinfo['hash']]]);
+                    $this->logScreen("Request trans_url Error" , 1);
+                    continue;
+                }
+                $list = json_decode($res, true);
+                if (count($list) == 0) {
+                    $msg = "block {$height} data is full";
+                    $this->logScreen($msg);
+                    continue;
+                }
+                $list = $this->getUserAddressList($list, $blockinfo);   //该项目中存在的elf地址
+                foreach ($list as $k => $transaction) {
+                    $m++;
+                    if ($this->redis()->get($this->addressKey . $transaction['address_from']) == 1 || $this->redis()->get($this->addressKey . $transaction['address_to']) == 1) {
+                        $add_status = $this->add_transaction($transaction);
+                        if ($add_status) {    //如果插入成功插入消息到队列中
+                            $msg = 'tx_id:' . $transaction['tx_id'] . ' success' . PHP_EOL;
+                            $this->logScreen($msg);
+                            $this->transaction_push_queue($transaction);    //插入消息到队列中
+                        }
+                    }
+                }
+            }
+            $this->redis()->set($this->trans_height_cahce, $height + 1);
+            $msg = "total:block " . $blockinfo['height'] . ",trans {$m}" . PHP_EOL;
+            $this->logScreen($msg);
+            $this->redis()->delete($blockey);   //删除区块缓存
+        }
+        $this->wait_transaction = $wait_transaction;
+    }
+
+    /**
+     * 异常的交易详情处理
+     */
+    private function wait_small_handle(){
+        if(count($this->wait_small) == 0){
+            return;
+        }
+
+        $wait_small = [];
+        foreach ($this->wait_small as $item){
+            $blockey = "aelf:block:{$this->chainid}:{$item['height']}";
+            $blockinfo = $this->redis()->get($blockey);
+
+            $url = $this->trans_url . "?limit={$item['trans_limit']}&offset={$item['offset']}&blockHash={$item['blockHash']}";
+            $res = $this->request($url);
+            if (!$res || stripos($res, '{') === false) {
+                //异常的交易详情
+                $wait_small = array_merge($wait_small, [["limit"=>$item['limit'], "offset"=>$item['offset'], "blockHash"=>$item['blockHash']]]);
+                $this->logScreen("Request trans_url Error" , 1);
+                continue;
+            }
+            $list = json_decode($res, true);
+            if (count($list) == 0) {
+                $msg = "block {$item['height']} data is full";
+                $this->logScreen($msg);
+                continue;
+            }
+            $list = $this->getUserAddressList($list, $blockinfo);   //该项目中存在的elf地址
+            foreach ($list as $k => $transaction) {
+                if ($this->redis()->get($this->addressKey . $transaction['address_from']) == 1 || $this->redis()->get($this->addressKey . $transaction['address_to']) == 1) {
+                    $add_status = $this->add_transaction($transaction);
+                    if ($add_status) {    //如果插入成功插入消息到队列中
+                        $msg = 'tx_id:' . $transaction['tx_id'] . ' success' . PHP_EOL;
+                        $this->logScreen($msg);
+                        $this->transaction_push_queue($transaction);    //插入消息到队列中
+                    }
+                }
+            }
+            $this->logScreen("repair transaction");
+            $this->logScreen($item);
+        }
+
+        $this->wait_small = $wait_small;
+        return;
+    }
 
     /**
      * 获取本项目中存在的elf地址

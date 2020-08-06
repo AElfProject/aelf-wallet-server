@@ -16,6 +16,7 @@ class blockSync extends task
     private $block_info = '';
     private $limit = 100;
     private $block_height_cache = '';
+    private $wait_block = [];   //待处理交易高度
 
     public function doRequest()
     {
@@ -26,6 +27,7 @@ class blockSync extends task
         while (true){
             $this->before();
             $this->interval();
+            $this->wait_block_handle();
             $this->after();
             //sleep(1);
         }
@@ -67,15 +69,60 @@ class blockSync extends task
                     $msg = "checked block:{$i}";
                     $this->logScreen($msg);
                 } else {
-                    throw new Exception("Block Request Error");
+                    $this->wait_block = array_merge($this->wait_block, [$i]);
+                    //throw new Exception("Block Request Error");
+                    $this->logScreen("Block Request Error", 1);
                 }
             }
             $this->redis()->set($this->block_height_cache, $hheight);
-
         } catch (Exception $ex) {
             $this->logScreen($ex->getMessage());
         }
+    }
 
+    /**
+     * 异常高度处理
+     */
+    private function wait_block_handle()
+    {
+        try {
+            if(count($this->wait_block) == 0) return;
+            $wait_block = [];
+            foreach ($this->wait_block as $i) {
+                $this->logScreen("处理异常高度：".$i);
+                //获取区块信息
+                $url = $this->block_info . "?blockHeight={$i}&includeTransactions=true";
+                $true = 0;
+                $res = "";
+                for($j=0; $j<5; $j ++) { //retry 5次
+                    $res = $this->request($url);
+                    if ($res && strpos($res, '{') !== false) {
+                        $true = 1;
+                        break;
+                    }
+                }
+                if($true == 1){
+                    $res = json_decode($res);
+                    $block_arr = [
+                        'hash' => $res->BlockHash,
+                        'height' => $i,
+                        'txcount' => count($res->Body->Transactions),
+                        'time'=>$res->Header->Time,
+                        'chain_id'=>$res->Header->ChainId,
+                    ];
+                    $this->redis()->set("aelf:block:{$this->chainid}:{$i}", $block_arr, 432000); //保存5天时间
+
+                    $msg = "checked block:{$i}";
+                    $this->logScreen($msg);
+                } else {
+                    $wait_block = array_merge($wait_block, [$i]);
+                    $this->logScreen("Block Request Error2", 1);
+                }
+            }
+            $this->wait_block = $wait_block;
+        } catch (Exception $ex) {
+            $this->logScreen($ex->getMessage());
+        }
     }
 
     /**
