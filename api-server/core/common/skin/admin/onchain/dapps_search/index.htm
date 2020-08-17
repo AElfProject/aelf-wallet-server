@@ -33,8 +33,19 @@
                     <td class="editRtTd">
                         <div class="">
                             <input type="text" name="rank[]" value="<{$item.rank}>" placeholder="" class="text" size="10" />
-                            &nbsp;&nbsp;游戏id
+                            &nbsp;&nbsp;
+
+                            游戏id
+                            <select name="gid[]" >
+                                <option value="0">null</option>
+                                <{foreach from=$games key=k2 item=item2}>
+                                <option value="<{$item2.id}>"<{if $item.gid==$item2.id}> selected<{/if}>><{$item2.name2}></option>
+                                <{/foreach}>
+                            </select>
+                            <!--
                             <input type="text" name="gid[]" value="<{$item.gid}>" placeholder="" class="text" size="10" />
+                            -->
+
                             游戏名称
                             <input type="text" name="name[]" value="<{$item.name}>" placeholder="" class="text" size="10" />
 
@@ -82,7 +93,11 @@
                     '                        <div class="">\n' +
                     '                            <input type="text" name="rank[]" value="" placeholder="" class="text" size="10" />\n' +
                     '                            &nbsp;&nbsp;游戏id\n' +
-                    '                            <input type="text" name="gid[]" value="" placeholder="" class="text" size="10" />\n' +
+                    '<select name="gid[]" class="no-droplist">'+
+                     <{foreach from=$games key=k2 item=item2}>
+                    '<option value="<{$item2.id}>"><{$item2.name2}></option>' +
+                    <{/foreach}>
+                    '</select>'+
                     '游戏名称' +
                     '<input type="text" name="name[]" value="" placeholder="" class="text" size="10" />' +
                     '                            <a class="normal_dell">删除</a>\n' +
