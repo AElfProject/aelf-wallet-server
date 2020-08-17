@@ -27,6 +27,7 @@ class app_dapp_index extends app_dapp_base
             foreach ($banner as $k => $item) {
                 $tmp = unserialize($item['img']);
                 $banner[$k]['img'] = $tmp[$this->lang]["img"] ? $this->ossUrl . $tmp[$this->lang]["img"] : $this->ossUrl . 'onchain.default.png';
+                $banner[$k]['url'] = $this->getDappUrl($item['url'], $this->lang);
 
                 //获取游戏列表
                 if ($item['gid']) {
@@ -59,6 +60,7 @@ class app_dapp_index extends app_dapp_base
             $result["group"] = $group;
             $result["tool"] = $toolGames;
             $result['list'] = $list;
+            $result['dapp_link'] = $this->getDappLink();
 
             $this->redis()->set($cacheName, $result, 1 * 60);
         }
@@ -122,6 +124,21 @@ class app_dapp_index extends app_dapp_base
         //!$group && $group = (object)array();
         !$group && $group = null;
         return $group;
+    }
+
+    /**
+     * 获取dapp申请链接
+     */
+    protected function getDappLink(){
+        $link = $this->getConfig("dapp_apply_link");
+        if(!$link) return "";
+        $link = json_decode($link, true);
+        $lang = $this->lang;
+        if($link[$lang]){
+           return  $link[$lang];
+        }else{
+            return  $link["zh-cn"];
+        }
     }
 
 }

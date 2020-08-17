@@ -70,7 +70,7 @@
 					<td class="editLtTd">链接</td>
 					<td class="editRtTd">
 						<div class="input-box">
-							<input type="text" name="url" value="<{$formData.url}>" placeholder="" class="text" size="100"/>
+							<textarea name="url" class="text json-textarea" style="width:80%; height:80px;"><{$formData.url}></textarea>
 						</div>
 					</td>
 				</tr>
@@ -120,6 +120,8 @@
 				<input type="submit" value="Save" class="lnkSave" />
 				<a href="<{$returnUrl}>" class="lnkReturn">返回列表</a>
 			</div>
+
+			<{include file='json-modal.htm'}>
 		</form>
 	</div>
 </div>

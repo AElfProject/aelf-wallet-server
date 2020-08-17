@@ -28,6 +28,18 @@ class app_dapp_base extends app {
             $this->ossUrl = $this->getConfig( 'oss_url' );
         }
 
+        $this->lang = get2( 'lang' );
+    }
+
+    protected function getDappUrl($urls, $lang = '') {
+        if (!is_null(json_decode($urls))) {
+            $urls = json_decode($urls, true);
+            $lang = $lang ? $lang : $this->getLang();
+            $url = $urls[$lang];
+        } else {
+            $url = $urls;
+        }
+        return $url;
     }
 
     /**
@@ -77,6 +89,9 @@ class app_dapp_base extends app {
                 }
                 if ($k2 == 'cat') {
                     $games[$k]['type'] = __($this->cats[$item2]);
+                }
+                if ($k2 == 'url') {
+                    $games[$k]['url'] = $this->getDappUrl($item2, $this->lang);
                 }
                 $games[$k]['website'] = $games[$k]['url'];
             }

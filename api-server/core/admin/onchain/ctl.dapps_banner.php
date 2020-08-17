@@ -71,7 +71,7 @@ class ctl_dapps_banner extends adminPage{
             $status = intval(post('status'));
             $status = $status?$status:2;
             $title = trim(post('title'));
-            $url = trim(post('url'));
+            $url = trim( stripslashes(post( 'url' )) ) ? trim( stripslashes(post( 'url' )) ) : '{}';
             $sort = intval(post('sort'));
             $flag = intval(post('flag'));
             $gid = intval(post('gid'));
@@ -153,6 +153,7 @@ class ctl_dapps_banner extends adminPage{
         }
 
         $this->formData = array_merge( $info, $this->formData );
+        $this->formData['url'] = stripslashes($this->formData['url']);
         $this->setData( $this->formData, 'formData' );
         $this->setData( $this->formError, 'formError' );
         $this->setData( $this->formReturn, 'formReturn' );

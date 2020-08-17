@@ -46,7 +46,7 @@ define('CLASS_LEN', 3);
 define('REWRITE', true);
 
 //模板
-define( 'LANGS', serialize( array( array( 'id' => 'zh-cn', 'name' => '简体中文' ), array( 'id' => 'en', 'name' => 'English' ),array( 'id' => 'ko', 'name' => '한국어.' )  ) ) );
+define( 'LANGS', serialize( array( array( 'id' => 'zh-cn', 'name' => '简体中文' ), array( 'id' => 'en', 'name' => 'English' )  ) ) );
 $define_langs = unserialize( LANGS );
 $langs = array();
 foreach ( $define_langs as $l ) {

@@ -82,7 +82,7 @@ class ctl_dapps_games extends adminPage{
             $coin = trim(post('coin'));
             $isindex = intval(post('isindex'));
             $isindex = $isindex?$isindex:2;
-            $url = trim(post('url'));
+            $url = trim( stripslashes(post( 'url' )) ) ? trim( stripslashes(post( 'url' )) ) : '{}';
             $sort = intval(post('sort'));
             $cat = intval(post('cat'));
             $logoDel = post('logoDel');
@@ -158,6 +158,7 @@ class ctl_dapps_games extends adminPage{
         }
 
         $this->formData = array_merge( $info, $this->formData );
+        $this->formData['url'] = stripslashes($this->formData['url']);
         $this->setData( $this->formData, 'formData' );
         $this->setData( $this->formError, 'formError' );
         $this->setData( $this->formReturn, 'formReturn' );

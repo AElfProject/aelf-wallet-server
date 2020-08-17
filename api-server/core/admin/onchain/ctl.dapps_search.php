@@ -11,6 +11,17 @@ class ctl_dapps_search extends adminPage{
     public function index_action(){ #act_name = 列表#
 
         $mdl_search = $this->db( 'index', 'dapps_search', 'master' );
+        $mdl_games = $this->db("index", 'dapps_games');
+        $games = $mdl_games->getList(null, ['status'=>1], 'id asc', 1000);
+        foreach ($games as $k=>$item){
+            $tmp = unserialize($item['name']);
+            $games[$k]['name2'] = $tmp['zh-cn'];
+        }
+
+        foreach ($games as $k=>$item){
+            $tmp = unserialize($item['name']);
+            $games[$k]['name2'] = $tmp['zh-cn'];
+        }
 
         $list = $mdl_search->getList( null, null, '', 100 );
         $ids = array_map(function ($item){ return $item['id']; }, $list);
@@ -62,6 +73,7 @@ class ctl_dapps_search extends adminPage{
         $this->setData( $this->formData, 'formData' );
         $this->setData( $this->formError, 'formError' );
         $this->setData( $this->formReturn, 'formReturn' );
+        $this->setData( $games, 'games' );
 
 
         $this->setData( $this->parseUrl()->set( 'act' )->set( 'id' ), 'returnUrl' );
