@@ -86,7 +86,7 @@ class app_dapp_index extends app_dapp_base
     private function getAllGameData()
     {
         $mdl_games = $this->db('index', 'dapps_games');
-        $games = $mdl_games->getList(array('id', 'ico', 'coin', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'isindex' => 1), 'sort desc', 100);
+        $games = $mdl_games->getList(array('id', 'ico', 'coin', 'name', 'desc', 'cat', 'url', 'isindex'), array('status' => 1, 'isindex' => 1), 'sort desc', 8);
         $games = $this->handleData($games);
 
         //!$games && $games = (object)array();
