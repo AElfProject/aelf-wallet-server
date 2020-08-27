@@ -74,6 +74,7 @@ class app_dapp_index extends app_dapp_base
             if($res){
                 $cats[] = [
                     'category_title' => __($item),
+                    'cat'  =>$k,
                     'data' => $res,
                 ];
             }
