@@ -53,8 +53,9 @@ data/aelf_test.sql
 ```
 4.Modify database profile
 
-// In this example, we get two chains named AELF, tDVV.
-// If you get AELF only, remove the config of tDVV.
+In this example, we get two chains named AELF, tDVV.
+
+If you get AELF only, remove the config of tDVV.
 
 aelf Interface file configuration
 ```json
