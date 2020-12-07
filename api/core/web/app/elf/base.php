@@ -329,11 +329,11 @@ class app_elf_base extends app {
         }
 
         //判断交易状态
-        if ($history['tx_status'] == "Mined"){
+        if (strtolower($history['tx_status']) == "mined"){
             $status = 1;
-        }elseif($history['tx_status'] == "Failed"){
+        }elseif(strtolower($history['tx_status']) == "failed"){
             $status = -1;
-        }elseif($history['tx_status'] == "Pending"){
+        }elseif(strtolower($history['tx_status']) == "pending"){
             $status = 0;
         }
 
