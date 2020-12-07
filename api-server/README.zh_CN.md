@@ -40,11 +40,27 @@ private static function instance() {
 		return self::$inst;
 	}
 ```
+
+```json
+// 配置完后，记得在数据库配置对应oss的链接
+//#table cc_config_data-->oss_url
+// eg.aliyun
+https://xxx.oss-accelerate.aliyuncs.com/
+```
+
 3.导入sql
 ```angular2
 data/aelf_test.sql
 ```
 4.修改数据库配置文件
+
+在这个案例里，我们配置了两条链。
+
+如果你只配置了一条链，删掉多余的即可。配置了更多的链，则新增对应配置。
+
+/api/data/config.inc.php 里对应的内容也记得修改
+
+注意：修改的配置会定时或触发某些规则同步到 redis里，如果需要及时生效，请自己手动delete elf:configs.
 
 aelf接口文件配置
 ```json
@@ -119,6 +135,8 @@ aelf接口文件配置
 
 //#table cc_config_data-->url
 //当前api服务url
+// eg. 配置了一个内网链接 192.xxx.xxx.77
+// 192.xxx.xxx.88 访问 这个链接，则需要在access_ip中配置 192.xxx.xxx.88.
 http://127.0.0.1:8081
 
 ```
