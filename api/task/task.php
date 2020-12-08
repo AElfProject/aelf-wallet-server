@@ -161,7 +161,7 @@ class task extends base {
 
             /*转账通知*/
             if(in_array($transaction['method'], ['Transfer','CrossChainTransfer'])){
-                $msg = $transaction['tx_status']=="Mined"?"您有一笔交易已发送成功，金额：%s":"您有一笔交易已发送失败，金额：%s";
+                $msg = strtolower($transaction['tx_status'])=="mined"?"您有一笔交易已发送成功，金额：%s":"您有一笔交易已发送失败，金额：%s";
 
                 // $lang = $this->getLangByAddress($transaction['address_from']);
                 $fromUserInfo = $this->getUserByAddress($transaction['address_from']);
@@ -187,7 +187,7 @@ class task extends base {
 
             /*收款通知*/
             if(in_array($transaction['method'], ['Transfer','CrossChainReceiveToken'])){
-                $msg = $transaction['tx_status']=="Mined"?"您有一笔收款到账，金额：%s":"您有一笔收款失败，金额：%s";
+                $msg = strtolower($transaction['tx_status'])=="mined"?"您有一笔收款到账，金额：%s":"您有一笔收款失败，金额：%s";
            //     $lang = $this->getLangByAddress($transaction['address_to']);
 
                 $toUserInfo = $this->getUserByAddress($transaction['address_to']);

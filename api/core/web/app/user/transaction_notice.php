@@ -124,9 +124,9 @@ class app_user_transaction_notice extends app_user_base {
         }
 
         //判断交易状态
-        if ($transaction['tx_status'] == "Mined"){
+        if (strtolower($transaction['tx_status']) == "mined"){
             $status = 1;
-        }elseif($transaction['tx_status'] == "Failed"){
+        }elseif(strtolower($transaction['tx_status']) == "failed"){
             $status = -1;
         }
 
