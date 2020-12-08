@@ -40,11 +40,22 @@ private static function instance() {
 		return self::$inst;
 	}
 ```
+
+```json
+//#table cc_config_data-->oss_url
+// eg.aliyun
+https://xxx.oss-accelerate.aliyuncs.com/
+```
+
 3.Import sql
 ```angular2
 data/aelf_test.sql
 ```
 4.Modify database profile
+
+In this example, we get two chains named AELF, tDVV.
+
+If you get AELF only, remove the config of tDVV.
 
 aelf Interface file configuration
 ```json
@@ -60,7 +71,7 @@ aelf Interface file configuration
     "tokens_url": "http://127.0.0.1:8000/elf_tokens", //go crontab服务
     "history_api": {
         "AELF": "http://3.112.73.152:7101", //aelf scaner chain api http://127.0.0.1:7101
-	    "tDVV": "http://18.179.200.57:7101" //tdvv scaner chain api http://127.0.0.1:7102
+	"tDVV": "http://18.179.200.57:7101" //tdvv scaner chain api http://127.0.0.1:7102
     },
     "scaner_node": {
         "AELF": "http://54.199.254.157:8000", //aelf chain node  http://127.0.0.1:8000
@@ -118,9 +129,13 @@ other information
 127.0.0.1
 
 //#table cc_config_data-->url
-//web domain
+// web domain
+// some task depend on this api, like updateBalance.
+// if you set your iner ip, please set the referer ip in access_ip.
+// eg. 192.xxx.xxx.88:8081 is the api. 
+// 192.xxx.xxx.77 request the 192.xxx.xxx.88.
+// Set 192.xxx.xxx.77 in access_ip
 http://127.0.0.1:8081
-
 ```
 
 
