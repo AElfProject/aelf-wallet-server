@@ -96,22 +96,35 @@ class task_transSync extends task
                 $list = $this->getUserAddressList($list, $blockinfo);   //该项目中存在的elf地址
                 foreach ($list as $k => $transaction) {
                     $m ++;
+                    if ($this->redis()->get($this->addressKey.$transaction['address_from']) != 1) {
+                      $this->redis()->set($this->addressKey.$transaction['address_from'], 1);
+                    }
+                    if ($this->redis()->get($this->addressKey.$transaction['address_to']) != 1) {
+                      $this->redis()->set($this->addressKey . $transaction['address_to'], 1);
+                    }
+                    $add_status = $this->add_transaction($transaction);
+                    if ($add_status) {    //如果插入成功插入消息到队列中
+                        $msg = 'tx_id:'.$transaction['tx_id'].' success'.PHP_EOL;
+                        $this->logScreen($msg);
+                        $this->transaction_push_queue($transaction);    //插入消息到队列中
+                    }
+
                     /*该笔交易的转账地址或者收款地址是项目用户的则进行相关操作否则直接跳过*/
                     //if (in_array($transaction['address_from'], $userAddressList) || in_array($transaction['address_to'], $userAddressList)) {
                     //var_dump($this->addressKey.$transaction['address_from']);
                     //var_dump($this->addressKey.$transaction['address_to']);
                     //var_dump($this->redis()->get($this->addressKey.$transaction['address_from']));
-                    if ($this->redis()->get($this->addressKey.$transaction['address_from']) == 1 || $this->redis()->get($this->addressKey.$transaction['address_to']) == 1) {
-                            $add_status = $this->add_transaction($transaction);
-                        if ($add_status) {    //如果插入成功插入消息到队列中
-                            $msg = 'tx_id:'.$transaction['tx_id'].' success'.PHP_EOL;
-                            $this->logScreen($msg);
-                            $this->transaction_push_queue($transaction);    //插入消息到队列中
-                        }
-                    } else {
-                        //$msg = $transaction['address_from'].'、'.$transaction['address_to'].'不在用户列表中!'.PHP_EOL;
-                        //$this->logScreen($msg);
-                    }
+                    // if ($this->redis()->get($this->addressKey.$transaction['address_from']) == 1 || $this->redis()->get($this->addressKey.$transaction['address_to']) == 1) {
+                    //         $add_status = $this->add_transaction($transaction);
+                    //     if ($add_status) {    //如果插入成功插入消息到队列中
+                    //         $msg = 'tx_id:'.$transaction['tx_id'].' success'.PHP_EOL;
+                    //         $this->logScreen($msg);
+                    //         $this->transaction_push_queue($transaction);    //插入消息到队列中
+                    //     }
+                    // } else {
+                    //     //$msg = $transaction['address_from'].'、'.$transaction['address_to'].'不在用户列表中!'.PHP_EOL;
+                    //     //$this->logScreen($msg);
+                    // }
                 }
             }
             $this->redis()->set($this->trans_height_cahce, $height+1);
@@ -165,14 +178,26 @@ class task_transSync extends task
                 $list = $this->getUserAddressList($list, $blockinfo);   //该项目中存在的elf地址
                 foreach ($list as $k => $transaction) {
                     $m++;
-                    if ($this->redis()->get($this->addressKey . $transaction['address_from']) == 1 || $this->redis()->get($this->addressKey . $transaction['address_to']) == 1) {
-                        $add_status = $this->add_transaction($transaction);
-                        if ($add_status) {    //如果插入成功插入消息到队列中
-                            $msg = 'tx_id:' . $transaction['tx_id'] . ' success' . PHP_EOL;
-                            $this->logScreen($msg);
-                            $this->transaction_push_queue($transaction);    //插入消息到队列中
-                        }
+                    if ($this->redis()->get($this->addressKey . $transaction['address_from']) != 1) {
+                      $this->redis()->set($this->addressKey . $transaction['address_from'], 1);
                     }
+                    if ($this->redis()->get($this->addressKey . $transaction['address_to']) != 1) {
+                      $this->redis()->set($this->addressKey . $transaction['address_to'], 1);
+                    }
+                    $add_status = $this->add_transaction($transaction);
+                    if ($add_status) {    //如果插入成功插入消息到队列中
+                        $msg = 'tx_id:' . $transaction['tx_id'] . ' success' . PHP_EOL;
+                        $this->logScreen($msg);
+                        $this->transaction_push_queue($transaction);    //插入消息到队列中
+                    }
+                    // if ($this->redis()->get($this->addressKey . $transaction['address_from']) == 1 || $this->redis()->get($this->addressKey . $transaction['address_to']) == 1) {
+                    //     $add_status = $this->add_transaction($transaction);
+                    //     if ($add_status) {    //如果插入成功插入消息到队列中
+                    //         $msg = 'tx_id:' . $transaction['tx_id'] . ' success' . PHP_EOL;
+                    //         $this->logScreen($msg);
+                    //         $this->transaction_push_queue($transaction);    //插入消息到队列中
+                    //     }
+                    // }
                 }
             }
             $this->redis()->set($this->trans_height_cahce, $height + 1);
