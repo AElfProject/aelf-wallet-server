@@ -65,6 +65,8 @@ data/aelf_test.sql
 aelf接口文件配置
 ```json
 //#table cc_config_data-->api_config
+// 链节点如果使用内网地址，能有效提高服务速度，使用前请确保服务处于可用状态。
+// 节点确认可用 可以查看 ip:port/swagger/index.html ，如果能打开，则可用。
 {
     "web_api": {
         "AELF": "http://54.199.254.157:8000",  //aelf链节点（代理）https://xx.aelf.io/8000
