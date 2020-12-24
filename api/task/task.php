@@ -152,7 +152,7 @@ class task extends base {
             //处理余额缓存
             $this->addBalanceQueue($transaction);
 
-            sleep(5);   //增加清除缓存的时间
+            // sleep(5);   //增加清除缓存的时间
 
             //清除from/to相关的缓存
             $this->updateCache($transaction);

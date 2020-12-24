@@ -26,7 +26,7 @@ class task_transSync extends task
 
 		while ( true ) {
             $this->before();
-			$this->interval();
+			      $this->interval();
             $this->wait_transaction_handle();
             $this->wait_small_handle();
             $this->after();
@@ -89,17 +89,17 @@ class task_transSync extends task
                 $list = json_decode($res, true);
                 if (count($list) == 0) {
                     $msg = "block {$height} data is full";
-//                    throw new Exception($msg);
+                    // throw new Exception($msg);
                     $this->logScreen($msg);
                     continue;
                 }
                 $list = $this->getUserAddressList($list, $blockinfo);   //该项目中存在的elf地址
                 foreach ($list as $k => $transaction) {
                     $m ++;
-	            // 一是因为app端上么有处理好，二是想做一个数据源。所以这样处理了一下。
-	            // 更好的方案应该是依旧只处理注册的账号。
-		    // 未注册的账号在注册时，主动更新一下。
-		    // 这里应该把各种策略给封装好。
+                    // 一是因为app端上么有处理好，二是想做一个数据源。所以这样处理了一下。
+                    // 更好的方案应该是依旧只处理注册的账号。
+                    // 未注册的账号在注册时，主动更新一下。
+                    // 这里应该把各种策略给封装好。
                     if ($this->redis()->get($this->addressKey.$transaction['address_from']) != 1) {
                       $this->redis()->set($this->addressKey.$transaction['address_from'], 1);
                     }

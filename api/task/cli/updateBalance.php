@@ -66,11 +66,13 @@ class task_updateBalance extends task
                         $this->logScreen("start:" . json_encode($trans));
                         $this->updateBalanceCache($trans, 1);
                     }
-                    sleep(1);
+                    usleep(50000);
+                    // sleep(1);
                 }
             } else {
                 $this->redis()->rPush($this->queueName, $transaction_0);
-                sleep(1);
+                usleep(50000);
+                // sleep(1);
             }
         }
 

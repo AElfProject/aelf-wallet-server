@@ -43,7 +43,8 @@ class udidRelationUser extends task
                 }
 
                 $i++;
-                sleep(1);
+                usleep(50000);
+                // sleep(1);
             } else {
                 break;
             }
