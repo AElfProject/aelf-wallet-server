@@ -42,7 +42,7 @@ private static function instance() {
 ```
 
 ```json
-// 配置完后，记得在数据库配置对应oss的链接
+// 配置完后，记得在数据库或者 CMS-设置-APP参数管理中 配置对应oss的链接
 //#table cc_config_data-->oss_url
 // eg.aliyun
 https://xxx.oss-accelerate.aliyuncs.com/
@@ -102,29 +102,34 @@ aelf接口文件配置
         "type": "main",
         "name": "AELF",
         //链合约地址
-        "contract_address": "25CecrU94dmMdbhC3LWMKxtoaL4Wv8PChGvVJM6PxkHAyvXEhB",
-        //aelf链节点
+	// main chain token contract: JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE
+        "contract_address": "",
+        //aelf链节点, 请使用公网地址
         "node": "http://54.199.254.157:8000/",
         "symbol": "ELF",
         "logo": "elf_wallet/elf/elf.png",
         "explorer": "https://explorer-test.aelf.io",
         //链跨链合约地址
-        "crossChainContractAddress": "x7G7VYqqeVAH8aeAsb7gYuTQ12YS1zKuxur9YES3cUj72QMxJ",
-        "transferCoins": "ELF"
+	// main chain: 2SQ9LeGZYSWmfJcYuQkDQxgd3HzwjamAaaL4Tge2eFSXw2cseq
+        "crossChainContractAddress": "",
+	// 如果只想transfer特定token, "ELF,USDT"
+        "transferCoins": "*"
     },
     {
         "type": "side",
         "name": "tDVV",
-        //链合约地址
-        "contract_address": "EReNnYPBeZ3AfAjPXXdpNK7AV5YCjRPvM7d5M3SLettMZpxre",
-        //tDVV链节点
+        // 链合约地址
+	// main chain token contract: 7RzVGiuVWkvL4VfVHdZfQF2Tri3sgLe9U991bohHFfSRZXuGX
+        "contract_address": "",
+        //tDVV链节点, 请使用公网地址
         "node": "http://3.112.250.87:8000/",
         "symbol": "ELF",
         "logo": "elf_wallet/elf/tDVV.png",
         "explorer": "https://explorer-test-side01.aelf.io",
-        //链跨链合约地址
-        "crossChainContractAddress": "RSr6bPc7Hv6dMJiWdPgBBFMacUJcrgQoeHkVBMjqJ5HURtKK3",
-        "transferCoins": "ELF"
+        // 链跨链合约地址
+	// main chain: 2snHc8AMh9QMbCAa7XXmdZZVM5EBZUUPDdLjemwUJkBnL6k8z9
+        "crossChainContractAddress": "",
+        "transferCoins": "*"
     }
 ]
 
@@ -132,13 +137,14 @@ aelf接口文件配置
 其他信息
 ```json
 //#table cc_config_data-->access_ip
-//用来调试的ip
-127.0.0.1
-
-//#table cc_config_data-->url
-//当前api服务url
+// 用来调试的ip
 // eg. 配置了一个内网链接 192.xxx.xxx.77
 // 192.xxx.xxx.88 访问 这个链接，则需要在access_ip中配置 192.xxx.xxx.88.
+127.0.0.1
+
+// #table cc_config_data-->url
+// 当前api服务url
+// 建议：直接使用 内网ip:端口
 http://127.0.0.1:8081
 
 ```
