@@ -60,7 +60,11 @@ data/aelf_test.sql
 
 /api/data/config.inc.php 里对应的内容也记得修改
 
-注意：修改的配置会定时或触发某些规则同步到 redis里，如果需要及时生效，请自己手动delete elf:configs; CMS中配置不要把注释带上了
+注意：
+
+1.修改的配置会定时或触发某些规则同步到 redis里，如果需要及时生效，请自己手动delete elf:configs; 
+
+2.CMS中配置不要把注释带上了, 配置是标准的JSON格式，请确认没有填错。
 
 aelf接口文件配置
 ```javascript
@@ -138,7 +142,7 @@ aelf接口文件配置
 ```json
 //#table cc_config_data-->access_ip
 // 用来调试的ip
-127.0.0.1
+127.0.0.1,Task服务所在机器的ip[看你自己配置的情况配置内网ip/公网ip/网卡IP(ifconfig->iner), 需要确认Task服务能访问API],
 
 // #table cc_config_data-->url
 // 当前api服务url
@@ -147,7 +151,7 @@ aelf接口文件配置
 // eg. 192.xxx.xxx.88:8081 is the api. 
 // 192.xxx.xxx.77 request the 192.xxx.xxx.88.
 // Set 192.xxx.xxx.77 in access_ip
-// 建议：直接使用 内网ip:端口
+// 建议：直接使用 内网ip:端口. eg.http://192.xxx.xxx.88:8081
 http://127.0.0.1:8081
 
 ```
