@@ -58,7 +58,7 @@ In this example, we get two chains named AELF, tDVV.
 If you get AELF only, remove the config of tDVV.
 
 aelf Interface file configuration
-```json
+```javascript
 //#table cc_config_data-->api_config
 {
     "web_api": {
@@ -88,36 +88,41 @@ aelf Interface file configuration
 }
 ```
 CrossChain information
-```json
+```javascript
 //#table cc_config_data-->chains
 [
     {
         "type": "main",
         "name": "AELF",
         //contract address
-        "contract_address": "25CecrU94dmMdbhC3LWMKxtoaL4Wv8PChGvVJM6PxkHAyvXEhB",
-        //aelf chain node
+        // mainnet token contract: JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE
+        "contract_address": "",
+        //aelf chain node. Public network ip
         "node": "http://54.199.254.157:8000/",
         "symbol": "ELF",
         "logo": "elf_wallet/elf/elf.png",
         "explorer": "https://explorer-test.aelf.io",
         //crosschain contract address
-        "crossChainContractAddress": "x7G7VYqqeVAH8aeAsb7gYuTQ12YS1zKuxur9YES3cUj72QMxJ",
-        "transferCoins": "ELF"
+	// mainnet: 2SQ9LeGZYSWmfJcYuQkDQxgd3HzwjamAaaL4Tge2eFSXw2cseq
+        "crossChainContractAddress": "",
+	// eg."ELF,USDT"
+        "transferCoins": "*"
     },
     {
         "type": "side",
         "name": "tDVV",
         //contract address
-        "contract_address": "EReNnYPBeZ3AfAjPXXdpNK7AV5YCjRPvM7d5M3SLettMZpxre",
-        //tdvv chain node
+	// mainnet: 7RzVGiuVWkvL4VfVHdZfQF2Tri3sgLe9U991bohHFfSRZXuGX
+        "contract_address": "",
+        //tdvv chain node Public network ip
         "node": "http://3.112.250.87:8000/",
         "symbol": "ELF",
         "logo": "elf_wallet/elf/tDVV.png",
         "explorer": "https://explorer-test-side01.aelf.io",
         //crosschain contract address
-        "crossChainContractAddress": "RSr6bPc7Hv6dMJiWdPgBBFMacUJcrgQoeHkVBMjqJ5HURtKK3",
-        "transferCoins": "ELF"
+	// mainnet: 2snHc8AMh9QMbCAa7XXmdZZVM5EBZUUPDdLjemwUJkBnL6k8z9
+        "crossChainContractAddress": "",
+        "transferCoins": "*"
     }
 ]
 
