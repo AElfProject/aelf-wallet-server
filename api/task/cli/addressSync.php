@@ -48,7 +48,8 @@ class addressSync extends task{
             }
             $this->logScreen("完成address同步:".count($list));
             $page ++;
-            sleep(1);
+            usleep(50000);
+            // sleep(1);
         }
     }
 

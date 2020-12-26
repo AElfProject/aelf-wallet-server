@@ -46,7 +46,8 @@ class sys_message_queue extends base
                             $this->pushMessage($comAddr['udid'], $messageData);
                         }
                         $i++;
-                        sleep(1);
+                        usleep(50000);
+                        // sleep(1);
                     } else {
                         break;
                     }

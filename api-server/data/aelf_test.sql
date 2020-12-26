@@ -119,7 +119,7 @@ CREATE TABLE `cc_coin_fee` (
 -- Records of cc_coin_fee
 -- ----------------------------
 BEGIN;
-INSERT INTO `cc_coin_fee` VALUES (15, 0.00050000, 'elf');
+INSERT INTO `cc_coin_fee` VALUES (15, 0.00000000, 'elf');
 COMMIT;
 
 -- ----------------------------
