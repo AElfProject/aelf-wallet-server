@@ -102,7 +102,7 @@ aelf接口文件配置
         "type": "main",
         "name": "AELF",
         //链合约地址
-	// main chain token contract: JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE
+	// mainnet token contract: JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE
         "contract_address": "",
         //aelf链节点, 请使用公网地址
         "node": "http://54.199.254.157:8000/",
@@ -110,7 +110,7 @@ aelf接口文件配置
         "logo": "elf_wallet/elf/elf.png",
         "explorer": "https://explorer-test.aelf.io",
         //链跨链合约地址
-	// main chain: 2SQ9LeGZYSWmfJcYuQkDQxgd3HzwjamAaaL4Tge2eFSXw2cseq
+	// mainnet: 2SQ9LeGZYSWmfJcYuQkDQxgd3HzwjamAaaL4Tge2eFSXw2cseq
         "crossChainContractAddress": "",
 	// 如果只想transfer特定token, "ELF,USDT"
         "transferCoins": "*"
@@ -119,7 +119,7 @@ aelf接口文件配置
         "type": "side",
         "name": "tDVV",
         // 链合约地址
-	// main chain token contract: 7RzVGiuVWkvL4VfVHdZfQF2Tri3sgLe9U991bohHFfSRZXuGX
+	// mainnet token contract: 7RzVGiuVWkvL4VfVHdZfQF2Tri3sgLe9U991bohHFfSRZXuGX
         "contract_address": "",
         //tDVV链节点, 请使用公网地址
         "node": "http://3.112.250.87:8000/",
@@ -127,7 +127,7 @@ aelf接口文件配置
         "logo": "elf_wallet/elf/tDVV.png",
         "explorer": "https://explorer-test-side01.aelf.io",
         // 链跨链合约地址
-	// main chain: 2snHc8AMh9QMbCAa7XXmdZZVM5EBZUUPDdLjemwUJkBnL6k8z9
+	// mainnet: 2snHc8AMh9QMbCAa7XXmdZZVM5EBZUUPDdLjemwUJkBnL6k8z9
         "crossChainContractAddress": "",
         "transferCoins": "*"
     }
@@ -138,12 +138,15 @@ aelf接口文件配置
 ```json
 //#table cc_config_data-->access_ip
 // 用来调试的ip
-// eg. 配置了一个内网链接 192.xxx.xxx.77
-// 192.xxx.xxx.88 访问 这个链接，则需要在access_ip中配置 192.xxx.xxx.88.
 127.0.0.1
 
 // #table cc_config_data-->url
 // 当前api服务url
+// some task depend on this api, like updateBalance.
+// if you set your iner ip, please set the referer ip in access_ip.
+// eg. 192.xxx.xxx.88:8081 is the api. 
+// 192.xxx.xxx.77 request the 192.xxx.xxx.88.
+// Set 192.xxx.xxx.77 in access_ip
 // 建议：直接使用 内网ip:端口
 http://127.0.0.1:8081
 
