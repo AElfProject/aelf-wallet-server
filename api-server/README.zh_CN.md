@@ -60,10 +60,10 @@ data/aelf_test.sql
 
 /api/data/config.inc.php 里对应的内容也记得修改
 
-注意：修改的配置会定时或触发某些规则同步到 redis里，如果需要及时生效，请自己手动delete elf:configs.
+注意：修改的配置会定时或触发某些规则同步到 redis里，如果需要及时生效，请自己手动delete elf:configs; CMS中配置不要把注释带上了
 
 aelf接口文件配置
-```json
+```javascript
 //#table cc_config_data-->api_config
 // 链节点如果使用内网地址，能有效提高服务速度，使用前请确保服务处于可用状态。
 // 节点确认可用 可以查看 ip:port/swagger/index.html ，如果能打开，则可用。
@@ -95,7 +95,7 @@ aelf接口文件配置
 }
 ```
 跨链信息
-```json
+```javascript
 //#table cc_config_data-->chains
 [
     {
