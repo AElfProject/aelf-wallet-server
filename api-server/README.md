@@ -57,6 +57,12 @@ In this example, we get two chains named AELF, tDVV.
 
 If you get AELF only, remove the config of tDVV.
 
+Notes:
+
+1. This config set in redis, cache 5 minutes; KEY elf:configs.
+
+2. Remove comment when set in cms.Set `JSON` data in CMS.
+
 aelf Interface file configuration
 ```javascript
 //#table cc_config_data-->api_config
@@ -131,7 +137,7 @@ other information
 ```json
 //#table cc_config_data-->access_ip
 //debug api ip
-127.0.0.1
+127.0.0.1, ip of Aelf wallet crontab task(Public ip / inner IP /ifconfig->iner ip, please make sure Task can request the api.)
 
 //#table cc_config_data-->url
 // web domain
