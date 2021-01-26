@@ -461,7 +461,7 @@ class app extends web {
         //concurrent_address
         $keyStr = "elf:concurrent_address:{address}:{currency}:{type}";
         $repStr = [
-            'address'=>[$address],
+            'address'=>[$address, ],
             'currency'=>['cny','usd','krw'],
             'type'=>[0,1]
         ];
@@ -472,6 +472,7 @@ class app extends web {
             //$this->logScreen("clear cache:".$item2);
             //$this->logFile($item2, 'clear');
             //var_dump($item2);
+            $this->redis()->delete($item);
             $this->redis()->delete($item2);
         }
         return;

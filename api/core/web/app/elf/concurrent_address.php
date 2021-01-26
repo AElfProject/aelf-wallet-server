@@ -15,7 +15,8 @@ class app_elf_concurrent_address extends app_elf_base{
         $type = post( 'type' )?intval(post( 'type' )):0;
 
         //添加缓存机制
-        $cacheKey = "elf:concurrent_address:{$address}:{$currency}:{$type}";
+        $currenyLower = strtolower($currency);
+        $cacheKey = "elf:concurrent_address:{$address}:{$currenyLower}:{$type}";
         //echo $cacheKey;
         $json = $this->redis()->get($cacheKey);
         if($json && app::REDISENV){
@@ -91,7 +92,7 @@ class app_elf_concurrent_address extends app_elf_base{
         $sort2 = array_column($json,'balance');
         array_multisort($sort1,SORT_DESC, $sort2, SORT_DESC, $json);
 
-        $this->redis()->set($cacheKey, $json, 300); //5分钟
+        $this->redis()->set($cacheKey, $json, 5);
         $this->returnSuccess('', $json);
     }
 
