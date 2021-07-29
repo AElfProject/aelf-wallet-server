@@ -2,6 +2,8 @@
 
 require_once 'core/web/web.php';
 
+use Elliptic\EC\Signature;
+
 class app extends web {
 
     const completed = 6;
@@ -18,12 +20,18 @@ class app extends web {
 		if(!$_POST) {
             $_POST = json_decode(file_get_contents("php://input"),true);
         }
-        foreach ( $_POST as $key => $post ) {
-            if($this->checkIsDecode($_POST)) {    //demon 守护进程
+        if($this->checkIsDecode($_POST)) {
+            foreach ( $_POST as $key => $post ) {
                 $_POST[$key] = strip_tags($this->rsaDecodeFix($post));
             }
-			//$_POST[$key] = strip_tags( $post );
-		}
+
+            if(!strstr($_SERVER["REQUEST_URI"],"app/elf/chain") && !strstr($_SERVER["REQUEST_URI"],"app/settings/get_currencies")){
+                if(!$this->verifySignature($_POST["address"],$_POST["public_key"],$_POST["signature"]))
+                {
+                    $this->error( __( 'Authentication failed' ) );
+                }
+            }
+        }
         $this->logFile($_POST, 'post');
 
         $chainid = post('chainid');
@@ -73,6 +81,18 @@ class app extends web {
             return false;
         }
 	    return true;
+    }
+
+    private function verifySignature($address, $pubkey, $signature){
+        $pubkey = str_replace('\"','"',$pubkey);
+        $signature = str_replace('\"','"',$signature);
+        $ec = new \Elliptic\EC('secp256k1');
+        $msg = hash('sha256',$address);
+        $key = $ec->keyFromPublic(json_decode($pubkey));
+        $sig = new Signature(json_decode($signature,true));
+        $result = $ec->verify($msg, $sig, $key->getPublic());
+        print_r($result);
+        return $result;
     }
 
 	public function after() {

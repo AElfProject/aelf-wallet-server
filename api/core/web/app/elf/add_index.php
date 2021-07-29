@@ -13,7 +13,7 @@ class app_elf_add_index extends app_elf_base{
         $txid = trim( post( 'txid' ) );
         $from_chain = trim( post( 'from_chain' ) );
         $to_chain = trim( post( 'to_chain' ) );
-        $from_address = trim( post( 'from_address' ) );
+        $from_address = trim( post( 'address' ) );
         $to_address = trim( post( 'to_address' ) );
         $symbol = trim( post( 'symbol' ) );
         $amount = trim( post( 'amount' ) );
