@@ -1,6 +1,7 @@
 <?php
 
 require_once 'core/web/web.php';
+require_once __DIR__.'/../../../vendor/autoload.php';
 
 use Elliptic\EC\Signature;
 
@@ -91,7 +92,6 @@ class app extends web {
         $key = $ec->keyFromPublic(json_decode($pubkey));
         $sig = new Signature(json_decode($signature,true));
         $result = $ec->verify($msg, $sig, $key->getPublic());
-        print_r($result);
         return $result;
     }
 
