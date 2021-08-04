@@ -20,7 +20,7 @@ class app_elf_rcv_txid extends app_elf_base{
                 throw new Exception(__('参数错误'));
             }
             $mdl_cross_chain_transaction = $this->db('index', 'cross_chain_transaction', 'master');
-            $mdl_cross_chain_transaction->updateByWhere(['rcv_txid'=>$txid_to], ['txid'=>$txid_from,'to_address'=>$address]);
+            $mdl_cross_chain_transaction->updateByWhere(['rcv_txid'=>$txid_to], ['txid'=>$txid_from,'from_address'=>$address]);
             $this->success('');
         }catch (Exception $ex){
             $this->error($ex->getMessage());
