@@ -30,6 +30,11 @@ class app_elf_add_index extends app_elf_base{
                 $to_chain = strtoupper($to_chain);
             }
 
+            $all_tokens = $this->getAllContract();
+            $main = array_column($all_tokens[$from_chain], 'decimals','symbol');
+            $decimals = pow(10,$main[$symbol]);
+            $amount = floor($amount*$decimals)/$decimals;
+
             $data = [
                 'txid' => $txid,
                 'from_chain' => $from_chain,
