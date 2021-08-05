@@ -21,6 +21,8 @@ define("UMENGSECKEY", "");
 define("IOSUMENGKEY", '');
 define("IOSUMENGSECKEY", "");
 
+define("IOSUMENGKEY2", '');
+define("IOSUMENGSECKEY2", "");
 class message_push extends base
 {
     private $queueName = 'transaction_push_queue';
@@ -132,6 +134,16 @@ class message_push extends base
             */
             $pm->extra = $extra;
             $pm->sendIOSUnicast();
+            
+            // add IOS TestFlight App
+            $pm2 = new PushMessage(IOSUMENGKEY2, IOSUMENGSECKEY2);
+            $pm2->device_tokens = $token;
+            $pm2->alert = [
+                'title' => $title,
+                'body' =>$content,
+            ];
+            $pm2->extra = $extra;
+            $pm2->sendIOSUnicast();
         }
     }
 }
@@ -142,6 +154,3 @@ $flag = $param['flag'];
 set_time_limit(0);
 $markets = new message_push;
 $markets->action($flag);
-
-
-
