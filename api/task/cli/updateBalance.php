@@ -65,6 +65,11 @@ class task_updateBalance extends task
                         ];
                         $this->logScreen("start:" . json_encode($trans));
                         $this->updateBalanceCache($trans, 1);
+                        // update ELF balance
+                        if($trans['symbol'] != "ELF"){
+                            $trans['symbol'] = "ELF";
+                            $this->updateBalanceCache($trans);
+                        }
                     }
                     usleep(50000);
                     // sleep(1);
@@ -92,6 +97,11 @@ class task_updateBalance extends task
                 ];
                 $this->logScreen("params:" . json_encode($trans));
                 $this->updateBalanceCache($trans);
+                // update ELF balance
+                if($trans['symbol'] != "ELF"){
+                    $trans['symbol'] = "ELF";
+                    $this->updateBalanceCache($trans);
+                }
             } else {
                 $this->redis()->rPush($this->queueName, $transaction_0);
                 sleep(1);
