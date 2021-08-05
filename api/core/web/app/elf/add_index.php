@@ -30,10 +30,11 @@ class app_elf_add_index extends app_elf_base{
                 $to_chain = strtoupper($to_chain);
             }
 
+            $amountFormat = str_replace(',','',$amount);
             $all_tokens = $this->getAllContract();
             $main = array_column($all_tokens[$from_chain], 'decimals','symbol');
             $decimals = pow(10,$main[$symbol]);
-            $amount = floor($amount*$decimals)/$decimals;
+            $amountFormat = floor($amountFormat*$decimals)/$decimals;
 
             $data = [
                 'txid' => $txid,
@@ -43,7 +44,7 @@ class app_elf_add_index extends app_elf_base{
                 'to_address' => $to_address,
                 'time' =>time(),
                 'symbol' => $symbol,
-                'amount' => $amount,
+                'amount' => $amountFormat,
                 'memo' => $memo
             ];
 
